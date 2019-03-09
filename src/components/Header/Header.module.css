@@ -1,0 +1,88 @@
+.header {
+  background: url('../../assets/img/hannah-busing-446334-unsplash.jpg'),
+    no-repeat;
+  filter: grayscale(100%) contrast(1);
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  mix-blend-mode: multiply;
+  display: flex;
+  color: white;
+  opacity: 0.5;
+  overflow: hidden;
+}
+
+.header::after {
+  mix-blend-mode: lighten;
+}
+
+.gradient__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(145deg, #ffc867, #f037a6);
+  z-index: -1;
+  transition: all ease-in-out 0.5s;
+}
+
+.container {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  text-align: center;
+}
+
+.header__title {
+  font-size: 6em;
+  color: #fff;
+  font-family: 'MontserratBold', sans-serif;
+}
+
+.header__logan {
+  font-size: 4em;
+  width: 100%;
+  color: #fff;
+  margin-top: 2em;
+}
+
+@media screen and (min-width: 810px) {
+  .header__title {
+    font-size: 8em;
+    color: #fff;
+  }
+
+  .header__logan {
+    font-size: 6em;
+    width: 100%;
+    color: #fff;
+    margin-top: 1em;
+  }
+
+  .header__btn {
+    padding: 1em;
+    font-size: 1.7em;
+    border: 0.1em solid #fff;
+    border-radius: 9em;
+    color: #000;
+    cursor: pointer;
+    position: absolute;
+    transform: translate(-50%, 100%);
+    text-decoration: none;
+    color: white;
+    letter-spacing: 2px;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .header__btn:focus {
+    outline: none;
+  }
+
+  .header__btn:hover {
+    background: #fff;
+    color: #192121;
+  }
+}
