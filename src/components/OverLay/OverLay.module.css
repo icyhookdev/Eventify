@@ -48,6 +48,35 @@
   margin-top: 2em;
 }
 
+.header__btn {
+  padding: 1em;
+  font-size: 1.7em;
+  border: 0.1em solid #fff;
+  border-radius: 9em;
+  color: #000;
+  cursor: pointer;
+  position: absolute;
+  transform: translate(-50%, 100%);
+  text-decoration: none;
+  color: white;
+  letter-spacing: 2px;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+
+.header__btn:focus {
+  outline: none;
+}
+
+.header__btn:hover {
+  background: #fff;
+  color: #192121;
+}
+
+.header__btn:hover svg g {
+  fill: #000;
+}
+
 @media screen and (min-width: 810px) {
   .header__title {
     font-size: 8em;
@@ -84,5 +113,27 @@
   .header__btn:hover {
     background: #fff;
     color: #192121;
+  }
+
+  .header__btn:hover svg g {
+    fill: #000;
+  }
+
+  .header__btn svg {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    animation: moveRL 2s infinite forwards;
+  }
+}
+
+@keyframes moveRL {
+  0% {
+    right: -15px;
+  }
+  50% {
+    right: 0;
+  }
+  100% {
+    right: -15px;
   }
 }
