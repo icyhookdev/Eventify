@@ -1,7 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import App from './App';
+import RouterLaout from './RouterLayout';
 import './index.css';
 
-render(<App />, document.querySelector('#root'));
+render(
+  <Router>
+    <RouterLaout />
+  </Router>,
+  document.querySelector('#root')
+);
