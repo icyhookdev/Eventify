@@ -1,0 +1,150 @@
+.Nav {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  padding: 1em 3em;
+  left: 0;
+  top: 0;
+}
+
+.Nav__items {
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.Nav__items a {
+  text-decoration: none;
+  color: #1e3264;
+  margin-left: 1em;
+  display: block;
+  transition: all 0.3s ease;
+  padding: 0 1rem;
+  font-size: 1.7em;
+  text-align: center;
+  position: relative;
+}
+
+.Nav__items a:hover {
+  color: #fff;
+}
+
+.Nav__right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Nav__right a {
+  text-decoration: none;
+  color: #1e3264;
+  margin-left: 1em;
+  display: block;
+  transition: all 0.3s ease;
+  padding: 0 1rem;
+  text-align: center;
+  font-size: 1.7em;
+  font-weight: bold;
+}
+
+.Nav__right a:hover {
+  color: #fff;
+}
+
+.Nav__right {
+  height: 4rem;
+  display: flex;
+  padding: 0 3em;
+}
+.Nav__right ol {
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.Nav__right ol > .menu__item {
+  flex: 1;
+  padding: 0.75rem 0;
+}
+.Nav__brand {
+  font-size: 3.5em;
+  font-family: 'MontserratBold', sans-serif;
+  color: #1e3264;
+}
+
+.menu__item {
+  position: relative;
+  line-height: 2.5rem;
+  text-align: center;
+}
+.menu__item a {
+  overflow: hidden;
+  white-space: nowrap;
+
+  display: block;
+  color: #1e3264;
+  font-size: 1.7em;
+}
+
+.menu__item a:hover {
+  color: #fff;
+}
+.sub__menu .menu__item {
+  padding: 0.75rem 0;
+  background: #f67280;
+  opacity: 0;
+  transform-origin: bottom;
+  animation: enter 0.2s ease forwards;
+}
+.sub__menu .menu__item:nth-child(1) {
+  animation-duration: 0.2s;
+  animation-delay: 0s;
+}
+.sub__menu .menu__item:nth-child(2) {
+  animation-duration: 0.3s;
+  animation-delay: 0.1s;
+}
+.sub__menu .menu__item:nth-child(3) {
+  animation-duration: 0.4s;
+  animation-delay: 0.2s;
+}
+.sub__menu .menu__item:hover {
+  background: #f8b195;
+}
+.sub__menu .menu__item a {
+  padding: 0 0.75rem;
+}
+
+.sub__menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  z-index: 1;
+}
+.menu__item:hover > .sub__menu {
+  display: block;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: scaleY(0.98) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
