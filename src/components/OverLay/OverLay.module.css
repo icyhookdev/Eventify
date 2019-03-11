@@ -1,13 +1,10 @@
 .header {
-  background: url('../../assets/img/hannah-busing-446334-unsplash.jpg'),
-    no-repeat;
   filter: grayscale(100%) contrast(1);
   height: 100vh;
   width: 100%;
   background-size: cover;
   mix-blend-mode: multiply;
   display: flex;
-  color: white;
   opacity: 0.5;
   overflow: hidden;
 }
@@ -37,14 +34,14 @@
 
 .header__title {
   font-size: 6em;
-  color: #fff;
+  color: #1e3264;
   font-family: 'MontserratBold', sans-serif;
 }
 
 .header__logan {
   font-size: 4em;
   width: 100%;
-  color: #fff;
+  color: #1e3264;
   margin-top: 2em;
 }
 
@@ -80,13 +77,13 @@
 @media screen and (min-width: 810px) {
   .header__title {
     font-size: 8em;
-    color: #fff;
+    color: #1e3264;
   }
 
   .header__logan {
     font-size: 6em;
     width: 100%;
-    color: #fff;
+    color: #1e3264;
     margin-top: 1em;
   }
 
