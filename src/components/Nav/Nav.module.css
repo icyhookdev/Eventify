@@ -2,9 +2,22 @@
   display: flex;
   position: fixed;
   width: 100%;
-  padding: 1em 3em;
+  padding: 0 3em;
   left: 0;
   top: 0;
+  background: #7144ad;
+  z-index: 10;
+}
+
+.Nav__brand {
+  /* font-size: 3.5em;
+  font-family: 'MontserratBold', sans-serif; */
+  /* color: #fff; */
+  background: url('../../assets/icons/logo.svg') center;
+  background-repeat: no-repeat;
+  height: 50px;
+  width: 50px;
+  align-self: center;
 }
 
 .Nav__items {
@@ -14,38 +27,45 @@
   align-items: center;
   padding: 0;
   margin: 0;
+  height: 100%;
   width: 100%;
 }
 
 .Nav__items a {
   text-decoration: none;
-  color: #1e3264;
+  color: #fff;
   margin-left: 1em;
   display: block;
   transition: all 0.3s ease;
-  padding: 0 1rem;
+  padding: 1em 1rem;
   font-size: 1.7em;
   text-align: center;
   position: relative;
 }
 
 .Nav__items a:hover {
+  /* color: #000; */
   color: #fff;
+  background: #ffffff53;
 }
 
 .Nav__right {
   display: flex;
   justify-content: center;
   align-items: center;
+  align-self: center;
 }
 
 .Nav__right a {
   text-decoration: none;
-  color: #1e3264;
+  color: #fff;
   margin-left: 1em;
   display: block;
+  /* background: #0077ff; */
+  padding: 0.6em;
   transition: all 0.3s ease;
-  padding: 0 1rem;
+  /* padding: 0 1rem; */
+  border-radius: 5px;
   text-align: center;
   font-size: 1.7em;
   font-weight: bold;
@@ -70,11 +90,6 @@
   flex: 1;
   padding: 0.75rem 0;
 }
-.Nav__brand {
-  font-size: 3.5em;
-  font-family: 'MontserratBold', sans-serif;
-  color: #1e3264;
-}
 
 .menu__item {
   position: relative;
@@ -86,19 +101,32 @@
   white-space: nowrap;
 
   display: block;
-  color: #1e3264;
+  color: #fff;
   font-size: 1.7em;
 }
 
-.menu__item a:hover {
+.menu__item > div {
+  overflow: hidden;
+  white-space: nowrap;
+
+  display: block;
   color: #fff;
+  font-size: 1.7em;
 }
+
 .sub__menu .menu__item {
-  padding: 0.75rem 0;
-  background: #f67280;
+  /* padding: 0 0; */
+
   opacity: 0;
   transform-origin: bottom;
   animation: enter 0.2s ease forwards;
+}
+
+.sub__menu .menu__item a {
+  color: #000;
+}
+.sub__menu .menu__item a:hover {
+  color: #000;
 }
 .sub__menu .menu__item:nth-child(1) {
   animation-duration: 0.2s;
@@ -113,7 +141,7 @@
   animation-delay: 0.2s;
 }
 .sub__menu .menu__item:hover {
-  background: #f8b195;
+  background: #fffffff3;
 }
 .sub__menu .menu__item a {
   padding: 0 0.75rem;
@@ -122,12 +150,16 @@
 .sub__menu {
   position: absolute;
   top: 100%;
-  left: 0;
+  left: -30px;
   display: none;
   z-index: 1;
 }
 .menu__item:hover > .sub__menu {
   display: block;
+}
+
+.userImg {
+  width: 40px;
 }
 
 @keyframes enter {

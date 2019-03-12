@@ -2,10 +2,11 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import classes from './Nav.module.css';
+import user from '../../assets/img/user.jpg';
 
 const Nav = () => (
   <nav className={classes.Nav}>
-    <div className={classes.Nav__brand}>Eventify</div>
+    <div className={classes.Nav__brand} />
     <ul className={classes.Nav__items}>
       <li>
         <NavLink to="/">Eventos</NavLink>
@@ -21,11 +22,10 @@ const Nav = () => (
       </li>
     </ul>
     <div className={classes.Nav__right}>
-      <NavLink to="/">Login</NavLink>
-      <NavLink to="/">Registrarse</NavLink>
+      <img className={classes.userImg} src={user} alt="not loaded" />
       <ol>
         <li className={classes.menu__item}>
-          <a href="#0">Widgets</a>
+          <a href="#0">Cristihan</a>
           <ol className={classes.sub__menu}>
             <li className={classes.menu__item}>
               <a href="#0">Big Widgets</a>
