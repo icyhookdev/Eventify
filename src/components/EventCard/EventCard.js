@@ -1,13 +1,17 @@
 import React from 'react';
 
 import classes from './EventCard.module.css';
-
+import imgs from '../../assets/img/user.jpg';
 export default ({ img, title }) => (
   <div className={classes.EventCard}>
     <div className={classes.EventCard__header}>
-      <img src={img} alt="not found" />
-      <h2>Some title</h2>
-      <p>Evento Patrocinado por Cristihan Albarran</p>
+      <img src={imgs} alt="not found" />
+      <div className={classes.owner}>
+        <h2>Some title</h2>
+        <p>
+          Evento Patrocinado por <strong>Cristihan Albarran</strong>
+        </p>
+      </div>
     </div>
     <div className={classes.EventCard__body}>
       <p className={classes.date}>Viernes 27 de Abril a las 16:00 PM</p>
