@@ -1,29 +1,3 @@
-.header {
-  filter: grayscale(100%) contrast(1);
-  height: 100vh;
-  width: 100%;
-  background-size: cover;
-  mix-blend-mode: multiply;
-  display: flex;
-  opacity: 0.5;
-  overflow: hidden;
-}
-
-.header::after {
-  mix-blend-mode: lighten;
-}
-
-.gradient__overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(145deg, #ffc867, #f037a6);
-  z-index: -1;
-  transition: all ease-in-out 0.5s;
-}
-
 .container {
   position: absolute;
   top: 10%;
@@ -34,14 +8,14 @@
 
 .header__title {
   font-size: 6em;
-  color: #1e3264;
+  color: #fff;
   font-family: 'MontserratBold', sans-serif;
 }
 
 .header__logan {
   font-size: 4em;
   width: 100%;
-  color: #1e3264;
+  color: #fff;
   margin-top: 2em;
 }
 
@@ -77,13 +51,13 @@
 @media screen and (min-width: 810px) {
   .header__title {
     font-size: 8em;
-    color: #1e3264;
+    color: #fff;
   }
 
   .header__logan {
     font-size: 6em;
     width: 100%;
-    color: #1e3264;
+    color: #fff;
     margin-top: 1em;
   }
 

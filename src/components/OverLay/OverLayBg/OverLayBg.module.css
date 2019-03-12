@@ -1,0 +1,12 @@
+.OverLayBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background: linear-gradient(120deg, #ffc867, #f037a6); */
+  background: #340158;
+
+  z-index: -1;
+  transition: all ease-in-out 0.5s;
+}

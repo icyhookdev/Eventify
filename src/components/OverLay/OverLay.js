@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 import classes from './OverLay.module.css';
 import { LeftArrow } from '../icons/Icons';
+import OverLayBg from './OverLayBg/OverLayBg';
 
 export default () => (
   <div>
-    <header className={classes.header} />
-    <div className={classes.gradient__overlay} />
+    <OverLayBg />
     <div className={classes.container}>
       <h1 className={classes.header__title}>Eventify</h1>
       <h2 className={classes.header__logan}>
