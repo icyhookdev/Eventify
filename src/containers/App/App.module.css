@@ -1,4 +1,8 @@
 .App {
-  background: linear-gradient(145deg, #ffc867, #f037a6);
+  background: linear-gradient(120deg, #dddddd53, #dddddd53),
+    url('../../assets/img/geometry2.png');
+
   height: 100vh;
+  display: flex;
+  padding: 7em 2em;
 }

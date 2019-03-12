@@ -1,11 +1,15 @@
 import React from 'react';
-import Nav from '../../components/Nav/Nav';
+
 import classes from './App.module.css';
+import EventCard from '../../components/EventCard/EventCard';
 
 export default () => {
   return (
     <div className={classes.App}>
-      <Nav />
+      <div className={classes.events__container}>
+        <EventCard />
+      </div>
+      <div className={classes.side__content} />
     </div>
   );
 };
