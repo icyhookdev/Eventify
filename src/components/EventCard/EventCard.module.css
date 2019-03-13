@@ -1,18 +1,23 @@
 .EventCard {
   width: 100%;
-  padding: 1rem;
+
   position: relative;
   flex-flow: column;
   background: #fff;
   transition: all 0.4s ease-out;
   display: flex;
-  box-shadow: 0px 25px 77px -17px rgba(0, 0, 0, 0.44);
+  /* box-shadow: 0px 25px 77px -17px rgba(0, 0, 0, 0.44); */
   border-radius: 5px;
+  margin-bottom: 2em;
 }
 
 .EventCard__header {
   display: grid;
   grid-template-columns: 70px 1fr;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 5px 5px 0 0;
+  border-bottom: 1px solid #ddd;
 }
 
 .EventCard__header > img {
@@ -24,12 +29,109 @@
 .owner {
   padding: 0 2em;
   align-self: center;
+  color: #fff;
 }
 
 .owner > h2 {
   font-size: 2em;
+  font-family: 'MontserratBold', sans-serif;
+  color: #000;
 }
 
 .owner > p {
   font-size: 1.5em;
+  color: #000;
+}
+
+.EventCard__body {
+  padding: 1em;
+  background: #f2f2f2;
+  font-weight: bold;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+
+.date {
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  margin: 1em 0;
+}
+
+.dateIcon {
+  width: 30px;
+  margin-right: 1em;
+}
+
+.place {
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  margin: 1em 0;
+}
+
+.placeIcon {
+  width: 30px;
+  margin-right: 1em;
+}
+
+.info {
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  margin: 1em 0;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.people {
+  display: flex;
+}
+
+.userIcon,
+.publicIcon,
+.suitIcon {
+  width: 25px;
+  margin-right: 1em;
+}
+
+.people > p,
+.details > p {
+  margin-right: 1em;
+  display: flex;
+  align-items: center;
+}
+
+.details {
+  display: flex;
+}
+
+.EventCard__action {
+  padding: 0 1em 1em 1em;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.5em;
+  background: #f2f2f2;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.button {
+  padding: 1em;
+  border: none;
+  color: #fff;
+  background: #3b5998;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.button:focus,
+.button:hover {
+  outline: none;
+  background: #7144ad;
+  color: #fff;
 }

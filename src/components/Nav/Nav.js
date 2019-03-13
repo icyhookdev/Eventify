@@ -6,7 +6,7 @@ import user from '../../assets/img/user.jpg';
 
 const Nav = () => (
   <nav className={classes.Nav}>
-    <div className={classes.Nav__brand} />
+    <div className={classes.Nav__brand}>Eventify</div>
     <ul className={classes.Nav__items}>
       <li>
         <NavLink to="/">Eventos</NavLink>
