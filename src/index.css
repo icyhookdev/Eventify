@@ -7,6 +7,11 @@
   src: url('./assets/fonts/Montserrat-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Pacifico';
+  src: url('./assets/fonts/Pacifico-Regular.ttf') format('truetype');
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -18,10 +23,6 @@ html {
   font-family: 'MontserratRegular', sans-serif;
 }
 
-.fill {
-  transition: all 0.3s ease-in-out;
-}
-
-.fill__white {
-  fill: #fff;
+.Link--active {
+  color: #ea555c;
 }

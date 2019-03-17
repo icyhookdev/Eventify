@@ -2,12 +2,12 @@ import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import RouterLaout from './RouterLayout';
+import App from './containers/App/App';
 import './index.css';
 
 render(
   <Router>
-    <RouterLaout />
+    <App />
   </Router>,
   document.querySelector('#root')
 );
