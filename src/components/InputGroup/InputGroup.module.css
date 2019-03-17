@@ -1,0 +1,50 @@
+.group {
+  width: 80%;
+  position: relative;
+  margin: 1.2rem auto 0 auto;
+}
+
+.Input {
+  color: #000;
+  font-weight: bold;
+  padding: 0.67857143em 1em;
+  text-align: left;
+  font-size: 1.5em;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.Input:focus {
+  background-color: #fff;
+  outline: none;
+  border: 1px solid #5fbae9;
+}
+
+.Input::placeholder {
+  color: #cccccc;
+}
+
+.Input:focus::placeholder {
+  color: #a7a7a7;
+}
+
+.err__msg {
+  color: red;
+  font-size: 14px;
+  display: block;
+  margin-left: 0.5em;
+  text-align: left;
+}
+
+.err__input {
+  color: #000;
+  font-weight: bold;
+  padding: 0.67857143em 1em;
+  text-align: left;
+  font-size: 1.5em;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid red;
+  outline: none;
+}

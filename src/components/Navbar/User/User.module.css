@@ -1,0 +1,35 @@
+.User {
+  padding: 1em;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.User__img {
+  width: 12em;
+  height: 12em;
+  margin-bottom: 2em;
+}
+
+.User__img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  padding: 5px;
+  border: 4px solid #ea4031;
+}
+
+.User__name {
+  font-family: 'MontserratBold', sans-serif;
+  font-size: 2.4em;
+  margin-bottom: 0.5em;
+}
+
+.User__description {
+  font-size: 1.3em;
+  text-align: center;
+  font-weight: bold;
+  color: rgb(160, 160, 160);
+}

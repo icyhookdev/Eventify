@@ -1,0 +1,6 @@
+.Layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: repeat(2, auto);
+  grid-template-areas: 'nav content';
+}

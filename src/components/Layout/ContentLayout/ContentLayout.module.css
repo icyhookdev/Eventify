@@ -1,0 +1,20 @@
+.ContentLayout {
+  grid-area: content;
+  overflow-y: auto;
+  background: #ededed;
+  height: 100vh;
+  padding: 10px;
+  padding: 1em;
+}
+
+.ContentLayout::-webkit-scrollbar {
+  width: 1px;
+}
+.ContentLayout::-webkit-scrollbar,
+.ContentLayout::-webkit-scrollbar-thumb {
+  overflow: visible;
+  border-radius: 5px;
+}
+.ContentLayout::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.8);
+}
