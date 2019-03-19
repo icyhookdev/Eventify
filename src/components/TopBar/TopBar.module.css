@@ -1,0 +1,35 @@
+.TopBar {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  grid-template-areas: 'left right';
+  grid-gap: 10px;
+}
+
+.left__side {
+  width: 35vw;
+  padding: 0.7em 2.5em;
+  grid-area: left;
+}
+
+.right__side {
+  width: 100%;
+  grid-area: right;
+  padding: 0.7em 1em;
+  display: flex;
+  justify-content: space-around;
+}
+
+.top__btn {
+  background: #ea555c;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 1.6em;
+  border-radius: 5px;
+  padding: 0 1em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: #ea555c 0px 0px 15px;
+}
