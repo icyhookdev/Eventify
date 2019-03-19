@@ -1,7 +1,6 @@
 .group {
-  width: 80%;
+  width: 100%;
   position: relative;
-  margin: 1.2rem auto 0 auto;
 }
 
 .Input {
