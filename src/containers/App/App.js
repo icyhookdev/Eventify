@@ -5,11 +5,13 @@ import Layout from '../../components/Layout/Layout';
 import ContentLayout from '../../components/Layout/ContentLayout/ContentLayout';
 import CreateEvent from '../CreateEvent/CreateEvent';
 import Navbar from '../../components/Navbar/Navbar';
+import TopBar from '../../components/TopBar/TopBar';
 
 const App = () => (
   <Layout>
     <Navbar />
     <ContentLayout>
+      <TopBar />
       <Route path="/" exact component={() => <h1>hi</h1>} />
       <Route path="/login" component={() => <h1>hi1</h1>} />
       <Route path="/register" component={() => <h1>hi2</h1>} />
