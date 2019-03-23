@@ -1,60 +1,29 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import classes from './EventCard.module.css';
 import imgs from '../../assets/img/user.jpg';
-import dateIcon from '../../assets/icons/date.svg';
-import placeIcon from '../../assets/icons/place.svg';
-import userIcon from '../../assets/icons/user.svg';
-import publicIcon from '../../assets/icons/public.svg';
-import suitIcon from '../../assets/icons/suit.svg';
+import eventImg from '../../assets/img/event.jpeg';
 
 const EventCard = () => (
   <div className={classes.EventCard}>
     <div className={classes.EventCard__header}>
       <img src={imgs} alt="not found" />
       <div className={classes.owner}>
-        <h2>Some title</h2>
-        <p>
-          Evento Patrocinado por <strong>Cristihan Albarran</strong>
-        </p>
+        <p>Cristihan</p>
       </div>
     </div>
-    <div className={classes.EventCard__body}>
-      <p className={classes.date}>
-        <img src={dateIcon} className={classes.dateIcon} alt="not found" />
-        Viernes 27 de Abril a las 16:00 PM
-      </p>
-      <p className={classes.place}>
-        <img src={placeIcon} className={classes.placeIcon} alt="not found" />
-        Plza Alfredo sadel, Las mercedes, Caracas, Venezuela
-      </p>
-      <div className={classes.info}>
-        <div className={classes.people}>
-          <p>
-            <img className={classes.userIcon} src={userIcon} alt="404" />
-            120
-          </p>
-          <p>
-            <img className={classes.userIcon} src={userIcon} alt="404" />
-            120
-          </p>
-        </div>
-        <div className={classes.details}>
-          <p>
-            <img className={classes.publicIcon} src={publicIcon} alt="404" />
-            Publico
-          </p>
-          <p>
-            <img className={classes.suitIcon} src={suitIcon} alt="404" />
-            Formal
-          </p>
-        </div>
+    <div className={classes.EventCard__img}>
+      <h2>Marcelo Digrachi Live</h2>
+      <img src={eventImg} alt="404" />
+      <div className={classes.event__overlay}>
+        <Link to="/">Ver Evento</Link>
       </div>
-    </div>
-    <div className={classes.EventCard__action}>
-      <button className={classes.button} type="button">
-        Ver
-      </button>
+      <div className={classes.event__date}>
+        <span className={classes.day}>12</span>
+        <span className={classes.month}>DIC</span>
+        <span className={classes.year}>2019</span>
+      </div>
     </div>
   </div>
 );
