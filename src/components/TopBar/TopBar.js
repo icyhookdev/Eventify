@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import InputGroup from '../InputGroup/InputGroup';
 import classes from './TopBar.module.css';
 import AddIco from '../icons/AddIco';
@@ -10,10 +12,10 @@ const TopBar = () => (
       <InputGroup label="Buscar" />
     </div>
     <div className={classes.right__side}>
-      <button className={classes.top__btn} type="button">
+      <Link to="/new" className={classes.top__btn}>
         <AddIco />
         Crear Evento
-      </button>
+      </Link>
       <SettingIco />
     </div>
   </div>
