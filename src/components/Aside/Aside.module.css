@@ -1,0 +1,14 @@
+.Aside {
+  width: 300px;
+  background: hsl(0, 0%, 98%);
+  padding: 1em;
+  position: fixed;
+  border-radius: 5px;
+}
+
+.search {
+  font-size: 1.5em;
+  text-align: center;
+  font-family: 'MontserratBold';
+  color: #000;
+}
