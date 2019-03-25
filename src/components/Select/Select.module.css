@@ -1,0 +1,48 @@
+.group {
+  width: 100%;
+  position: relative;
+}
+
+.Select {
+  background: #fff;
+  padding: 0.67857143em 1em;
+  width: 100%;
+  font-family: 'MontserratRegular', sans-serif;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  text-align: left;
+  border-radius: 3px;
+}
+
+.Select:focus,
+.Select:active {
+  outline: 0;
+}
+
+option :disabled {
+  color: #cccccc;
+}
+
+.err__msg {
+  color: red;
+  font-size: 14px;
+  display: block;
+  margin-left: 0.5em;
+  text-align: left;
+}
+
+.err__Select {
+  color: #000;
+  font-weight: bold;
+  padding: 0.67857143em 1em;
+  text-align: left;
+  font-size: 1.5em;
+  width: 100%;
+  background: #fff;
+  border-radius: 5px;
+  border: 1px solid red;
+  outline: none;
+}

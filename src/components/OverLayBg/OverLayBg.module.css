@@ -1,0 +1,26 @@
+.OverLayBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background: linear-gradient(120deg, #ea555c, #970814); */
+  background: #cb3050;
+
+  z-index: -1;
+  transition: all ease-in-out 0.5s;
+}
+
+.img {
+  filter: grayscale(100%) contrast(2);
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+  overflow: hidden;
+}
+
+.img::after {
+  mix-blend-mode: lighten;
+}
