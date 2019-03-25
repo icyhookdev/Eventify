@@ -1,0 +1,6 @@
+.SectionWrapper {
+  display: grid;
+  grid-gap: 2em;
+  grid-template-columns: 1fr;
+  grid-template-areas: 'form';
+}

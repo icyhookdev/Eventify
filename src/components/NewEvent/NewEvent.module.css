@@ -1,0 +1,37 @@
+.NewEvent {
+  padding: 0 25px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.form {
+  grid-area: form;
+}
+
+.form input,
+.form select {
+  padding: 1.3em;
+}
+
+.event__group {
+  margin-top: 2em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1em;
+}
+
+.Location,
+.Date {
+  margin-top: 4em;
+}
+
+.Date__container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  width: 60%;
+}
+
+.Date__container input {
+  margin-right: 1em;
+}
