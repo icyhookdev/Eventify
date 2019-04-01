@@ -7,12 +7,13 @@ import CreateEvent from './containers/CreateEvent/CreateEvent';
 import Navbar from './components/Navbar/Navbar';
 import TopBar from './components/TopBar/TopBar';
 import Events from './containers/Events/Events';
-import Login from './components/Login/Login';
+import LoginContainer from './containers/Authentication/LoginContainer';
+import SignupContainer from './containers/Authentication/SignupContainer';
 
 const App = () => (
   <Switch>
-    <Route path="/login" component={Login} />
-    <Route path="/register" component={() => <h1>hi2</h1>} />
+    <Route path="/login" component={LoginContainer} />
+    <Route path="/register" component={SignupContainer} />
     <Layout>
       <Navbar />
       <ContentLayout>

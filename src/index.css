@@ -63,3 +63,9 @@ select {
 .auth__btn:hover {
   box-shadow: -1px 9px 12px -5px #ea555cbf;
 }
+
+.auth__btn:disabled {
+  background: #e28388;
+  box-shadow: none;
+  cursor: default;
+}
