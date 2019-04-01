@@ -8,12 +8,11 @@ const InputGroup = ({ value, change, name, type, errMsg, label, touched }) => {
   const today = `${objDate.getFullYear()}-${String(
     objDate.getMonth() + 1
   ).padStart(2, '0')}-${String(objDate.getDate()).padStart(2, '0')}`;
-  console.log(today, '2019-03-24');
 
   return (
     <div className={classes.group}>
       <input
-        touched={touched}
+        onFocus={touched}
         className={classes[borderInput]}
         type={type}
         name={name}
@@ -22,7 +21,6 @@ const InputGroup = ({ value, change, name, type, errMsg, label, touched }) => {
         value={value}
         autoComplete="off"
         min={today}
-        // max="2022-12-31"
       />
       <span className={classes.err__msg}>{errMsg}</span>
     </div>
