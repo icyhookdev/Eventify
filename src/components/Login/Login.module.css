@@ -10,6 +10,7 @@
 .left {
   grid-area: img;
   position: relative;
+  animation: toleft 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 .left > h1 {
@@ -37,7 +38,9 @@
 
 .right {
   padding: 2.5em;
+  position: relative;
   transform: translateY(20%);
+  animation: toright 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 .right > h2 {
@@ -63,11 +66,29 @@
 
 .form input {
   padding: 1em;
-  border: 1px solid #ddd;
 }
 
 .action {
   display: flex;
   justify-content: space-between;
   padding: 1em 0.5em;
+}
+
+@keyframes toleft {
+  0% {
+    left: 100%;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes toright {
+  0% {
+    right: 100px;
+  }
+  100% {
+    right: 0;
+  }
 }
