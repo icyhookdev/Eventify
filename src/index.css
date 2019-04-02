@@ -69,3 +69,7 @@ select {
   box-shadow: none;
   cursor: default;
 }
+
+.datePicker {
+  font-size: 2em !important;
+}
