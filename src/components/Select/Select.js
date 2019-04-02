@@ -3,7 +3,6 @@ import classes from './Select.module.css';
 
 const Select = ({ selected, options, errMsg, touched, name, change }) => {
   const borderSelect = errMsg ? 'err__Select' : 'Select';
-  console.log(options);
   const optionList = options.map((opt, i) => (
     <option key={i} value={opt}>
       {opt}

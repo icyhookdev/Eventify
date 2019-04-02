@@ -26,12 +26,23 @@
 }
 
 .Date__container {
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px;
-  width: 60%;
+  grid-gap: 10px; */
+  display: flex;
+
+  width: 100%;
+  justify-content: space-around;
 }
 
 .Date__container input {
   margin-right: 1em;
+  text-align: center;
+}
+
+.semi_title {
+  text-align: center;
+  font-size: 1.7em;
+  font-weight: bold;
+  margin: 1em 0;
 }
