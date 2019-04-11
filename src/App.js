@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 
 import Layout from './components/Layout/Layout';
 import ContentLayout from './components/Layout/ContentLayout/ContentLayout';
@@ -28,5 +28,4 @@ const App = () => (
     </Layout>
   </Switch>
 );
-
-export default App;
+export default withRouter(App);

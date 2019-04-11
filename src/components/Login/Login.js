@@ -5,8 +5,9 @@ import classes from './Login.module.css';
 import OverLayBg from '../OverLayBg/OverLayBg';
 import loginBg from '../../assets/img/login.jpg';
 import InputGroup from '../InputGroup/InputGroup';
+import Loading from '../Loading/Loading';
 
-const Login = ({ values, change, submit, errors, touch, disable }) => (
+const Login = ({ values, change, submit, errors, touch, loading }) => (
   <div className={classes.Login}>
     <div className={classes.left}>
       <OverLayBg img={loginBg} />
@@ -18,12 +19,12 @@ const Login = ({ values, change, submit, errors, touch, disable }) => (
       <p>Inicia sesion para empezar a participar y crear eventos.</p>
       <form className={classes.form} onSubmit={submit}>
         <InputGroup
-          type="email"
-          name="email"
-          label="Email"
-          value={values.email}
+          type="text"
+          name="username"
+          label="Username"
+          value={values.username}
           change={change}
-          errMsg={errors.email}
+          errMsg={errors.username}
           touched={touch}
         />
         <InputGroup
@@ -39,10 +40,11 @@ const Login = ({ values, change, submit, errors, touch, disable }) => (
           <Link to="/register" className="auth auth__link">
             Registrase
           </Link>
-          <button disabled={disable} type="submit" className="auth auth__btn">
+          <button type="submit" className="auth auth__btn">
             Iniciar sesion
           </button>
         </div>
+        {loading && <Loading msg="Logeando usuario..." />}
       </form>
     </div>
   </div>

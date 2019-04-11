@@ -1,23 +1,28 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
 import Login from '../../components/Login/Login';
+import { login } from '../../store/actions/authentication';
 
-const LoginContainer = () => {
-  const [values, setValues] = useState({ email: '', password: '' });
+const LoginContainer = ({ login, loading }) => {
+  const [values, setValues] = useState({ username: '', password: '' });
   const [errors, setErrors] = useState(values);
 
-  const isFormEmpty = ({ email, password }) => !email || !password;
+  const isFormEmpty = ({ username, password }) => !username || !password;
 
-  const isFormValid = ({ email, password }) => email || password;
+  const isFormValid = ({ username, password }) => username || password;
 
   const onChangeHandler = e => {
-    const emailRgx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    // const emailRgx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const { name, value } = e.target;
     const errorsValidate = { ...errors };
 
     switch (name) {
-      case 'email':
-        errorsValidate.email = !emailRgx.test(value) ? 'Email invalido' : '';
+      case 'username':
+        errorsValidate.email =
+          value.length < 4
+            ? 'El usuario debe contener almenos 4 caracteres'
+            : '';
         break;
       case 'password':
         errorsValidate.password =
@@ -29,16 +34,15 @@ const LoginContainer = () => {
 
     setValues({ ...values, [name]: value });
     setErrors(errorsValidate);
-    console.log(errors);
   };
 
   const validateOnSubmit = () => {
-    const { password, email } = values;
+    const { password, username } = values;
     const errorsValidate = { ...errors };
     if (!password) {
-      errorsValidate.email = 'This field is required';
+      errorsValidate.username = 'This field is required';
     }
-    if (!email) {
+    if (!username) {
       errorsValidate.password = 'This field is required';
     }
 
@@ -52,6 +56,7 @@ const LoginContainer = () => {
     } else if (isFormValid(errors)) {
       return true;
     } else {
+      login(values);
       console.log('yes make the request');
     }
   };
@@ -62,8 +67,14 @@ const LoginContainer = () => {
       change={onChangeHandler}
       submit={onSubmitHandler}
       errors={errors}
+      loading={loading}
     />
   );
 };
 
-export default LoginContainer;
+const mapStateToProps = ({ auth }) => ({ loading: auth.isLoading });
+
+export default connect(
+  mapStateToProps,
+  { login }
+)(LoginContainer);

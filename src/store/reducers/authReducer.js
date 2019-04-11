@@ -1,7 +1,13 @@
-import { REGISTER_USER, MAKE_REQUEST, FAIL_REQUEST } from '../actions/types';
+import {
+  REGISTER_USER,
+  MAKE_REQUEST,
+  FAIL_REQUEST,
+  LOGIN,
+} from '../actions/types';
 
 const INITIAL_STATE = {
   isLoading: false,
+  user: null,
 };
 
 const authReducer = (state = INITIAL_STATE, { type, payload }) => {
@@ -12,6 +18,8 @@ const authReducer = (state = INITIAL_STATE, { type, payload }) => {
       return { ...state, isLoading: false };
     case FAIL_REQUEST:
       return { ...state, isLoading: false };
+    case LOGIN:
+      return { ...state, user: payload, isLoading: false };
     default:
       return state;
   }
