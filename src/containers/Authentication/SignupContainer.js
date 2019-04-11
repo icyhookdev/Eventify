@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
 import SignUp from '../../components/SignUp/SignUp';
+import { registerUser } from '../../store/actions/authentication';
 
-const SignupContainer = () => {
+const SignupContainer = ({ registerUser, loading, history }) => {
   const [values, setValues] = useState({
     name: '',
+    username: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -69,12 +72,30 @@ const SignupContainer = () => {
 
   const onSubmitHandler = e => {
     e.preventDefault();
+    const { name, username, email, password } = values;
+    const userData = {
+      name,
+      username,
+      email,
+      password,
+    };
+
     if (isFormEmpty(values)) {
       validateOnSubmit();
     } else if (isFormValid(errors)) {
       return true;
     } else {
-      console.log('yes make the request');
+      registerUser(userData)
+        .then(res => history.push('/login'))
+        .catch(ex => {
+          console.log(ex);
+
+          const err = { ...errors };
+          // TODO: a if to validate the code err and display a message
+          err.email = 'Email no disponible';
+          setErrors(err);
+          console.log(ex);
+        });
     }
   };
   return (
@@ -83,8 +104,14 @@ const SignupContainer = () => {
       change={onChangeHandler}
       values={values}
       errors={errors}
+      loading={loading}
     />
   );
 };
 
-export default SignupContainer;
+const mapStateToProps = ({ auth }) => ({ loading: auth.isLoading });
+
+export default connect(
+  mapStateToProps,
+  { registerUser }
+)(SignupContainer);
