@@ -8,6 +8,7 @@ import TextHeader from '../TextHeader/TextHeader';
 import SectionWrapper from './SectionWrapper/SectionWrapper';
 // import DatePicker from 'react-date-picker';
 import DatePickerInput from '../DatePicker/DatePickerInput';
+import Button from '../Button/Button';
 
 const NewEvent = ({ startDate, endDate, setDateS, setDateE }) => (
   <div className={classes.NewEvent}>
@@ -67,6 +68,13 @@ const NewEvent = ({ startDate, endDate, setDateS, setDateE }) => (
           </div>
         </div>
       </SectionWrapper>
+
+      <div className={classes.group}>
+        <div className={classes.group__btn}>
+          <Button type="button" buttonClass="cancel" text="Cancelar" />
+          <Button type="submit" buttonClass="action" text="Guardar" />
+        </div>
+      </div>
     </form>
   </div>
 );

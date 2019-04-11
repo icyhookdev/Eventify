@@ -5,6 +5,7 @@ import classes from './Nav.module.css';
 import ProfileIco from '../../icons/Profile';
 import EventIco from '../../icons/EventIco';
 import ChatIco from '../../icons/ChatIco';
+import OwnEvents from '../../icons/OwnEvents';
 
 const Nav = () => (
   <div className={classes.Nav}>
@@ -34,6 +35,19 @@ const Nav = () => (
         >
           <ProfileIco />
           Perfil
+        </NavLink>
+      </li>
+      <li className={classes.Nav__item}>
+        <NavLink
+          to="/myevents"
+          activeStyle={{
+            color: '#ea555c',
+            fill: '#ea555c',
+            borderRight: '.3em solid #ea555c',
+          }}
+        >
+          <OwnEvents />
+          Mis Eventos
         </NavLink>
       </li>
       <li className={classes.Nav__item}>

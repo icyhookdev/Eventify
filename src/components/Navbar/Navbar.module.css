@@ -1,6 +1,7 @@
 .Navbar {
   grid-area: nav;
   background: hsl(0, 0%, 98%);
+  z-index: 3;
 }
 
 .Navbar .nav__container {

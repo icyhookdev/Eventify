@@ -9,6 +9,7 @@ import TopBar from './components/TopBar/TopBar';
 import Events from './containers/Events/Events';
 import LoginContainer from './containers/Authentication/LoginContainer';
 import SignupContainer from './containers/Authentication/SignupContainer';
+import MyEvents from './containers/MyEvents/MyEvents';
 
 const App = () => (
   <Switch>
@@ -20,6 +21,7 @@ const App = () => (
         <TopBar />
         <Route path="/" exact component={Events} />
         <Route path="/new" component={CreateEvent} />
+        <Route path="/myevents" component={MyEvents} />
         <Route path="/people" component={() => <h1>hi3</h1>} />
         <Route path="/event/:id" component={() => <h1>hi4</h1>} />
       </ContentLayout>

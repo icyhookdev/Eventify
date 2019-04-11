@@ -5,8 +5,9 @@ import classes from './SignUp.module.css';
 import OverLayBg from '../OverLayBg/OverLayBg';
 import InputGroup from '../InputGroup/InputGroup';
 import loginBg from '../../assets/img/login.jpg';
+import Loading from '../Loading/Loading';
 
-const SignUp = ({ values, change, submit, errors }) => (
+const SignUp = ({ values, change, submit, errors, loading }) => (
   <div className={classes.Register}>
     <div className={classes.right}>
       <OverLayBg img={loginBg} />
@@ -26,6 +27,14 @@ const SignUp = ({ values, change, submit, errors }) => (
           change={change}
           value={values.name}
           errMsg={errors.name}
+        />
+        <InputGroup
+          type="text"
+          name="username"
+          label="Usuario"
+          change={change}
+          value={values.username}
+          errMsg={errors.username}
         />
         <InputGroup
           type="email"
@@ -59,6 +68,7 @@ const SignUp = ({ values, change, submit, errors }) => (
             Registrase
           </button>
         </div>
+        {loading && <Loading msg="Registrando usuario..." />}
       </form>
     </div>
   </div>
