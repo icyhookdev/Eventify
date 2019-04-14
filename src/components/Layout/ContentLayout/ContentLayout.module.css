@@ -1,7 +1,7 @@
 .ContentLayout {
   grid-area: content;
   overflow-y: auto;
-  background: #ededed;
+  background: #fff;
   height: 100vh;
   padding: 1em;
 }
