@@ -6,6 +6,17 @@
 
 .form {
   grid-area: form;
+  color: #1e0a3c;
+}
+
+.form > .InputGroup_Input {
+  width: calc(100% - 100px);
+  margin-left: 100px;
+}
+
+.align__to_text {
+  width: calc(100% - 100px);
+  margin-left: 100px;
 }
 
 .form input,
@@ -26,22 +37,32 @@
 }
 
 .Date__container {
-  /* display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px; */
+  text-align: center;
   display: flex;
-
   width: 100%;
-  justify-content: space-around;
+}
+
+.Event__start {
+  margin-right: 1em;
 }
 
 .Date__container input {
-  margin-right: 1em;
-  text-align: center;
+  color: #000;
+  font-weight: bold;
+  text-align: left;
+  font-size: 1.5em;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
+.Date__container input:focus {
+  background-color: #fff;
+  outline: none;
+  border: 1px solid #5fbae9;
+}
 .semi_title {
-  text-align: center;
+  /* text-align: center; */
   font-size: 1.7em;
   font-weight: bold;
   margin: 1em 0;
