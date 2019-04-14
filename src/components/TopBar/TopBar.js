@@ -13,8 +13,8 @@ const TopBar = () => (
     </div>
     <div className={classes.right__side}>
       <Link to="/new" className={classes.top__btn}>
-        <AddIco />
         Crear Evento
+        <AddIco />
       </Link>
       <SettingIco />
     </div>

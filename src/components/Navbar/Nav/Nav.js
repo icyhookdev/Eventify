@@ -17,7 +17,8 @@ const Nav = () => (
           activeStyle={{
             color: '#ea555c',
             fill: '#ea555c',
-            borderRight: '.3em solid #ea555c',
+            borderLeft: '.3em solid #ea555c',
+            background: '#fff',
           }}
         >
           <EventIco />
@@ -30,7 +31,8 @@ const Nav = () => (
           activeStyle={{
             color: '#ea555c',
             fill: '#ea555c',
-            borderRight: '.3em solid #ea555c',
+            borderLeft: '.3em solid #ea555c',
+            background: '#fff',
           }}
         >
           <ProfileIco />
@@ -43,7 +45,8 @@ const Nav = () => (
           activeStyle={{
             color: '#ea555c',
             fill: '#ea555c',
-            borderRight: '.3em solid #ea555c',
+            borderLeft: '.3em solid #ea555c',
+            background: '#fff',
           }}
         >
           <OwnEvents />
@@ -56,7 +59,8 @@ const Nav = () => (
           activeStyle={{
             color: '#ea555c',
             fill: '#ea555c',
-            borderRight: '.3em solid #ea555c',
+            borderLeft: '.3em solid #ea555c',
+            background: '#fff',
           }}
         >
           <ChatIco /> Chat room

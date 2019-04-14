@@ -8,3 +8,15 @@
   font-size: 2em;
   margin-bottom: 2em;
 }
+
+.TextHeader {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  /* align-items: center; */
+}
+
+.icon {
+  width: 100%;
+  height: 60px;
+  object-fit: contain;
+}

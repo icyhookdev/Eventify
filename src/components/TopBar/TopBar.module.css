@@ -36,6 +36,11 @@
   text-decoration: none;
 }
 
+.top__btn > svg {
+  margin-left: 20px;
+  margin-right: 0 !important;
+}
+
 .top__btn:hover {
   box-shadow: #ea555c 0px 0px 15px;
 }

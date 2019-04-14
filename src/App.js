@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import React from 'react';
+import { Route, Switch, withRouter } from 'react-router-dom';
 
 import Layout from './components/Layout/Layout';
 import ContentLayout from './components/Layout/ContentLayout/ContentLayout';
