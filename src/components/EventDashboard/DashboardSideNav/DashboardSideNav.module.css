@@ -1,0 +1,86 @@
+.DashboardSideNav {
+  grid-area: nav;
+  background: hsl(0, 0%, 98%);
+  z-index: 3;
+}
+
+.nav__container {
+  position: fixed;
+  width: 270px;
+}
+.event__header {
+  margin-top: 80px;
+  padding: 2em;
+}
+
+.event__title {
+  font-size: 2.5em;
+}
+
+.event__date {
+  font-size: 1.7em;
+  margin-top: 1em;
+}
+
+/*  nav */
+.Nav {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1em 0;
+  height: 350px;
+  overflow-y: auto;
+  margin-top: 3em;
+  direction: ltr;
+}
+
+.Nav::-webkit-scrollbar {
+  width: 2px;
+}
+.Nav::-webkit-scrollbar,
+.Nav::-webkit-scrollbar-thumb {
+  overflow: visible;
+  border-radius: 5px;
+}
+.Nav::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.Nav__items {
+  list-style: none;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.Nav__item {
+  width: 100%;
+}
+
+.Nav__item > a {
+  text-decoration: none;
+  color: #b4b4b4;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  padding: 1em 1rem 1em 25%;
+  font-size: 1.7em;
+  text-align: center;
+  position: relative;
+  fill: #b4b4b4;
+}
+
+.Nav__item > a:hover {
+  color: #ea555c;
+  fill: #ea555c;
+}
+
+.Nav__item a > svg {
+  fill: inherit;
+}

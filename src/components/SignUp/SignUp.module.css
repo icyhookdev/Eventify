@@ -44,6 +44,19 @@
   transform: translateY(5%);
   position: relative;
   animation: toleft 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  overflow-y: auto;
+}
+
+.left::-webkit-scrollbar {
+  width: 5px;
+}
+.left::-webkit-scrollbar,
+.left::-webkit-scrollbar-thumb {
+  overflow: visible;
+  border-radius: 5px;
+}
+.left::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .left > h2 {

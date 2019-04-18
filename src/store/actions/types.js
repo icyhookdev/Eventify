@@ -4,3 +4,5 @@ export const MAKE_REQUEST = 'MAKE_REQUEST';
 export const FAIL_REQUEST = 'FAIL_REQUEST';
 export const REGISTER_USER = 'SAVE_USER';
 export const LOGIN = 'LOGIN';
+
+export const SAVE_EVENT = 'SAVE_EVENT';

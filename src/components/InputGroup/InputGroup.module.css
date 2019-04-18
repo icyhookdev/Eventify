@@ -17,7 +17,7 @@
 .Input:focus {
   background-color: #fff;
   outline: none;
-  border: 1px solid #5fbae9;
+  border: 1px solid #1e0a3c;
 }
 
 .Input::placeholder {

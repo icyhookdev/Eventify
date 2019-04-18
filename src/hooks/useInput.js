@@ -9,6 +9,7 @@ const useInput = preValues => {
 
   return {
     values,
+    setValues,
     onChangeHandler,
   };
 };

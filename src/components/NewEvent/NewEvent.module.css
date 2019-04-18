@@ -6,7 +6,7 @@
 
 .form {
   grid-area: form;
-  color: #1e0a3c;
+  color: #000;
 }
 
 .form > .InputGroup_Input {
@@ -28,6 +28,13 @@
   margin-top: 2em;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1em;
+}
+
+.address {
+  margin-top: 2em;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 1em;
 }
 
@@ -59,8 +66,9 @@
 .Date__container input:focus {
   background-color: #fff;
   outline: none;
-  border: 1px solid #5fbae9;
+  border: 1px solid #1e0a3c;
 }
+
 .semi_title {
   /* text-align: center; */
   font-size: 1.7em;

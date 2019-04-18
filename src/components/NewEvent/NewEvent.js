@@ -106,29 +106,47 @@ const NewEvent = ({
               value={values.place}
             />
             {values.place === 'presencial' && (
-              <div className={classes.event__group}>
-                <Select
-                  name="country"
-                  selected="Modalidad del evento"
-                  options={['presencial', 'online']}
-                  change={change}
-                  value={values.country}
-                />
-                <Select
-                  name="state"
-                  selected="Modalidad del evento"
-                  options={['presencial', 'online']}
-                  change={change}
-                  value={values.state}
-                />
-                <Select
-                  name="city"
-                  selected="Modalidad del evento"
-                  options={['presencial', 'online']}
-                  change={change}
-                  value={values.city}
-                />
-              </div>
+              <React.Fragment>
+                <div className={classes.address}>
+                  <InputGroup
+                    name="address1"
+                    type="text"
+                    label="Direccion 1"
+                    value={values.address1}
+                    change={change}
+                  />
+                  <InputGroup
+                    name="address2"
+                    type="text"
+                    label="Direccion 2"
+                    value={values.address2}
+                    change={change}
+                  />
+                </div>
+                <div className={classes.event__group}>
+                  <Select
+                    name="country"
+                    selected="Country"
+                    options={['presencial', 'online']}
+                    change={change}
+                    value={values.country}
+                  />
+                  <Select
+                    name="state"
+                    selected="State"
+                    options={['presencial', 'online']}
+                    change={change}
+                    value={values.state}
+                  />
+                  <Select
+                    name="city"
+                    selected="City"
+                    options={['presencial', 'online']}
+                    change={change}
+                    value={values.city}
+                  />
+                </div>
+              </React.Fragment>
             )}
           </div>
         </div>

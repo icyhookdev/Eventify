@@ -10,11 +10,13 @@ import Events from './containers/Events/Events';
 import LoginContainer from './containers/Authentication/LoginContainer';
 import SignupContainer from './containers/Authentication/SignupContainer';
 import MyEvents from './containers/MyEvents/MyEvents';
+import Dashboard from './containers/Dashboard/Dashboard';
 
 const App = () => (
   <Switch>
     <Route path="/login" component={LoginContainer} />
     <Route path="/register" component={SignupContainer} />
+    <Route path="/dashboard" component={Dashboard} />
     <Layout>
       <Navbar />
       <ContentLayout>
