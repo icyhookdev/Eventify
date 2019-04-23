@@ -3,6 +3,7 @@ import {
   MAKE_REQUEST,
   FAIL_REQUEST,
   LOGIN,
+  SET_USER,
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -19,6 +20,8 @@ const authReducer = (state = INITIAL_STATE, { type, payload }) => {
     case FAIL_REQUEST:
       return { ...state, isLoading: false };
     case LOGIN:
+      return { ...state, user: payload, isLoading: false };
+    case SET_USER:
       return { ...state, user: payload, isLoading: false };
     default:
       return state;

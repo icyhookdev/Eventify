@@ -93,3 +93,11 @@
   justify-content: flex-end;
   grid-gap: 1em;
 }
+
+.err__msg {
+  color: red;
+  font-size: 14px;
+  display: block;
+  margin-left: 0.5em;
+  text-align: left;
+}

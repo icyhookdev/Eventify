@@ -22,6 +22,8 @@ const NewEvent = ({
   change,
   submit,
   bbar,
+  errors,
+  loading,
 }) => (
   <div className={classes.NewEvent}>
     <form className={classes.form} onSubmit={submit}>
@@ -36,6 +38,7 @@ const NewEvent = ({
           label="Nombre del Evento"
           change={change}
           value={values.name}
+          errMsg={errors.name}
         />
         <div className={classes.event__group}>
           <Select
@@ -44,6 +47,7 @@ const NewEvent = ({
             options={['presencial', 'online']}
             change={change}
             value={values.type}
+            errMsg={errors.type}
           />
           <Select
             name="category"
@@ -51,6 +55,7 @@ const NewEvent = ({
             options={['Musica', 'online']}
             change={change}
             value={values.category}
+            errMsg={errors.category}
           />
           <Select
             name="restriction"
@@ -58,6 +63,7 @@ const NewEvent = ({
             options={['presencial', 'online']}
             change={change}
             value={values.restriction}
+            errMsg={errors.restriction}
           />
         </div>
       </div>
@@ -77,6 +83,9 @@ const NewEvent = ({
                   handleChange={setDateS}
                   value={startDate}
                 />
+                {errors && (
+                  <p className={classes.err__msg}>{errors.start_date}</p>
+                )}
               </div>
               <div className={classes.Event__ends}>
                 <h3 className={classes.semi_title}>Fin</h3>
@@ -85,6 +94,9 @@ const NewEvent = ({
                   handleChange={setDateE}
                   value={endDate}
                 />
+                {errors && (
+                  <p className={classes.err__msg}>{errors.finish_date}</p>
+                )}
               </div>
             </div>
           </div>
@@ -99,13 +111,14 @@ const NewEvent = ({
           />
           <div className={classes.align__to_text}>
             <Select
-              name="place"
+              name="modality"
               selected="Modalidad del evento"
               options={['presencial', 'online']}
               change={change}
-              value={values.place}
+              value={values.modality}
+              errMsg={errors.modality}
             />
-            {values.place === 'presencial' && (
+            {values.modality === 'presencial' && (
               <React.Fragment>
                 <div className={classes.address}>
                   <InputGroup
@@ -114,6 +127,7 @@ const NewEvent = ({
                     label="Direccion 1"
                     value={values.address1}
                     change={change}
+                    errMsg={errors.address1}
                   />
                   <InputGroup
                     name="address2"
@@ -121,6 +135,7 @@ const NewEvent = ({
                     label="Direccion 2"
                     value={values.address2}
                     change={change}
+                    errMsg={errors.address2}
                   />
                 </div>
                 <div className={classes.event__group}>
@@ -130,6 +145,7 @@ const NewEvent = ({
                     options={['presencial', 'online']}
                     change={change}
                     value={values.country}
+                    errMsg={errors.country}
                   />
                   <Select
                     name="state"
@@ -137,6 +153,7 @@ const NewEvent = ({
                     options={['presencial', 'online']}
                     change={change}
                     value={values.state}
+                    errMsg={errors.state}
                   />
                   <Select
                     name="city"
@@ -144,6 +161,7 @@ const NewEvent = ({
                     options={['presencial', 'online']}
                     change={change}
                     value={values.city}
+                    errMsg={errors.city}
                   />
                 </div>
               </React.Fragment>
@@ -152,7 +170,7 @@ const NewEvent = ({
         </div>
       </SectionWrapper>
 
-      {bbar && <BottomBar />}
+      {bbar && <BottomBar isLoading={loading} />}
     </form>
   </div>
 );

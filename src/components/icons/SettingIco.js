@@ -2,8 +2,8 @@ import React from 'react';
 
 import Icons from './Icons';
 
-const SettingIco = () => (
-  <Icons size="40" color="#b4b4b4">
+const SettingIco = ({ color }) => (
+  <Icons size="40" color={color}>
     <path d="M0,192v-192h192v192z" fill="none" />
     <g id="Layer_1">
       <g>
