@@ -2,10 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import classes from './BottomBar.module.css';
+// import Loading from '../Loading/Loading';
+import LoadingInLine from '../Loading/LoadingInLine';
 
-const BottomBar = () => (
+const BottomBar = ({ isLoading }) => (
   <div className={classes.group}>
     <div className={classes.group__btn}>
+      {isLoading && <LoadingInLine msg="Registrando Evento" />}
       <Link to="/" className={classes.cancel}>
         Descartar
       </Link>
