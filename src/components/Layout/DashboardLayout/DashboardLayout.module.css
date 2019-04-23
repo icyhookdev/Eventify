@@ -1,0 +1,23 @@
+.DashboardLayout {
+  height: 100vh;
+  grid-area: content;
+  overflow-y: auto;
+  padding-top: 7em;
+}
+
+.DashboardLayout::-webkit-scrollbar {
+  width: 5px;
+}
+.DashboardLayout::-webkit-scrollbar,
+.DashboardLayout::-webkit-scrollbar-thumb {
+  overflow: visible;
+  border-radius: 5px;
+}
+.DashboardLayout::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.8);
+}
+.DashboardLayout > div {
+  padding: 1em 25px;
+  height: auto;
+  /* overflow-y: auto; */
+}

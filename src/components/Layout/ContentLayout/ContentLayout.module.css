@@ -8,6 +8,7 @@
 
 .ContentLayout::-webkit-scrollbar {
   width: 5px;
+  height: 5px;
 }
 .ContentLayout::-webkit-scrollbar,
 .ContentLayout::-webkit-scrollbar-thumb {
