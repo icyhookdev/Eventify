@@ -70,7 +70,7 @@ const SignupContainer = ({ registerUser, loading, history }) => {
   const isFormValid = ({ email, password, name, confirmPassword }) =>
     email || password || name || confirmPassword;
 
-  const onSubmitHandler = e => {
+  const onSubmitHandler = async e => {
     e.preventDefault();
     const { name, username, email, password } = values;
     const userData = {
@@ -85,17 +85,18 @@ const SignupContainer = ({ registerUser, loading, history }) => {
     } else if (isFormValid(errors)) {
       return true;
     } else {
-      registerUser(userData)
-        .then(res => history.push('/login'))
-        .catch(ex => {
-          console.log(ex);
+      const err = { ...errors };
+      const res = await registerUser(userData);
 
-          const err = { ...errors };
-          // TODO: a if to validate the code err and display a message
-          err.email = 'Email no disponible';
-          setErrors(err);
-          console.log(ex);
-        });
+      if (res.message.includes('email')) {
+        err.email = 'Este email ya se encuentra registrado';
+        setErrors(err);
+      } else if (res.message.includes('user')) {
+        err.username = 'Este Usuario ya existe';
+        setErrors(err);
+      } else {
+        history.push('/login');
+      }
     }
   };
   return (

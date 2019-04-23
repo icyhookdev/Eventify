@@ -7,18 +7,19 @@ import useInput from '../../hooks/useInput';
 import checkInitialValues from '../../lib/checkInitialValues';
 import checkFormValues from '../../lib/checkFormValues';
 import { saveEvent } from '../../store/actions/events';
+import setInputErrors from '../../lib/setinputErrors';
 
-const CreateEvent = ({ saveEvent }) => {
+const CreateEvent = ({ saveEvent, loading }) => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [bbar, setBbar] = useState(false);
   const [errors, setErrors] = useState({});
-  const { values, onChangeHandler, setValues } = useInput({
+  const { values, onChangeHandler } = useInput({
     name: '',
     type: '',
     category: '',
     restriction: '',
-    place: '',
+    modality: '',
     country: '',
     state: '',
     city: '',
@@ -33,11 +34,17 @@ const CreateEvent = ({ saveEvent }) => {
   }, [values]);
 
   const onSubmit = e => {
+    const formValues = {
+      ...values,
+      start_date: startDate,
+      finish_date: endDate,
+      host: localStorage.getItem('user'),
+    };
     e.preventDefault();
-    if (checkFormValues(values)) {
-      console.log('formInvalid');
+    if (checkFormValues(formValues)) {
+      setErrors(setInputErrors(formValues));
     } else {
-      saveEvent(values);
+      saveEvent(formValues);
     }
   };
 
@@ -52,11 +59,16 @@ const CreateEvent = ({ saveEvent }) => {
         change={onChangeHandler}
         submit={onSubmit}
         bbar={bbar}
+        errors={errors}
+        loading={loading}
       />
     </div>
   );
 };
+
+const mapStateToProps = ({ events }) => ({ loading: events.isLoading });
+
 export default connect(
-  null,
+  mapStateToProps,
   { saveEvent }
 )(CreateEvent);

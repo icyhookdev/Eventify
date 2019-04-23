@@ -1,14 +1,14 @@
 .Events {
   padding: 0.7em 2.5em;
   display: grid;
-  grid-template-columns: 1fr 300px;
-  grid-template-areas: 'events aside';
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 2.6em;
   justify-content: space-between;
 }
 
 .Events__container {
   grid-area: events;
+  display: grid;
 }
 
 .aside {

@@ -1,6 +1,21 @@
-import React from 'react';
-import EventsCreated from '../../components/EventCreated/EventCreated';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
-const MyEvents = () => <EventsCreated />;
+import MyEventsCreated from '../../components/MyEventsCreated/MyEventsCreated';
+import { getEvent } from '../../store/actions/events';
 
-export default MyEvents;
+const MyEvents = ({ getEvent, events }) => {
+  useEffect(() => {
+    getEvent();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return <MyEventsCreated events={events} />;
+  // return <h1>hi</h1>;
+};
+
+const mapStateToProps = ({ events }) => ({ events: events.userEvents });
+
+export default connect(
+  mapStateToProps,
+  { getEvent }
+)(MyEvents);

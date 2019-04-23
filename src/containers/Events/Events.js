@@ -1,20 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+
 import classes from './Events.module.css';
 import EventCard from '../../components/EventCard/EventCard';
-import Aside from '../../components/Aside/Aside';
+// import Aside from '../../components/Aside/Aside';
+import { setUser } from '../../store/actions/authentication';
 
-const Events = () => (
-  <div className={classes.Events}>
-    <div className={classes.Events__container}>
+const Events = ({ history, setUser }) => {
+  useEffect(() => {
+    setUser();
+  }, [setUser]);
+  return (
+    <div className={classes.Events}>
       <EventCard />
       <EventCard />
       <EventCard />
       <EventCard />
     </div>
-    <div className={classes.aside}>
-      <Aside />
-    </div>
-  </div>
-);
+  );
+};
 
-export default Events;
+export default connect(
+  null,
+  { setUser }
+)(Events);

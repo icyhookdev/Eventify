@@ -19,7 +19,7 @@ const LoginContainer = ({ login, loading }) => {
 
     switch (name) {
       case 'username':
-        errorsValidate.email =
+        errorsValidate.username =
           value.length < 4
             ? 'El usuario debe contener almenos 4 caracteres'
             : '';
@@ -49,15 +49,23 @@ const LoginContainer = ({ login, loading }) => {
     setErrors(errorsValidate);
   };
 
-  const onSubmitHandler = e => {
+  const onSubmitHandler = async e => {
     e.preventDefault();
     if (isFormEmpty(values)) {
       validateOnSubmit();
     } else if (isFormValid(errors)) {
       return true;
     } else {
-      login(values);
-      console.log('yes make the request');
+      const err = {};
+      const res = await login(values);
+
+      if (res && res.code === 204) {
+        err.username = 'Este usuario no existe';
+        setErrors(err);
+      } else if (res && res.code === 205) {
+        err.password = 'Por favor verifique sus credenciales';
+        setErrors(err);
+      }
     }
   };
 
@@ -72,7 +80,9 @@ const LoginContainer = ({ login, loading }) => {
   );
 };
 
-const mapStateToProps = ({ auth }) => ({ loading: auth.isLoading });
+const mapStateToProps = ({ auth }) => ({
+  loading: auth.isLoading,
+});
 
 export default connect(
   mapStateToProps,
