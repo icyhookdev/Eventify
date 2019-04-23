@@ -14,16 +14,18 @@ const EventCard = () => (
       </div>
     </div>
     <div className={classes.EventCard__img}>
-      <h2>Marcelo Digrachi Live</h2>
-      <img src={eventImg} alt="404" />
-      <div className={classes.event__overlay}>
-        <Link to="/">Ver Evento</Link>
-      </div>
-      <div className={classes.event__date}>
-        <span className={classes.day}>12</span>
-        <span className={classes.month}>DIC</span>
-        <span className={classes.year}>2019</span>
-      </div>
+      <Link to="/">
+        <img
+          className={classes.EventCard__img_current}
+          src={eventImg}
+          alt="404"
+        />
+      </Link>
+    </div>
+    <div className={classes.EventCard__about}>
+      <div className={classes.EventCard__date}>Mon, Abr 21 2019</div>
+      <div className={classes.EventCard__title}>Anime Expo 2019</div>
+      <div className={classes.EventCard__location}>Caracas, Venezuela</div>
     </div>
   </div>
 );

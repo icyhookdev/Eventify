@@ -2,24 +2,29 @@
   width: 100%;
 
   position: relative;
-  flex-flow: column;
+  display: grid;
   background: hsl(0, 0%, 98%);
   transition: all 0.4s ease-out;
-  display: flex;
+  grid-template-columns: 1fr;
   border-radius: 5px;
   margin-bottom: 2em;
+  transition: all 0.3s ease;
+}
+
+.EventCard:hover {
+  box-shadow: 0 4px 15px 0 rgba(40, 44, 53, 0.06),
+    0 5px 21px 0 rgba(40, 44, 53, 0.08);
 }
 
 .EventCard__header {
-  display: grid;
-  grid-template-columns: 50px 1fr;
+  display: flex;
   background: hsl(0, 0%, 98%);
   padding: 1rem;
   border-radius: 5px 5px 0 0;
 }
 
 .EventCard__header > img {
-  width: 100%;
+  width: 50px;
   height: 50px;
   border-radius: 50%;
   padding: 2px;
@@ -29,64 +34,12 @@
 
 .EventCard__img {
   position: relative;
-}
-
-.EventCard__img > h2 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
   width: 100%;
-  padding: 0.5em;
-  text-align: center;
-  font-size: 3em;
-  display: flex;
-  z-index: 3;
-  align-items: center;
-  font-family: 'MontserratBold', sans-serif;
-  font-weight: 100;
-  background: rgba(255, 255, 255, 0.705);
-  color: rgba(0, 0, 0, 1);
 }
 
-.EventCard__img > img {
+.EventCard__img_current {
   object-fit: cover;
   width: 100%;
-  height: 320px;
-}
-
-.event__overlay {
-  position: absolute;
-  transition: 0.5s;
-  opacity: 0;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.555);
-}
-
-.event__overlay > a {
-  font-size: 1.7em;
-  padding: 1em;
-  text-decoration: none;
-  outline: none;
-  font-weight: bold;
-  transform: translate(-50%, 100%);
-  position: absolute;
-  top: 50%;
-  transition: 0.5s;
-  left: 50%;
-  background: #3598f1;
-  color: #fff;
-  border-radius: 5px;
-}
-
-.EventCard__img:hover .event__overlay {
-  opacity: 1;
-}
-.EventCard__img:hover .event__overlay > a {
-  opacity: 1;
-  transform: translate(-50%, -50%);
 }
 
 .owner {
@@ -101,27 +54,25 @@
   font-weight: bold;
 }
 
-.event__date {
-  position: absolute;
-  display: grid;
-  grid-template-columns: 60px;
-  background: #ea4031;
-  z-index: 6;
-  top: 0;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  right: 0;
+.EventCard__about {
   padding: 1em;
-  color: #fff;
+  background: #fff;
+  display: grid;
+  grid-gap: 10px;
+  font-weight: bold;
+  font-family: 'MontserratBold';
 }
 
-.event__date > .day {
-  font-size: 4em;
+.EventCard__date {
+  color: #ea4031;
+  font-size: 1.6em;
 }
-.event__date > .month {
-  font-size: 1.7em;
+
+.EventCard__title {
+  font-size: 2em;
 }
-.event__date > .year {
-  font-size: 1.7em;
+
+.EventCard__location {
+  font-size: 1.5em;
+  color: #b4b4b4;
 }
