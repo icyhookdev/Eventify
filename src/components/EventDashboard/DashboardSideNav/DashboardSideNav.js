@@ -35,7 +35,7 @@ const DashboardSideNav = () => (
           </li>
           <li className={classes.Nav__item}>
             <NavLink
-              to="/new"
+              to="/dashboard/info"
               activeStyle={{
                 color: '#ea555c',
                 fill: '#ea555c',
@@ -49,7 +49,7 @@ const DashboardSideNav = () => (
           </li>
           <li className={classes.Nav__item}>
             <NavLink
-              to="/myevents"
+              to="/dashboard/details"
               activeStyle={{
                 color: '#ea555c',
                 fill: '#ea555c',
@@ -63,7 +63,7 @@ const DashboardSideNav = () => (
           </li>
           <li className={classes.Nav__item}>
             <NavLink
-              to="/chat-room"
+              to="/dashboard/attendents"
               activeStyle={{
                 color: '#ea555c',
                 fill: '#ea555c',

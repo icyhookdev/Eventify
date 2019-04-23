@@ -15,7 +15,7 @@ const DashboardNav = () => (
         <Link to="/">Eventos</Link>
       </li>
       <li className={classes.dropdown}>
-        <SettingIco />
+        <SettingIco color="#fff" />
         <ul className={classes.dropdown__list}>
           <li>
             <a href="freehtml.html">Eliminar Evento</a>
