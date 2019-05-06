@@ -1,0 +1,56 @@
+.container {
+  padding: 2em;
+}
+
+.title {
+  font-size: 2.6em;
+  font-weight: bold;
+  font-family: 'MontserratBold';
+}
+
+.subTitle {
+  font-size: 2.2em;
+  font-weight: bold;
+  font-family: 'MontserratBold';
+}
+
+.photo {
+  padding: 2em;
+  width: 250px;
+}
+
+.form {
+  padding: 2em;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(300px, 600px));
+  grid-gap: 20px;
+}
+.form input,
+.form select,
+.form textarea {
+  padding: 1.3em;
+  margin: 1em 0;
+}
+.formEmail input {
+  padding: 1.3em;
+  margin: 1em 0;
+}
+.formEmail {
+  padding: 2em;
+}
+.formContact,
+.formDirection {
+}
+
+.btnSubmit {
+  width: 150px;
+  outline: 0;
+  border: 0;
+  border-radius: 5px;
+  font-family: 'MontserratBold';
+  font-size: 1.7em;
+  padding: 1em;
+  background: #ea555c;
+  color: #fff;
+  cursor: pointer;
+}

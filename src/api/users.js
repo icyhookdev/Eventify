@@ -7,5 +7,9 @@ export const users = axios.create({
 export const usersWithAuth = token =>
   axios.create({
     baseURL: 'https://iujo-eventify-api.herokuapp.com/api/users',
-    headers: { Authorization: `Bearer ${token}` },
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'multipart/form-data',
+      Authorization: `Bearer ${token}`,
+    },
   });

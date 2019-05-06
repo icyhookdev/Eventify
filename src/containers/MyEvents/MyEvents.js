@@ -1,21 +1,28 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import MyEventsCreated from '../../components/MyEventsCreated/MyEventsCreated';
-import { getEvent } from '../../store/actions/events';
+import MyEventsCreated from '../../pages/MyEventsCreated/MyEventsCreated';
+import { getEvents } from '../../store/actions/events';
+import Loading from '../../components/Loading/Loading';
 
-const MyEvents = ({ getEvent, events }) => {
+const MyEvents = ({ getEvents, events, isLoading }) => {
   useEffect(() => {
-    getEvent();
+    getEvents();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  return <MyEventsCreated events={events} />;
-  // return <h1>hi</h1>;
+  return isLoading ? (
+    <Loading msg="Cargando Eventos" />
+  ) : (
+    <MyEventsCreated events={events} />
+  );
 };
 
-const mapStateToProps = ({ events }) => ({ events: events.userEvents });
+const mapStateToProps = ({ events }) => ({
+  events: events.userEvents,
+  isLoading: events.isLoading,
+});
 
 export default connect(
   mapStateToProps,
-  { getEvent }
+  { getEvents }
 )(MyEvents);

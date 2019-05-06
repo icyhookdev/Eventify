@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import classes from './DashboardNav.module.css';
-import SettingIco from '../../icons/SettingIco';
+import SettingIco from '../../../../components/icons/SettingIco';
 
 const DashboardNav = () => (
   <div className={classes.DashboardNav}>

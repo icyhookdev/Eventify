@@ -2,25 +2,23 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import classes from './DashboardSideNav.module.css';
-import DashboardIco from '../../icons/DashboardIco';
-import BasicInfoIco from '../../icons/BasicInfoIco';
-import DetailsIcon from '../../icons/DetailsIcon';
-import PeopleIco from '../../icons/PeopleIco';
+import DashboardIco from '../../../../components/icons/DashboardIco';
+import BasicInfoIco from '../../../../components/icons/BasicInfoIco';
+import DetailsIcon from '../../../../components/icons/DetailsIcon';
+import PeopleIco from '../../../../components/icons/PeopleIco';
 
-const DashboardSideNav = () => (
+const DashboardSideNav = ({ event }) => (
   <div className={classes.DashboardSideNav}>
     <div className={classes.nav__container}>
       <div className={classes.event__header}>
-        <h1 className={classes.event__title}>
-          some event in the use from caracas
-        </h1>
+        <h1 className={classes.event__title}>{event && event.name}</h1>
         <p className={classes.event__date}>20-29-1202</p>
       </div>
       <div className={classes.Nav}>
         <ul className={classes.Nav__items}>
           <li className={classes.Nav__item}>
             <NavLink
-              to="/dashboard"
+              to={`/dashboard/${event && event.id}`}
               exact
               activeStyle={{
                 color: '#ea555c',
@@ -35,7 +33,7 @@ const DashboardSideNav = () => (
           </li>
           <li className={classes.Nav__item}>
             <NavLink
-              to="/dashboard/info"
+              to={`/dashboard/info/${event && event.id}`}
               activeStyle={{
                 color: '#ea555c',
                 fill: '#ea555c',
@@ -49,7 +47,7 @@ const DashboardSideNav = () => (
           </li>
           <li className={classes.Nav__item}>
             <NavLink
-              to="/dashboard/details"
+              to={`/dashboard/details/${event && event.id}`}
               activeStyle={{
                 color: '#ea555c',
                 fill: '#ea555c',
@@ -63,7 +61,7 @@ const DashboardSideNav = () => (
           </li>
           <li className={classes.Nav__item}>
             <NavLink
-              to="/dashboard/attendents"
+              to={`/dashboard/attendents/${event && event.id}`}
               activeStyle={{
                 color: '#ea555c',
                 fill: '#ea555c',

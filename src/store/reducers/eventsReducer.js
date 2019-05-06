@@ -3,11 +3,13 @@ import {
   START_EVENT,
   FAIL_EVENT,
   SET_USER_EVENTS,
+  SET_EVENT,
 } from '../actions/types';
 
 const initialState = {
   isLoading: false,
   userEvents: [],
+  currentEvent: null,
 };
 
 const eventsReducer = (state = initialState, { type, payload }) => {
@@ -20,6 +22,8 @@ const eventsReducer = (state = initialState, { type, payload }) => {
       return { ...state, isLoading: false };
     case SET_USER_EVENTS:
       return { ...state, isLoading: false, userEvents: payload };
+    case SET_EVENT:
+      return { ...state, isLoading: false, currentEvent: payload };
     default:
       return state;
   }

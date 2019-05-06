@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import isAfter from 'date-fns/is_after';
 
 import classes from './CreateEvent.module.css';
-import NewEvent from '../../components/NewEvent/NewEvent';
+import NewEvent from '../../pages/NewEvent/NewEvent';
 import useInput from '../../hooks/useInput';
 import checkInitialValues from '../../lib/checkInitialValues';
 import checkFormValues from '../../lib/checkFormValues';
@@ -10,8 +11,8 @@ import { saveEvent } from '../../store/actions/events';
 import setInputErrors from '../../lib/setinputErrors';
 
 const CreateEvent = ({ saveEvent, loading }) => {
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
   const [bbar, setBbar] = useState(false);
   const [errors, setErrors] = useState({});
   const { values, onChangeHandler } = useInput({
@@ -33,6 +34,21 @@ const CreateEvent = ({ saveEvent, loading }) => {
     }
   }, [values]);
 
+  const handleDateChange = ({ sd, ed }) => {
+    sd = sd || startDate;
+    ed = ed || endDate;
+
+    if (isAfter(sd, ed)) {
+      ed = sd;
+    }
+
+    setStartDate(sd);
+    setEndDate(ed);
+  };
+
+  const handleChangeStart = sd => handleDateChange({ sd });
+  const handleChangeEnd = ed => handleDateChange({ ed });
+
   const onSubmit = e => {
     const formValues = {
       ...values,
@@ -47,14 +63,13 @@ const CreateEvent = ({ saveEvent, loading }) => {
       saveEvent(formValues);
     }
   };
-
   return (
     <div className={classes.CreateEvent}>
       <NewEvent
         startDate={startDate}
         endDate={endDate}
-        setDateS={setStartDate}
-        setDateE={setEndDate}
+        setDateS={handleChangeStart}
+        setDateE={handleChangeEnd}
         values={values}
         change={onChangeHandler}
         submit={onSubmit}

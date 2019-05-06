@@ -27,7 +27,7 @@ const Nav = () => (
       </li>
       <li className={classes.Nav__item}>
         <NavLink
-          to="/new"
+          to="/profile"
           activeStyle={{
             color: '#ea555c',
             fill: '#ea555c',

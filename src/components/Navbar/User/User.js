@@ -1,18 +1,24 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import userImg from '../../../assets/img/user.jpg';
 import classes from './User.module.css';
 
-const User = () => (
+const User = ({ user }) => (
   <div className={classes.User}>
     <div className={classes.User__img}>
-      <img src={userImg} alt="404" />
+      <img src={user && user.avatar} alt="404" />
     </div>
-    <h2 className={classes.User__name}>Cristihan</h2>
+    <h2 className={classes.User__name}>{user && user.name}</h2>
     <p className={classes.User__description}>
       Front-end Web Developer and React Developer
     </p>
   </div>
 );
 
-export default User;
+const mapStateToProps = ({ auth }) => ({ user: auth.user });
+
+export default connect(
+  mapStateToProps,
+  {}
+)(User);

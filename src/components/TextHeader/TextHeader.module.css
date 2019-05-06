@@ -11,7 +11,7 @@
 
 .TextHeader {
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 100px calc(100% - 200px);
   /* align-items: center; */
 }
 

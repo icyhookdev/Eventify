@@ -1,0 +1,110 @@
+.UserProfile {
+  padding: 25px;
+}
+
+.UserProfile_info {
+  display: grid;
+  grid-template-columns: 170px minmax(100px, 600px);
+  grid-gap: 2em;
+  align-items: center;
+}
+
+.hr {
+  border-bottom: 1px solid #ddd;
+  margin: 4em auto;
+  width: 90%;
+}
+
+.UserProfile_img {
+  width: 100%;
+  display: grid;
+  grid-gap: 20px;
+}
+
+.UserProfile_img > img {
+  width: 100%;
+  height: 170px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  padding: 0.5em;
+  border: 5px solid #ea555c;
+}
+
+.UserProfile_description {
+  font-size: 1.6em;
+}
+
+.UserProfile__name {
+  font-family: 'MontserratBold';
+  font-size: 22px;
+  text-transform: capitalize;
+
+  margin: 0.5em 0;
+}
+
+.UserProfile__user {
+  color: #868686;
+
+  margin: 0.5em 0;
+}
+
+.UserProfile__description {
+  margin: 0.5em 0;
+}
+
+.UserProfile__loation {
+  font-weight: bold;
+  margin: 0.5em 0;
+}
+
+.UserProfile__company {
+  margin: 0.5em 0;
+}
+
+.UserProfile_details {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 4em;
+}
+
+.link {
+  font-size: 1.8em;
+  background: #fff;
+  outline: 0;
+  text-decoration: none;
+  border-radius: 5px;
+  border: 0;
+  padding: 1em;
+  margin-right: 1em;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.events {
+  font-size: 1.8em;
+}
+
+.following {
+  font-size: 1.8em;
+}
+
+.followers {
+  font-size: 1.8em;
+}
+
+.edit_profile {
+  font-size: 1.5em;
+  background: #fff;
+  outline: 0;
+  text-decoration: none;
+  border-radius: 5px;
+  border: 0;
+  padding: 1em;
+  font-family: 'MontserratBold';
+  color: #000;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid #ddd;
+}

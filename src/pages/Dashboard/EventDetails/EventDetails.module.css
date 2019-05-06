@@ -1,0 +1,89 @@
+.EventDetails {
+  padding: 5em !important;
+}
+
+.drag,
+.img_preview_container {
+  height: 250px;
+  background: hsl(0, 0%, 98%);
+  width: calc(100% - 200px);
+  margin-left: 100px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.align__content {
+  width: calc(100% - 200px);
+  margin-left: 100px;
+}
+
+.overlay {
+  cursor: default;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all 0.2s ease;
+  background: rgba(40, 44, 53, 0.521);
+}
+
+.img_preview_container:hover .overlay {
+  opacity: 1;
+}
+
+.overlay:hover .remove__img {
+  opacity: 1;
+}
+
+.remove__img {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  top: 50%;
+  left: 50%;
+  opacity: 0.5;
+  padding: 3em;
+  transition: all 0.4s ease;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: url('../../../assets/icons/trash.svg'), hsla(0, 0%, 98%, 0.856);
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.info {
+  width: 100%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.info > img {
+  justify-self: center;
+}
+
+.info > div {
+  font-family: 'MontserratBold';
+  font-size: 1.8em;
+  text-align: center;
+  margin-top: 2em;
+  width: 100%;
+}
+
+.img_preview {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.drag:hover {
+  box-shadow: 0 4px 15px 0 rgba(40, 44, 53, 0.06),
+    0 5px 21px 0 rgba(40, 44, 53, 0.08);
+}

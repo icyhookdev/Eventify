@@ -28,17 +28,12 @@ export const login = userData => async dispatch => {
     const res = await users.post('/api/auth/login', userData);
     dispatch({ type: LOGIN, payload: res.data.user });
 
-    if (res.data.code === 204 || res.data.code === 205) {
-      return res.data;
-    }
-
     localStorage.setItem('token', res.data.token);
     localStorage.setItem('user', res.data.user._id);
     history.push('/');
-
-    console.log(res);
   } catch (error) {
     dispatch({ type: FAIL_REQUEST });
+    return error.response.data;
   }
 };
 

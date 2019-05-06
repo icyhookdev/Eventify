@@ -88,10 +88,10 @@ const SignupContainer = ({ registerUser, loading, history }) => {
       const err = { ...errors };
       const res = await registerUser(userData);
 
-      if (res.message.includes('email')) {
+      if (res && res.message.includes('email')) {
         err.email = 'Este email ya se encuentra registrado';
         setErrors(err);
-      } else if (res.message.includes('user')) {
+      } else if (res && res.message.includes('user')) {
         err.username = 'Este Usuario ya existe';
         setErrors(err);
       } else {

@@ -19,8 +19,11 @@
 }
 
 html {
-  font-size: 62.5%;
   font-family: 'MontserratRegular', sans-serif;
+}
+
+body {
+  font-size: 62.5%;
 }
 
 .Link--active {

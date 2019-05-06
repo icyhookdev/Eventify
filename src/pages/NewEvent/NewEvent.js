@@ -1,14 +1,14 @@
 import React from 'react';
-// import moment from 'moment';
-import 'react-datez/dist/css/react-datez.css';
-import { ReactDatez } from 'react-datez';
+
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 import classes from './NewEvent.module.css';
-import Select from '../Select/Select';
-import InputGroup from '../InputGroup/InputGroup';
-import TextHeader from '../TextHeader/TextHeader';
+import Select from '../../components/Select/Select';
+import InputGroup from '../../components/InputGroup/InputGroup';
+import TextHeader from '../../components/TextHeader/TextHeader';
 import SectionWrapper from './SectionWrapper/SectionWrapper';
-import BottomBar from '../BottomBar/BottomBar';
+import BottomBar from '../../components/BottomBar/BottomBar';
 import textIcon from '../../assets/icons/text.svg';
 import mapIcon from '../../assets/icons/map.svg';
 import dateIcon from '../../assets/icons/date.svg';
@@ -26,6 +26,7 @@ const NewEvent = ({
   loading,
 }) => (
   <div className={classes.NewEvent}>
+    {console.log(loading)}
     <form className={classes.form} onSubmit={submit}>
       <TextHeader
         title="Informacion Basica"
@@ -78,21 +79,29 @@ const NewEvent = ({
             <div className={classes.Date__container}>
               <div className={classes.Event__start}>
                 <h3 className={classes.semi_title}>Inicio</h3>
-                <ReactDatez
-                  name="startDate"
-                  handleChange={setDateS}
-                  value={startDate}
+                <DatePicker
+                  selected={startDate}
+                  selectsStart
+                  startDate={startDate}
+                  endDate={endDate}
+                  onChange={setDateS}
+                  minDate={new Date()}
                 />
                 {errors && (
                   <p className={classes.err__msg}>{errors.start_date}</p>
                 )}
               </div>
+
               <div className={classes.Event__ends}>
                 <h3 className={classes.semi_title}>Fin</h3>
-                <ReactDatez
-                  name="endDate"
-                  handleChange={setDateE}
-                  value={endDate}
+                <DatePicker
+                  selected={endDate}
+                  selectsEnd
+                  startDate={startDate}
+                  endDate={endDate}
+                  onChange={setDateE}
+                  minDate={new Date()}
+                  // placeholderText="Fecha Fianl"
                 />
                 {errors && (
                   <p className={classes.err__msg}>{errors.finish_date}</p>

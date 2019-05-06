@@ -1,5 +1,5 @@
 .NewEvent {
-  padding: 0 25px;
+  padding: 0 5em;
   height: 100%;
   overflow-y: auto;
 }
@@ -9,13 +9,9 @@
   color: #000;
 }
 
-.form > .InputGroup_Input {
-  width: calc(100% - 100px);
-  margin-left: 100px;
-}
-
+.form > .InputGroup_Input,
 .align__to_text {
-  width: calc(100% - 100px);
+  width: calc(100% - 200px);
   margin-left: 100px;
 }
 

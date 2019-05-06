@@ -10,4 +10,5 @@ export const SET_USER = 'SET_USER';
 export const START_EVENT = 'START_EVENT';
 export const SAVE_EVENT = 'SAVE_EVENT';
 export const FAIL_EVENT = 'FAIL_EVENT';
+export const SET_EVENT = 'SET_EVENT';
 export const SET_USER_EVENTS = 'SET_USER_EVENTS';

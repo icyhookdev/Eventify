@@ -24,7 +24,14 @@
 .User__name {
   font-family: 'MontserratBold', sans-serif;
   font-size: 2.4em;
-  margin-bottom: 0.5em;
+  padding-bottom: 1em;
+}
+
+.User__user {
+  font-size: 1.7rem;
+  padding: 1em;
+  color: rgb(160, 160, 160);
+  font-weight: bold;
 }
 
 .User__description {

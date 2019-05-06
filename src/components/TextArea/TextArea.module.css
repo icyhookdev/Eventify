@@ -1,0 +1,51 @@
+.container {
+  width: 100%;
+  position: relative;
+}
+
+.TextArea {
+  color: #000;
+  font-weight: bold;
+  padding: 0.67857143em 1em;
+  text-align: left;
+  font-size: 1.9em;
+  height: 100px;
+  width: 100%;
+  resize: none;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.TextArea:focus {
+  background-color: #fff;
+  outline: none;
+  border: 1px solid #1e0a3c;
+}
+
+.TextArea::placeholder {
+  color: #cccccc;
+}
+
+.TextArea:focus::placeholder {
+  color: #a7a7a7;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.max {
+  font-size: 1.3em;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: #000;
+}
+
+.err__msg {
+  color: red;
+  font-size: 14px;
+  display: block;
+  margin-left: 0.5em;
+  text-align: left;
+}
