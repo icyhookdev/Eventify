@@ -7,6 +7,12 @@ import { getEvent, updateEvent } from '../../store/actions/events';
 import useInput from '../../hooks/useInput';
 import checkFormValues from '../../lib/checkFormValues';
 import setInputErrors from '../../lib/setinputErrors';
+import {
+  getCategories,
+  getTypes,
+  getRestrictions,
+  getModalities,
+} from '../../store/actions/poputateData';
 
 const BasicInfo = ({
   match,
@@ -14,6 +20,11 @@ const BasicInfo = ({
   currentEvent,
   isLoading,
   updateEvent,
+  getCategories,
+  getTypes,
+  getRestrictions,
+  getModalities,
+  selectData,
 }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -21,10 +32,10 @@ const BasicInfo = ({
   const [errors, setErrors] = useState({});
   const { values, onChangeHandler } = useInput({
     name: (currentEvent && currentEvent.name) || '',
-    type: (currentEvent && currentEvent.type) || '',
-    category: (currentEvent && currentEvent.category) || '',
-    restriction: (currentEvent && currentEvent.restriction) || '',
-    modality: (currentEvent && currentEvent.modality) || '',
+    type: (currentEvent && currentEvent.type.id) || '',
+    category: (currentEvent && currentEvent.category.id) || '',
+    restriction: (currentEvent && currentEvent.restriction.id) || '',
+    modality: (currentEvent && currentEvent.modality.id) || '',
     country: (currentEvent && currentEvent.country) || '',
     state: (currentEvent && currentEvent.state) || '',
     city: (currentEvent && currentEvent.city) || '',
@@ -35,10 +46,16 @@ const BasicInfo = ({
   const eventId = match.params.id;
 
   useEffect(() => {
+    getCategories();
+    getTypes();
+    getRestrictions();
+    getModalities();
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
     getEvent(eventId);
   }, [eventId, getEvent]);
-
-  console.log('hi');
 
   // Validating the date
   const handleDateChange = ({ sd, ed }) => {
@@ -61,12 +78,13 @@ const BasicInfo = ({
       ...values,
       start_date: startDate,
       finish_date: endDate,
+      id: currentEvent.id,
     };
     e.preventDefault();
     if (checkFormValues(formValues)) {
       setErrors(setInputErrors(formValues));
     } else {
-      updateEvent(currentEvent.id, formValues);
+      updateEvent(formValues);
     }
   };
 
@@ -87,17 +105,26 @@ const BasicInfo = ({
         bbar={bbar}
         errors={errors}
         loading={false || isLoading}
+        selectsData={selectData}
       />
     </div>
   );
 };
 
-const mapStateToProps = ({ events }) => ({
+const mapStateToProps = ({ events, populateData }) => ({
   currentEvent: events.currentEvent,
   isLoading: events.isLoading,
+  selectData: populateData,
 });
 
 export default connect(
   mapStateToProps,
-  { getEvent, updateEvent }
+  {
+    getEvent,
+    updateEvent,
+    getCategories,
+    getTypes,
+    getRestrictions,
+    getModalities,
+  }
 )(BasicInfo);

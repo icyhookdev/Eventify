@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import classes from './UserProfile.module.css';
 import img from '../../assets/img/user.jpg';
-import ProfilePhoto from '../../components/ProfilePhoto/ProfilePhoto';
 
 const UserProfile = () => (
   <div className={classes.UserProfile}>

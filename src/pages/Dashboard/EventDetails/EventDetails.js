@@ -58,7 +58,7 @@ const EventDetails = ({
         />
       </div>
 
-      <Spinner />
+      {/* <Spinner /> */}
       {bbar && <BottomBar isLoading={loading} />}
     </form>
   </div>

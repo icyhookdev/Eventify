@@ -50,7 +50,7 @@
   font-family: 'MontserratBold';
   font-size: 1.7em;
   padding: 1em;
-  background: #ea555c;
+  background: var(--main-color);
   color: #fff;
   cursor: pointer;
 }

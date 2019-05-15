@@ -5,7 +5,7 @@
   right: 0;
   bottom: 0;
   /* background: linear-gradient(120deg, #ea555c, #970814); */
-  background: #cb3050;
+  background: var(--main-color);
 
   z-index: -1;
   transition: all ease-in-out 0.5s;

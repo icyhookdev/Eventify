@@ -12,8 +12,8 @@ const Select = ({
 }) => {
   const borderSelect = errMsg ? 'err__Select' : 'Select';
   const optionList = options.map((opt, i) => (
-    <option key={i} value={opt}>
-      {opt}
+    <option key={i} value={opt._id}>
+      {opt.name}
     </option>
   ));
   return (

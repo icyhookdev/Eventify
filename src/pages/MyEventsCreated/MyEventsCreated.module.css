@@ -1,4 +1,42 @@
 .EventsCreated {
+  padding: 25px;
+}
+
+.subtitle {
+  font-family: 'MontserratBold';
+  font-size: 3.2em;
+}
+
+.tab {
+  display: flex;
+  margin-top: 2em;
+}
+
+.button_tab {
+  outline: 0;
+  border: 0;
+  font-size: 1.7em;
+  margin-right: 1em;
+  padding: 1em;
+  background: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  color: #9c9c9c;
+  transition: color 0.3s ease;
+}
+
+.button_tab:hover {
+  color: #000;
+}
+
+.active_tab {
+  border-bottom: 2px solid rgb(234, 85, 92);
+  color: #000;
+}
+
+.tab_content {
+  margin-top: 2em;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: minmax(300px, 600px);
+  grid-gap: 10px;
 }

@@ -12,14 +12,16 @@ import events from '../../api/events';
 
 export const saveEvent = dataEvent => async dispatch => {
   const token = localStorage.getItem('token');
+  console.log(dataEvent);
   try {
     dispatch({ type: START_EVENT });
-    await events(token).post('/register', dataEvent);
+    await events(token, false).post('/register', dataEvent);
+
     toastr.success('Exitoso!', 'Evento Creado');
     dispatch({ type: SAVE_EVENT });
     history.push('/myevents');
   } catch (ex) {
-    console.log(ex);
+    console.log(ex.response);
     dispatch({ type: FAIL_EVENT });
   }
 };
@@ -49,11 +51,11 @@ export const getEvent = id => async dispatch => {
   }
 };
 
-export const updateEvent = (id, data) => async dispatch => {
+export const updateEvent = data => async dispatch => {
   const token = localStorage.getItem('token');
   try {
-    await events(token).put(`/${id}`, data);
-    console.log('succeedd');
+    const res = await events(token).put(`/edit`, data);
+    console.log('succeedd', res);
   } catch (err) {
     console.log(err.response.data);
   }
@@ -66,7 +68,7 @@ export const updateEventImg = (id, img) => async dispatch => {
   form.append('image', img, img.name);
 
   try {
-    const res = await events(token).put(`image/${id}`, form);
+    const res = await events(token, true).put(`image/${id}`, form);
 
     console.log('succeedd', res);
   } catch (err) {

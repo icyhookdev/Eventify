@@ -1,5 +1,4 @@
-import React, { useState, Component } from 'react';
-import { connect } from 'react-redux';
+import React, { useState } from 'react';
 import Dropzone from 'react-dropzone';
 
 import { usersWithAuth } from '../../api/users';

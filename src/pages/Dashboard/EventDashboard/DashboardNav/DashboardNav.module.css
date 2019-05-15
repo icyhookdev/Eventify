@@ -1,6 +1,6 @@
 .DashboardNav {
   position: fixed;
-  background: #ea555c;
+  background: var(--main-color);
   display: flex;
   padding: 0 2em;
   align-items: center;

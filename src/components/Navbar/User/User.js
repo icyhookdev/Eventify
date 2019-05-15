@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import userImg from '../../../assets/img/user.jpg';
 import classes from './User.module.css';
 
 const User = ({ user }) => (

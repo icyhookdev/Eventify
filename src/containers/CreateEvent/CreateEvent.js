@@ -8,9 +8,25 @@ import useInput from '../../hooks/useInput';
 import checkInitialValues from '../../lib/checkInitialValues';
 import checkFormValues from '../../lib/checkFormValues';
 import { saveEvent } from '../../store/actions/events';
+import {
+  getCategories,
+  getTypes,
+  getRestrictions,
+  getModalities,
+  getCountries,
+} from '../../store/actions/poputateData';
 import setInputErrors from '../../lib/setinputErrors';
 
-const CreateEvent = ({ saveEvent, loading }) => {
+const CreateEvent = ({
+  saveEvent,
+  loading,
+  getCategories,
+  getTypes,
+  getRestrictions,
+  getModalities,
+  selectData,
+  getCountries,
+}) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [bbar, setBbar] = useState(false);
@@ -27,6 +43,15 @@ const CreateEvent = ({ saveEvent, loading }) => {
     address1: '',
     address2: '',
   });
+
+  useEffect(() => {
+    getCategories();
+    getTypes();
+    getRestrictions();
+    getCountries();
+    getModalities();
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     if (checkInitialValues(values)) {
@@ -50,13 +75,13 @@ const CreateEvent = ({ saveEvent, loading }) => {
   const handleChangeEnd = ed => handleDateChange({ ed });
 
   const onSubmit = e => {
+    e.preventDefault();
     const formValues = {
       ...values,
       start_date: startDate,
       finish_date: endDate,
       host: localStorage.getItem('user'),
     };
-    e.preventDefault();
     if (checkFormValues(formValues)) {
       setErrors(setInputErrors(formValues));
     } else {
@@ -76,14 +101,25 @@ const CreateEvent = ({ saveEvent, loading }) => {
         bbar={bbar}
         errors={errors}
         loading={loading}
+        selectsData={selectData}
       />
     </div>
   );
 };
 
-const mapStateToProps = ({ events }) => ({ loading: events.isLoading });
+const mapStateToProps = ({ events, populateData }) => ({
+  loading: events.isLoading,
+  selectData: populateData,
+});
 
 export default connect(
   mapStateToProps,
-  { saveEvent }
+  {
+    saveEvent,
+    getCategories,
+    getTypes,
+    getRestrictions,
+    getModalities,
+    getCountries,
+  }
 )(CreateEvent);

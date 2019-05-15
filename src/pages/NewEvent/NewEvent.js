@@ -24,9 +24,9 @@ const NewEvent = ({
   bbar,
   errors,
   loading,
+  selectsData,
 }) => (
   <div className={classes.NewEvent}>
-    {console.log(loading)}
     <form className={classes.form} onSubmit={submit}>
       <TextHeader
         title="Informacion Basica"
@@ -45,7 +45,7 @@ const NewEvent = ({
           <Select
             name="type"
             selected="Tipo"
-            options={['presencial', 'online']}
+            options={selectsData.types}
             change={change}
             value={values.type}
             errMsg={errors.type}
@@ -53,7 +53,7 @@ const NewEvent = ({
           <Select
             name="category"
             selected="Categoria"
-            options={['Musica', 'online']}
+            options={selectsData.categories}
             change={change}
             value={values.category}
             errMsg={errors.category}
@@ -61,7 +61,7 @@ const NewEvent = ({
           <Select
             name="restriction"
             selected="Restriccion"
-            options={['presencial', 'online']}
+            options={selectsData.restrictions}
             change={change}
             value={values.restriction}
             errMsg={errors.restriction}
@@ -122,59 +122,59 @@ const NewEvent = ({
             <Select
               name="modality"
               selected="Modalidad del evento"
-              options={['presencial', 'online']}
+              options={selectsData.modalities}
               change={change}
               value={values.modality}
               errMsg={errors.modality}
             />
-            {values.modality === 'presencial' && (
-              <React.Fragment>
-                <div className={classes.address}>
-                  <InputGroup
-                    name="address1"
-                    type="text"
-                    label="Direccion 1"
-                    value={values.address1}
-                    change={change}
-                    errMsg={errors.address1}
-                  />
-                  <InputGroup
-                    name="address2"
-                    type="text"
-                    label="Direccion 2"
-                    value={values.address2}
-                    change={change}
-                    errMsg={errors.address2}
-                  />
-                </div>
-                <div className={classes.event__group}>
-                  <Select
-                    name="country"
-                    selected="Country"
-                    options={['presencial', 'online']}
-                    change={change}
-                    value={values.country}
-                    errMsg={errors.country}
-                  />
-                  <Select
-                    name="state"
-                    selected="State"
-                    options={['presencial', 'online']}
-                    change={change}
-                    value={values.state}
-                    errMsg={errors.state}
-                  />
-                  <Select
-                    name="city"
-                    selected="City"
-                    options={['presencial', 'online']}
-                    change={change}
-                    value={values.city}
-                    errMsg={errors.city}
-                  />
-                </div>
-              </React.Fragment>
-            )}
+            {/* {values.modality === 'presencial' && ( */}
+            <React.Fragment>
+              <div className={classes.address}>
+                <InputGroup
+                  name="address1"
+                  type="text"
+                  label="Direccion 1"
+                  value={values.address1}
+                  change={change}
+                  errMsg={errors.address1}
+                />
+                <InputGroup
+                  name="address2"
+                  type="text"
+                  label="Direccion 2"
+                  value={values.address2}
+                  change={change}
+                  errMsg={errors.address2}
+                />
+              </div>
+              <div className={classes.event__group}>
+                <Select
+                  name="country"
+                  selected="Country"
+                  options={selectsData.countries}
+                  change={change}
+                  value={values.country}
+                  errMsg={errors.country}
+                />
+                <Select
+                  name="state"
+                  selected="State"
+                  options={selectsData.modalities}
+                  change={change}
+                  value={values.state}
+                  errMsg={errors.state}
+                />
+                <Select
+                  name="city"
+                  selected="City"
+                  options={selectsData.modalities}
+                  change={change}
+                  value={values.city}
+                  errMsg={errors.city}
+                />
+              </div>
+            </React.Fragment>
+            {/* )} */}
           </div>
         </div>
       </SectionWrapper>
