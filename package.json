@@ -39,7 +39,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "devDependencies": {
-    "babel-eslint": "^9.0.0"
-  }
+  "devDependencies": {}
 }
