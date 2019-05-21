@@ -27,11 +27,10 @@ const Map = () => {
       });
     }
   };
+  // philips-run-line ,mets a ganar ,bravos a ganar, pirates a ganar x 5000
 
   return (
     <ReactMapGL
-      // width="100vw"
-      // height="calc(100vh - 64px)"
       width="400px"
       height="400px"
       mapStyle="mapbox://styles/mapbox/streets-v11"
