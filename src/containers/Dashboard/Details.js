@@ -4,13 +4,17 @@ import { connect } from 'react-redux';
 import EventDetails from '../../pages/Dashboard/EventDetails/EventDetails';
 import useInput from '../../hooks/useInput';
 import checkInitialValues from '../../lib/checkInitialValues';
-import { updateEventImg } from '../../store/actions/events';
+import { updateEventImg, updateEvent } from '../../store/actions/events';
 
-const Details = ({ updateEventImg, currentEvent }) => {
-  const [file, setFile] = useState(null);
-
+const Details = ({ updateEventImg, currentEvent, updateEvent }) => {
+  const [file, setFile] = useState(
+    (currentEvent && currentEvent.image) || null
+  );
   const [bbar, setBbar] = useState(false);
-  const { values, onChangeHandler } = useInput({ description: '' });
+  const { values, onChangeHandler } = useInput({
+    description: (currentEvent && currentEvent.description) || '',
+  });
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (checkInitialValues(values)) {
@@ -21,29 +25,55 @@ const Details = ({ updateEventImg, currentEvent }) => {
   const onDropHandler = file => setFile(file[0]);
   const onRemoveImgHandler = () => setFile(null);
 
-  const onSubmit = e => {
-    e.preventDefault();
+  const showImg = () => {
+    if (typeof file === 'string') {
+      return file;
+    }
+    if (!file) {
+      return null;
+    }
 
-    updateEventImg(currentEvent.id, file);
+    return file.preview;
+  };
+
+  const onSubmit = async e => {
+    e.preventDefault();
+    setLoading(true);
+    const formValues = {
+      ...values,
+      id: currentEvent.id,
+    };
+
+    try {
+      await updateEvent(formValues);
+      await updateEventImg(currentEvent.id, file);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(true);
+    }
   };
 
   return (
     <EventDetails
       onDrop={onDropHandler}
-      img={file}
+      img={showImg}
       onRemove={onRemoveImgHandler}
       values={values}
       onChange={onChangeHandler}
       bbar={bbar}
-      loading={false}
+      loading={loading}
       submit={onSubmit}
     />
   );
 };
 
-const mapStateToProps = ({ events }) => ({ currentEvent: events.currentEvent });
+const mapStateToProps = ({ events }) => ({
+  currentEvent: events.currentEvent,
+  isLoading: events.isLoading,
+});
 
 export default connect(
   mapStateToProps,
-  { updateEventImg }
+  { updateEventImg, updateEvent }
 )(Details);

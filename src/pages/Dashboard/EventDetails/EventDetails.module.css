@@ -16,6 +16,24 @@
   position: relative;
 }
 
+.uploadBtn {
+  color: #000;
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  outline: 0;
+  border: 0;
+  background: url('../../../assets/icons/check.svg'), rgb(63, 196, 37);
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 3;
+}
+
 .align__content {
   width: calc(100% - 200px);
   margin-left: 100px;

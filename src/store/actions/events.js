@@ -22,6 +22,7 @@ export const saveEvent = dataEvent => async dispatch => {
     history.push('/myevents');
   } catch (ex) {
     console.log(ex.response);
+    toastr.error('Error', 'Upp! Algo salio mal.');
     dispatch({ type: FAIL_EVENT });
   }
 };
@@ -55,8 +56,10 @@ export const updateEvent = data => async dispatch => {
   const token = localStorage.getItem('token');
   try {
     const res = await events(token).put(`/edit`, data);
+    toastr.success('Exitoso!', 'Evento Actualizado');
     console.log('succeedd', res);
   } catch (err) {
+    toastr.error('Error', 'Upp! Algo salio mal.');
     console.log(err.response.data);
   }
 };
@@ -71,6 +74,26 @@ export const updateEventImg = (id, img) => async dispatch => {
     const res = await events(token, true).put(`image/${id}`, form);
 
     console.log('succeedd', res);
+  } catch (err) {
+    console.log(err.response);
+  }
+};
+
+export const createEventGuests = emails => async dispatch => {
+  const token = localStorage.getItem('token');
+  try {
+    const { data } = await events(token).post('invitation/create/', emails);
+    console.log(data);
+  } catch (err) {
+    console.log(err.response);
+  }
+};
+
+export const getEventGuests = eventId => async dispatch => {
+  const token = localStorage.getItem('token');
+  try {
+    const { data } = await events(token).post(`/events/${eventId}/invitations`);
+    console.log(data);
   } catch (err) {
     console.log(err.response);
   }

@@ -1,0 +1,51 @@
+.EventGuests {
+  padding: 5em !important;
+}
+
+.align__content {
+  width: calc(100% - 200px);
+  margin-left: 100px;
+}
+
+.guestsContainer {
+  height: 400px;
+  margin-top: 2rem;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.btnAddEmail {
+  border: 0;
+  padding: 1.3em;
+  font-family: 'MontserratBold';
+  cursor: pointer;
+  margin-left: 10px;
+  outline: 0;
+  color: #fff;
+  border-radius: 5px;
+  display: flex;
+  background: var(--main-color);
+}
+
+.addIcon {
+  background: url(../../../assets/icons/add.svg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 20px;
+  margin-left: 5px;
+}
+
+.group {
+  display: flex;
+  align-items: center;
+}
+
+.group > div > input {
+  padding: 1.3em;
+}
+
+.group > div > span {
+  position: absolute;
+}

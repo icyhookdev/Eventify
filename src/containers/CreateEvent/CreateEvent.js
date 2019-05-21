@@ -76,9 +76,21 @@ const CreateEvent = ({
 
   const onSubmit = e => {
     e.preventDefault();
+
     const formValues = {
-      ...values,
+      name: values.name,
+      type: values.type,
+      category: values.category,
+      restriction: values.restriction,
+      modality: values.modality,
+      country: values.country,
+      state: values.state,
+      city: values.city,
       start_date: startDate,
+      address: [
+        { description: values.address1 },
+        { description: values.address2 },
+      ],
       finish_date: endDate,
       host: localStorage.getItem('user'),
     };

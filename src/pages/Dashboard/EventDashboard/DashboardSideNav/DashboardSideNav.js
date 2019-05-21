@@ -61,7 +61,7 @@ const DashboardSideNav = ({ event }) => (
           </li>
           <li className={classes.Nav__item}>
             <NavLink
-              to={`/dashboard/attendents/${event && event.id}`}
+              to={`/dashboard/guests/${event && event.id}`}
               activeStyle={{
                 color: '#ea555c',
                 fill: '#ea555c',

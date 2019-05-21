@@ -14,7 +14,7 @@ const TextArea = ({ name, value, change, errMsg, label }) => (
     />
     <div className={classes.info}>
       <span className={classes.err__msg}>{errMsg && errMsg}</span>
-      <span className={classes.max}>{value && value.length || 0}/250</span>
+      <span className={classes.max}>{(value && value.length) || 0}/250</span>
     </div>
   </div>
 );

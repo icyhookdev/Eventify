@@ -12,7 +12,9 @@ import {
   getTypes,
   getRestrictions,
   getModalities,
+  getCountries,
 } from '../../store/actions/poputateData';
+import checkInitialValues from '../../lib/checkInitialValues';
 
 const BasicInfo = ({
   match,
@@ -25,10 +27,16 @@ const BasicInfo = ({
   getRestrictions,
   getModalities,
   selectData,
+  getCountries,
 }) => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [bbar, setBbar] = useState(true);
+  const [startDate, setStartDate] = useState(
+    (currentEvent && new Date(currentEvent.start_date)) || new Date()
+  );
+  const [endDate, setEndDate] = useState(
+    (currentEvent && new Date(currentEvent.finish_date)) || new Date()
+  );
+  const [bbar, setBbar] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const { values, onChangeHandler } = useInput({
     name: (currentEvent && currentEvent.name) || '',
@@ -39,8 +47,8 @@ const BasicInfo = ({
     country: (currentEvent && currentEvent.country) || '',
     state: (currentEvent && currentEvent.state) || '',
     city: (currentEvent && currentEvent.city) || '',
-    address1: '',
-    address2: '',
+    address1: (currentEvent && currentEvent.address[0].description) || '',
+    address2: (currentEvent && currentEvent.address[1].description) || '',
   });
 
   const eventId = match.params.id;
@@ -50,11 +58,19 @@ const BasicInfo = ({
     getTypes();
     getRestrictions();
     getModalities();
+    getCountries();
     // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
+    if (checkInitialValues(values)) {
+      setBbar(true);
+    }
+  }, [values]);
+
+  useEffect(() => {
     getEvent(eventId);
+    console.log('render');
   }, [eventId, getEvent]);
 
   // Validating the date
@@ -73,30 +89,47 @@ const BasicInfo = ({
   const handleChangeStart = sd => handleDateChange({ sd });
   const handleChangeEnd = ed => handleDateChange({ ed });
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
+    e.preventDefault();
+
     const formValues = {
-      ...values,
+      name: values.name,
+      type: values.type,
+      category: values.category,
+      restriction: values.restriction,
+      modality: values.modality,
+      country: values.country,
+      state: values.state,
+      city: values.city,
+      address: [
+        { description: values.address1 },
+        { description: values.address2 },
+      ],
       start_date: startDate,
       finish_date: endDate,
       id: currentEvent.id,
     };
-    e.preventDefault();
+
     if (checkFormValues(formValues)) {
       setErrors(setInputErrors(formValues));
-    } else {
-      updateEvent(formValues);
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      await updateEvent(formValues);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
     }
   };
 
   return (
     <div style={{ padding: '5em 1em' }}>
       <NewEvent
-        startDate={
-          (currentEvent && new Date(currentEvent.start_date)) || new Date()
-        }
-        endDate={
-          (currentEvent && new Date(currentEvent.finish_date)) || new Date()
-        }
+        startDate={startDate}
+        endDate={endDate}
         setDateS={handleChangeStart}
         setDateE={handleChangeEnd}
         values={values}
@@ -104,7 +137,7 @@ const BasicInfo = ({
         submit={onSubmit}
         bbar={bbar}
         errors={errors}
-        loading={false || isLoading}
+        loading={loading}
         selectsData={selectData}
       />
     </div>
@@ -126,5 +159,6 @@ export default connect(
     getTypes,
     getRestrictions,
     getModalities,
+    getCountries,
   }
 )(BasicInfo);

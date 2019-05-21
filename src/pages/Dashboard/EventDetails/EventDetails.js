@@ -1,7 +1,5 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
-
-import Spinner from '../../../components/Loading/Spinner';
 import classes from './EventDetails.module.css';
 import TextHeader from '../../../components/TextHeader/TextHeader';
 import imgIcon from '../../../assets/icons/image.svg';
@@ -26,9 +24,11 @@ const EventDetails = ({
         description="Esta es la primera imagen que los Usuarios veran. Se recomiendo que la imagen sea Landscape 1920x1080px"
         img={imgIcon}
       />
-      {img ? (
+
+      {img() ? (
         <div className={classes.img_preview_container}>
-          <img src={img.preview} className={classes.img_preview} alt="404" />
+          <img src={img()} className={classes.img_preview} alt="404" />
+
           <div className={classes.overlay}>
             <div className={classes.remove__img} onClick={onRemove} />
           </div>
@@ -57,9 +57,7 @@ const EventDetails = ({
           value={values.description}
         />
       </div>
-
-      {/* <Spinner /> */}
-      {bbar && <BottomBar isLoading={loading} />}
+      {bbar && <BottomBar isLoading={loading} msg="Actualizando Evento" />}
     </form>
   </div>
 );

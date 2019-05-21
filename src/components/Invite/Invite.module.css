@@ -1,0 +1,25 @@
+.Invite {
+  padding: 1em;
+  margin-bottom: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.InviteText {
+  font-size: 1rem;
+  font-family: 'MontserratBold';
+}
+
+.InviteRemove {
+  background: url('../../assets/icons/cancel.svg'), rgb(234, 85, 92);
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  height: 30px;
+  cursor: pointer;
+  width: 30px;
+}

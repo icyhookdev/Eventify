@@ -10,6 +10,7 @@ import BasicInfo from './BasicInfo';
 import DashboardLayout from '../../components/Layout/DashboardLayout/DashboardLayout';
 import { getEvent } from '../../store/actions/events';
 import Details from './Details';
+import Guests from './Guests';
 
 const Dashboard = ({ getEvent, match, event }) => {
   const { id } = match.params;
@@ -28,6 +29,7 @@ const Dashboard = ({ getEvent, match, event }) => {
           <Route path="/dashboard/:id" exact component={EventDashboard} />
           <Route path="/dashboard/info/:id" component={BasicInfo} />
           <Route path="/dashboard/details/:id" component={Details} />
+          <Route path="/dashboard/guests/:id" component={Guests} />
         </DashboardLayout>
       </Layout>
     </Fragment>

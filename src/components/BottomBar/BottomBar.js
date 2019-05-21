@@ -5,10 +5,10 @@ import classes from './BottomBar.module.css';
 // import Loading from '../Loading/Loading';
 import LoadingInLine from '../Loading/LoadingInLine';
 
-const BottomBar = ({ isLoading }) => (
+const BottomBar = ({ isLoading, msg }) => (
   <div className={classes.group}>
     <div className={classes.group__btn}>
-      {isLoading && <LoadingInLine msg="Registrando Evento" />}
+      {isLoading && <LoadingInLine msg={msg} />}
       <Link to="/" className={classes.cancel}>
         Descartar
       </Link>
