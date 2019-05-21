@@ -1,10 +1,6 @@
 import React from 'react';
 import EditUserProfile from '../../pages/Profile/EditUserProfile/EditUserProfile';
 
-const EditProfile = () => {
-  const title = 'Editprofile';
-
-  return <EditUserProfile />;
-};
+const EditProfile = () => <EditUserProfile />;
 
 export default EditProfile;
