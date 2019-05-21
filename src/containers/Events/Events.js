@@ -5,6 +5,7 @@ import classes from './Events.module.css';
 import EventCard from '../../components/EventCard/EventCard';
 // import Aside from '../../components/Aside/Aside';
 import { setUser } from '../../store/actions/authentication';
+import Map from '../../components/Map/Map';
 
 const Events = ({ history, setUser }) => {
   useEffect(() => {
@@ -16,6 +17,7 @@ const Events = ({ history, setUser }) => {
       <EventCard />
       <EventCard />
       <EventCard />
+      <Map />
     </div>
   );
 };

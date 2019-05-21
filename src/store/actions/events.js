@@ -92,7 +92,7 @@ export const createEventGuests = emails => async dispatch => {
 export const getEventGuests = eventId => async dispatch => {
   const token = localStorage.getItem('token');
   try {
-    const { data } = await events(token).post(`/events/${eventId}/invitations`);
+    const { data } = await events(token).get(`${eventId}/invitations`);
     console.log(data);
   } catch (err) {
     console.log(err.response);

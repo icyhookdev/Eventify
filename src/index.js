@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
+import 'mapbox-gl/dist/mapbox-gl.css';
 import ReduxToastr from 'react-redux-toastr';
 
 import App from './App';

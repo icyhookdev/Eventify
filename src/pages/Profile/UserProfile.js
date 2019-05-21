@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import classes from './UserProfile.module.css';
 import img from '../../assets/img/user.jpg';
 
-const UserProfile = () => (
+const UserProfile = ({ user }) => (
   <div className={classes.UserProfile}>
     <div className={classes.UserProfile_info}>
       <div className={classes.UserProfile_img}>
-        <img src={img} alt="404" />
+        <img src={user && user.avatar} alt="404" />
         <Link to="/edit-profile" className={classes.edit_profile}>
           Editar Perfil
         </Link>
@@ -27,13 +27,22 @@ const UserProfile = () => (
     </div>
 
     <div className={classes.UserProfile_details}>
-      <button className={[classes.events, classes.link].join(' ')}>
+      <button
+        type="button"
+        className={[classes.events, classes.link].join(' ')}
+      >
         Eventos
       </button>
-      <button className={[classes.following, classes.link].join(' ')}>
+      <button
+        type="button"
+        className={[classes.following, classes.link].join(' ')}
+      >
         Siguiendo
       </button>
-      <button className={[classes.followers, classes.link].join(' ')}>
+      <button
+        type="button"
+        className={[classes.followers, classes.link].join(' ')}
+      >
         Seguidores
       </button>
     </div>
