@@ -4,6 +4,8 @@ import {
   POPULATE_TYPES,
   POPULATE_RESTRICTIONS,
   POPULATE_COUNTRIES,
+  POPULATE_GENRES,
+  POPULATE_STATES,
 } from '../actions/types';
 
 const initialState = {
@@ -12,6 +14,8 @@ const initialState = {
   restrictions: [],
   modalities: [],
   countries: [],
+  states: [],
+  genres: [],
 };
 
 const populateReducer = (state = initialState, { type, payload }) => {
@@ -26,6 +30,10 @@ const populateReducer = (state = initialState, { type, payload }) => {
       return { ...state, modalities: payload };
     case POPULATE_COUNTRIES:
       return { ...state, countries: payload };
+    case POPULATE_STATES:
+      return { ...state, states: payload };
+    case POPULATE_GENRES:
+      return { ...state, genres: payload };
     default:
       return state;
   }

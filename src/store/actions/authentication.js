@@ -37,10 +37,14 @@ export const login = userData => async dispatch => {
   }
 };
 
-export const setUser = () => async dispatch => {
+export const setUser = updatedUser => async dispatch => {
   const userId = localStorage.getItem('user');
   const token = localStorage.getItem('token');
 
   const res = await usersWithAuth(token).get(`/${userId}`);
-  dispatch({ type: SET_USER, payload: res.data.data });
+  if (updatedUser) {
+    dispatch({ type: SET_USER, payload: updatedUser });
+  } else {
+    dispatch({ type: SET_USER, payload: res.data.data });
+  }
 };

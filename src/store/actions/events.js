@@ -5,6 +5,9 @@ import {
   FAIL_EVENT,
   SET_USER_EVENTS,
   SET_EVENT,
+  ST_GET_EVENT_GUESTS,
+  FL_GET_EVENT_GUESTS,
+  SUC_GET_EVENT_GUESTS,
 } from './types';
 import history from '../../history';
 
@@ -91,10 +94,15 @@ export const createEventGuests = emails => async dispatch => {
 
 export const getEventGuests = eventId => async dispatch => {
   const token = localStorage.getItem('token');
+
+  dispatch({ type: ST_GET_EVENT_GUESTS });
+
   try {
     const { data } = await events(token).get(`${eventId}/invitations`);
+    dispatch({ type: SUC_GET_EVENT_GUESTS, payload: data.data });
     console.log(data);
   } catch (err) {
+    dispatch({ type: FL_GET_EVENT_GUESTS });
     console.log(err.response);
   }
 };

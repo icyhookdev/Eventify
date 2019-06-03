@@ -13,6 +13,7 @@
     "react-dropzone": "^4.2.9",
     "react-load-script": "0.0.6",
     "react-map-gl": "^4.1.2",
+    "react-map-gl-geocoder": "^2.0.5",
     "react-redux": "^6.0.1",
     "react-redux-toastr": "^7.4.8",
     "react-router-dom": "^4.3.1",

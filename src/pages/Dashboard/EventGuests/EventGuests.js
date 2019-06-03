@@ -15,6 +15,7 @@ const EventGuests = ({
   bbar,
   registerGuests,
   error,
+  invitations,
 }) => (
   <div className={classes.EventGuests}>
     <TextHeader
@@ -23,7 +24,7 @@ const EventGuests = ({
       description="Dale a conocer a otros participantes las personas interesadas  en asistir"
     />
     <div className={classes.align__content}>
-      <div className={classes.guestsContainer} />
+      <div className={classes.guestsContainer}>{invitations}</div>
     </div>
     <TextHeader
       title="Invita a tus participantes"

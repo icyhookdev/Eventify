@@ -38,8 +38,26 @@
 .formEmail {
   padding: 2em;
 }
-.formContact,
-.formDirection {
+
+.Date__container {
+  display: grid;
+  width: 100%;
+}
+
+.Date__container input {
+  color: #000;
+  font-weight: bold;
+  text-align: left;
+  font-size: 1.5em;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.Date__container input:focus {
+  background-color: #fff;
+  outline: none;
+  border: 1px solid #1e0a3c;
 }
 
 .btnSubmit {
@@ -53,4 +71,12 @@
   background: var(--main-color);
   color: #fff;
   cursor: pointer;
+}
+
+.err__msg {
+  color: red;
+  font-size: 14px;
+  display: block;
+  margin-left: 0.5em;
+  text-align: left;
 }

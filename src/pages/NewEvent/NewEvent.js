@@ -159,7 +159,11 @@ const NewEvent = ({
                 <Select
                   name="state"
                   selected="State"
-                  options={selectsData.modalities}
+                  options={
+                    (selectsData.states && selectsData.states.states) || [
+                      'state',
+                    ]
+                  }
                   change={change}
                   value={values.state}
                   errMsg={errors.state}
