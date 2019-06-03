@@ -17,7 +17,7 @@ const Events = ({ history, setUser }) => {
       <EventCard />
       <EventCard />
       <EventCard />
-      <Map />
+      {/* <Map /> */}
     </div>
   );
 };

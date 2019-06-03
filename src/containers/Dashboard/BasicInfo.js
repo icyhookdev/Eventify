@@ -13,6 +13,7 @@ import {
   getRestrictions,
   getModalities,
   getCountries,
+  getStatesByCountry,
 } from '../../store/actions/poputateData';
 import checkInitialValues from '../../lib/checkInitialValues';
 
@@ -28,6 +29,7 @@ const BasicInfo = ({
   getModalities,
   selectData,
   getCountries,
+  getStatesByCountry,
 }) => {
   const [startDate, setStartDate] = useState(
     (currentEvent && new Date(currentEvent.start_date)) || new Date()
@@ -59,6 +61,7 @@ const BasicInfo = ({
     getRestrictions();
     getModalities();
     getCountries();
+
     // eslint-disable-next-line
   }, []);
 
@@ -72,6 +75,13 @@ const BasicInfo = ({
     getEvent(eventId);
     console.log('render');
   }, [eventId, getEvent]);
+
+  useEffect(() => {
+    if (values.country) {
+      getStatesByCountry(values.country);
+    }
+    // eslint-disable-next-line
+  }, [values.country]);
 
   // Validating the date
   const handleDateChange = ({ sd, ed }) => {
@@ -160,5 +170,6 @@ export default connect(
     getRestrictions,
     getModalities,
     getCountries,
+    getStatesByCountry,
   }
 )(BasicInfo);

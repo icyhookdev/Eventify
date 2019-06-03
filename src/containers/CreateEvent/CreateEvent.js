@@ -14,6 +14,7 @@ import {
   getRestrictions,
   getModalities,
   getCountries,
+  getStatesByCountry,
 } from '../../store/actions/poputateData';
 import setInputErrors from '../../lib/setinputErrors';
 
@@ -26,6 +27,7 @@ const CreateEvent = ({
   getModalities,
   selectData,
   getCountries,
+  getStatesByCountry,
 }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -59,6 +61,13 @@ const CreateEvent = ({
     }
   }, [values]);
 
+  useEffect(() => {
+    if (values.country) {
+      getStatesByCountry(values.country);
+    }
+    // eslint-disable-next-line
+  }, [values.country]);
+
   const handleDateChange = ({ sd, ed }) => {
     sd = sd || startDate;
     ed = ed || endDate;
@@ -76,8 +85,7 @@ const CreateEvent = ({
 
   const onSubmit = e => {
     e.preventDefault();
-
-    const formValues = {
+    const formValuesCheck = {
       name: values.name,
       type: values.type,
       category: values.category,
@@ -87,16 +95,32 @@ const CreateEvent = ({
       state: values.state,
       city: values.city,
       start_date: startDate,
-      address: [
-        { description: values.address1 },
-        { description: values.address2 },
-      ],
+      address1: values.address1,
+      address2: values.address2,
       finish_date: endDate,
       host: localStorage.getItem('user'),
     };
-    if (checkFormValues(formValues)) {
-      setErrors(setInputErrors(formValues));
+
+    if (checkFormValues(formValuesCheck)) {
+      setErrors(setInputErrors(formValuesCheck));
     } else {
+      const formValues = {
+        name: values.name,
+        type: values.type,
+        category: values.category,
+        restriction: values.restriction,
+        modality: values.modality,
+        country: values.country,
+        state: values.state,
+        city: values.city,
+        start_date: startDate,
+        address: [
+          { description: values.address1 },
+          { description: values.address2 },
+        ],
+        finish_date: endDate,
+        host: localStorage.getItem('user'),
+      };
       saveEvent(formValues);
     }
   };
@@ -133,5 +157,6 @@ export default connect(
     getRestrictions,
     getModalities,
     getCountries,
+    getStatesByCountry,
   }
 )(CreateEvent);

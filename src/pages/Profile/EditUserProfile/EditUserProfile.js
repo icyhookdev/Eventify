@@ -1,42 +1,135 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 import ProfilePhoto from '../../../components/ProfilePhoto/ProfilePhoto';
 import classes from './EditUserProfile.module.css';
 import InputGroup from '../../../components/InputGroup/InputGroup';
 import TextArea from '../../../components/TextArea/TextArea';
 import Select from '../../../components/Select/Select';
+import { setUser } from '../../../store/actions/authentication';
+import Loading from '../../../components/Loading/Loading';
 
-const EditUserProfile = () => (
+const EditUserProfile = ({
+  values,
+  userImg,
+  setUser,
+  change,
+  submit,
+  errors,
+  selectData,
+  date,
+  changeDate,
+  isLoading,
+}) => (
   <div className={classes.container}>
     <div className={classes.title}>Informacion de la Cuenta</div>
     <hr />
     <div className={classes.photo}>
       <div className={classes.subTitle}>Foto de Perfil</div>
-      <ProfilePhoto />
+      <ProfilePhoto profilePic={userImg} setUser={setUser} />
     </div>
     <div className={classes.formEmail}>
       <div className={classes.subTitle}>Email</div>
-      <InputGroup type="email" label="email" />
+      <InputGroup
+        type="email"
+        label="email"
+        name="email"
+        value={values.email}
+        change={change}
+      />
     </div>
-    <form className={classes.form}>
+    <form className={classes.form} onSubmit={submit}>
+      {isLoading && <Loading msg="Actualizando informacion..." />}
       <div className={classes.formContact}>
         <div className={classes.subTitle}>Informacion de contacto</div>
-        <InputGroup type="text" label="Nombre" />
-        <InputGroup type="text" label="Apellido" />
-        <InputGroup type="number" label="Telefono" />
-        <InputGroup type="text" label="Sitio web" />
-        <InputGroup type="date" label="Fecha de nacimiento" />
-        <TextArea label="Acerca de ti" />
+        <InputGroup
+          type="text"
+          label="Nombre"
+          name="name"
+          value={values.name}
+          change={change}
+          errMsg={errors.name}
+        />
+        <Select
+          selected="Genero"
+          options={selectData.genres}
+          name="genre"
+          value={values.genre}
+          change={change}
+          errMsg={errors.genre}
+        />
+        <InputGroup
+          type="text"
+          label="Apellido"
+          name="lastName"
+          value={values.lastName}
+          change={change}
+          errMsg={errors.lastName}
+        />
+        <TextArea
+          label="Acerca de ti"
+          name="aboutMe"
+          value={values.aboutMe}
+          change={change}
+          errMsg={errors.aboutMe}
+        />
+        <div className={classes.Date__container}>
+          <DatePicker
+            selected={date}
+            onChange={changeDate}
+            maxDate={new Date()}
+            placeholderText="Fecha de nacimiento"
+          />
+          {errors && <p className={classes.err__msg}>{errors.dateOfBirth}</p>}
+        </div>
       </div>
-
       <div className={classes.formDirection}>
         <div className={classes.subTitle}>Direccion</div>
-        <InputGroup type="text" label="Direccion" />
-        <InputGroup type="text" label="Direccion 2" />
-        <InputGroup type="text" label="Ciudad" />
-        <Select selected="Pais" options={['venezuela']} />
-        <Select selected="Estado" options={['venezuela']} />
-        <InputGroup type="number" label="Codigo Postal" />
+        <InputGroup
+          type="text"
+          label="Direccion"
+          name="address1"
+          value={values.address1}
+          change={change}
+          errMsg={errors.address1}
+        />
+        <InputGroup
+          type="text"
+          label="Direccion 2"
+          name="address2"
+          value={values.address2}
+          change={change}
+          errMsg={errors.address2}
+        />
+
+        <Select
+          selected="Pais"
+          options={selectData.countries}
+          name="country"
+          value={values.country}
+          change={change}
+          errMsg={errors.country}
+        />
+
+        <Select
+          selected="Estado"
+          name="state"
+          value={values.state}
+          change={change}
+          options={(selectData.states && selectData.states.states) || ['state']}
+          errMsg={errors.state}
+        />
+        <InputGroup
+          type="text"
+          label="Ciudad"
+          name="city"
+          value={values.city}
+          errMsg={errors.city}
+          change={change}
+        />
+        {/* <InputGroup type="number" label="Codigo Postal" /> */}
       </div>
 
       <button type="submit" className={classes.btnSubmit}>
@@ -46,4 +139,8 @@ const EditUserProfile = () => (
   </div>
 );
 
-export default EditUserProfile;
+const mapStateToProps = ({ user }) => ({ isLoading: user.isLoading });
+export default connect(
+  mapStateToProps,
+  { setUser }
+)(EditUserProfile);

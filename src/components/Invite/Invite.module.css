@@ -23,3 +23,30 @@
   cursor: pointer;
   width: 30px;
 }
+
+.InviteAccepted {
+  background: url('../../assets/icons/check.svg'), #00db37;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  height: 30px;
+
+  width: 30px;
+}
+.InvitePending {
+  background: url('../../assets/icons/questionMark.svg'), #ddd;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  height: 30px;
+
+  width: 30px;
+}
+
+.InviteAction {
+  display: flex;
+  width: 70px;
+  justify-content: space-around;
+}

@@ -9,7 +9,7 @@ const DashboardNav = () => (
     <h1 className={classes.logo}>Revents</h1>
     <ul className={classes.items}>
       <li>
-        <Link to="/">Cambiar evento</Link>
+        <Link to="/myevents">Cambiar evento</Link>
       </li>
       <li>
         <Link to="/">Eventos</Link>

@@ -5,7 +5,7 @@ import { createEventGuests, getEventGuests } from '../../store/actions/events';
 import Invite from '../../components/Invite/Invite';
 import checkInitialValues from '../../lib/checkInitialValues';
 
-const Guests = ({ match, createEventGuests, getEventGuests }) => {
+const Guests = ({ match, createEventGuests, getEventGuests, invitations }) => {
   const [guests, setGuests] = useState([]);
   const [bbar, setBbar] = useState(false);
   const [values, setValues] = useState({ email: '' });
@@ -15,6 +15,18 @@ const Guests = ({ match, createEventGuests, getEventGuests }) => {
     guests &&
     guests.map((guest, i) => (
       <Invite text={guest} key={i} remove={() => onRemoveEmailFromDraft(i)} />
+    ));
+
+  // TODO: make a tab for pending, accepted and rejected guest's invitations
+  const guestsRequested =
+    invitations &&
+    invitations.map(invitation => (
+      <Invite
+        key={invitation.id}
+        text={invitation.id}
+        requested
+        status={invitation.status}
+      />
     ));
 
   useEffect(() => {
@@ -80,12 +92,15 @@ const Guests = ({ match, createEventGuests, getEventGuests }) => {
       values={values}
       error={error}
       bbar={bbar}
+      invitations={guestsRequested}
       registerGuests={onRegisterGuests}
     />
   );
 };
 
+const mapStateToProps = ({ events }) => ({ invitations: events.guests });
+
 export default connect(
-  null,
+  mapStateToProps,
   { createEventGuests, getEventGuests }
 )(Guests);

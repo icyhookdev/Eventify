@@ -16,6 +16,14 @@
   position: relative;
 }
 
+.userImg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: fill;
+  object-position: center;
+}
+
 .drag:hover .info {
   opacity: 1;
 }

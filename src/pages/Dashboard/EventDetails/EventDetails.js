@@ -6,6 +6,8 @@ import imgIcon from '../../../assets/icons/image.svg';
 import textIcon from '../../../assets/icons/text.svg';
 import TextArea from '../../../components/TextArea/TextArea';
 import BottomBar from '../../../components/BottomBar/BottomBar';
+import MapIcon from '../../../assets/icons/map.svg';
+import Map from '../../../components/Map/Map';
 
 const EventDetails = ({
   onDrop,
@@ -16,6 +18,7 @@ const EventDetails = ({
   bbar,
   loading,
   submit,
+  eventId,
 }) => (
   <div className={classes.EventDetails}>
     <form onSubmit={submit}>
@@ -57,8 +60,18 @@ const EventDetails = ({
           value={values.description}
         />
       </div>
+
       {bbar && <BottomBar isLoading={loading} msg="Actualizando Evento" />}
     </form>
+    <TextHeader
+      title="Locacion"
+      description="Hasle saber a tus invitados donde va a ser el evento."
+      img={MapIcon}
+      mt
+    />
+    <div className={classes.align__content}>
+      <Map fullWidth eventId={eventId} />
+    </div>
   </div>
 );
 
