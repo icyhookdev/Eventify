@@ -31,10 +31,13 @@ const Guests = ({ match, createEventGuests, getEventGuests, invitations }) => {
 
   useEffect(() => {
     getEventGuests(match.params.id);
+  }, [getEventGuests, match.params.id]);
+
+  useEffect(() => {
     if (checkInitialValues(values)) {
       setBbar(true);
     }
-  }, [getEventGuests, match.params.id, values]);
+  }, [values]);
 
   const onChangeHandler = e => {
     const { name, value } = e.target;

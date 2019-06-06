@@ -5,6 +5,7 @@ import { usersWithAuth } from '../../api/users';
 import classes from './ProfilePhoto.module.css';
 import cameraIcon from '../../assets/icons/camera.svg';
 import Loading from '../Loading/Loading';
+import profileImg from '../../assets/img/profileImg.png';
 
 const ProfilePhoto = ({ profilePic, setUser }) => {
   const [file, setFile] = useState(null);
@@ -46,7 +47,11 @@ const ProfilePhoto = ({ profilePic, setUser }) => {
 
       <Dropzone className={classes.drag} onDrop={onDropHandler}>
         {!file && (
-          <img className={classes.userImg} src={profilePic} alt="404" />
+          <img
+            className={classes.userImg}
+            src={profilePic || profileImg}
+            alt="404"
+          />
         )}
         {file && (
           <div className={classes.img_preview_container}>

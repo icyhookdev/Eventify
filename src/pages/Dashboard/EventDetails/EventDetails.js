@@ -24,7 +24,7 @@ const EventDetails = ({
     <form onSubmit={submit}>
       <TextHeader
         title="Imagen Principal del Evento"
-        description="Esta es la primera imagen que los Usuarios veran. Se recomiendo que la imagen sea Landscape 1920x1080px"
+        description="Esta es la primera imagen que los Usuarios veran. Se recomienda que la imagen sea Landscape 1920x1080px"
         img={imgIcon}
       />
 

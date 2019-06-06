@@ -3,11 +3,19 @@ import React, { useState } from 'react';
 import classes from './MyEventsCreated.module.css';
 import EventsCreated from './MyEventsCard/MyEventsCard';
 
-const MyEventsCreated = ({ events }) => {
-  const [tab, setTab] = useState('draft');
+const MyEventsCreated = ({ liveEvents, pastEvents, draftEvents }) => {
+  const [tab, setTab] = useState('live');
 
-  const mapEvents =
-    events && events.map(event => <EventsCreated key={event._id} {...event} />);
+  const drafts =
+    draftEvents &&
+    draftEvents.map(event => <EventsCreated key={event._id} {...event} />);
+  const lives =
+    liveEvents &&
+    liveEvents.map(event => <EventsCreated key={event._id} {...event} />);
+  const pasts =
+    pastEvents &&
+    pastEvents.map(event => <EventsCreated key={event._id} {...event} />);
+
   return (
     <div className={classes.EventsCreated}>
       <div className={classes.subtitle}>Mis Eventos</div>
@@ -20,7 +28,7 @@ const MyEventsCreated = ({ events }) => {
             tab === 'live' ? classes.active_tab : '',
           ].join(' ')}
         >
-          Activos 0
+          Activos {lives.length}
         </button>
         <button
           type="button"
@@ -30,7 +38,7 @@ const MyEventsCreated = ({ events }) => {
             tab === 'draft' ? classes.active_tab : '',
           ].join(' ')}
         >
-          Borrador 0
+          Borrador {drafts.length}
         </button>
         <button
           type="button"
@@ -40,29 +48,26 @@ const MyEventsCreated = ({ events }) => {
             tab === 'past' ? classes.active_tab : '',
           ].join(' ')}
         >
-          Pasados 0
+          Pasados {pasts.length}
         </button>
       </div>
       <div
         className={classes.tab_content}
         style={tab === 'draft' ? { display: 'grid' } : { display: 'none' }}
       >
-        {mapEvents}
+        {drafts}
       </div>
       <div
         className={classes.tab_content}
         style={tab === 'live' ? { display: 'grid' } : { display: 'none' }}
       >
-        {mapEvents}
-        {mapEvents}
+        {lives}
       </div>
       <div
         className={classes.tab_content}
         style={tab === 'past' ? { display: 'grid' } : { display: 'none' }}
       >
-        {mapEvents}
-        {mapEvents}
-        {mapEvents}
+        {lives}
       </div>
     </div>
   );

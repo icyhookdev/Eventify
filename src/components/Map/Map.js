@@ -7,9 +7,13 @@ import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import {
   createDraftPin,
   updateDraftPinLocation,
+  setCurrentPin,
+  deletePin,
 } from '../../store/actions/pins';
 import PinIcon from '../icons/PinIcon';
 import MapSideContent from './MapSideContent';
+import marker from '../../assets/img/marker.png';
+import placeholderImage from '../../assets/img/placeholder.png';
 
 const Map = ({
   fullWidth,
@@ -18,6 +22,9 @@ const Map = ({
   updateDraftPinLocation,
   currentPin,
   currentEventPins,
+  setCurrentPin,
+  event,
+  deletePin,
 }) => {
   const [map] = useState({
     latitude: 37.7577,
@@ -29,6 +36,7 @@ const Map = ({
   const [viewport, setViewport] = useState(map);
   const [userPosition, setUserPosition] = useState(null);
   const [mapWidth, setMapWidth] = useState('400px');
+  const [popup, setPopup] = useState(null);
 
   useEffect(() => {
     getUserPosition();
@@ -46,16 +54,32 @@ const Map = ({
     }
   };
 
-  const handleMapClick = ({ lngLat, leftButton }) => {
+  const handleMapClick = ({ lngLat, leftButton, target }) => {
     if (!leftButton) return;
+
+    if (
+      target.className === 'mapboxgl-ctrl-geocoder--input' ||
+      target.className === 'mapboxgl-ctrl-geocoder--suggestion-address' ||
+      target.className === 'delBtn'
+    ) {
+      return;
+    }
+
+    console.log(target);
 
     if (!draft) {
       createDraftPin();
     }
-
     const [longitude, latitude] = lngLat;
 
     updateDraftPinLocation({ longitude, latitude });
+  };
+
+  const handleSelectPin = pin => {
+    console.log('click');
+    setPopup(pin);
+    setCurrentPin(pin);
+    console.log(pin);
   };
 
   const getUserPosition = () => {
@@ -68,10 +92,22 @@ const Map = ({
       });
     }
   };
-  // philips-run-line ,mets a ganar ,bravos a ganar, pirates a ganar x 5000
+
+  // TODO: delete pin
+  const handleDeletePin = id => {
+    console.log(id);
+    deletePin(id);
+    setPopup(null);
+  };
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '250px 1fr' }}>
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: '250px 1fr',
+        position: 'relative',
+      }}
+    >
       <MapSideContent draft={draft} currentPin={currentPin} />
       <ReactMapGL
         ref={mapRef}
@@ -88,6 +124,7 @@ const Map = ({
           onViewportChange={newViewport => setViewport(newViewport)}
           mapboxApiAccessToken="pk.eyJ1IjoidGhpZW5qcyIsImEiOiJjanRhbGswencwY2FqM3lvYmFha2t3Zm8zIn0.jnoLsme-neGURWbBd-C5iw"
         />
+
         <div
           style={{ position: 'absolute', bottom: 0, right: 0, margin: '1em' }}
         >
@@ -130,25 +167,86 @@ const Map = ({
               offsetLeft={-19}
               offsetTop={-37}
             >
-              <PinIcon
-                // onClick={() => handleSelectPin(pin)}
-                size={40}
-                color="#fdcb6e"
+              <div
+                onClick={() => handleSelectPin(pin)}
+                style={{
+                  height: 50,
+                  width: 50,
+                  background: `url(${marker})`,
+                  backgroundSize: 'cover',
+                }}
               />
             </Marker>
           ))}
+
+        {/* popup */}
+        {popup && (
+          <Popup
+            anchor="top"
+            latitude={parseFloat(popup.latitude)}
+            longitude={parseFloat(popup.longitude)}
+            closeOnClick={false}
+            onClose={() => setPopup(null)}
+          >
+            <img
+              style={{
+                padding: '0.4em',
+                height: 200,
+                width: 200,
+                objectFit: 'cover',
+              }}
+              src={event.image || popup.image || placeholderImage}
+              alt="not found"
+            />
+
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexDirection: 'column',
+              }}
+            >
+              <div
+                style={{
+                  fontWeight: 'bold',
+                  fontFamily: 'MontserratBold',
+                  fontSize: 17,
+                }}
+              >
+                {popup.title}
+              </div>
+
+              <button
+                style={{
+                  padding: 10,
+                  border: 0,
+                  outline: 0,
+                  width: 40,
+                  cursor: 'pointer',
+                }}
+                type="button"
+                className="delBtn"
+                onClick={() => handleDeletePin(popup._id)}
+              >
+                {/* <DeleteIcon className={classes.deleteIcon} /> */}x
+              </button>
+            </div>
+          </Popup>
+        )}
       </ReactMapGL>
     </div>
   );
 };
 
-const mapStateToProps = ({ pins }) => ({
+const mapStateToProps = ({ pins, events }) => ({
   draft: pins.draft,
   currentPin: pins.currentPin,
   currentEventPins: pins.currentEventPins,
+  event: events.currentEvent,
 });
 
 export default connect(
   mapStateToProps,
-  { createDraftPin, updateDraftPinLocation }
+  { createDraftPin, updateDraftPinLocation, setCurrentPin, deletePin }
 )(Map);

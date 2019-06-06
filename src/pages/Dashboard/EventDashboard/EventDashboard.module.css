@@ -1,0 +1,13 @@
+.button {
+  padding: 1em;
+  background: var(--main-color);
+  color: #fff;
+  border: 0;
+  font-weight: bold;
+  outline: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'MontserratBold';
+  font-size: 1.6em;
+  transition: all 0.3s ease;
+}

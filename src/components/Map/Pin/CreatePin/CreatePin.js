@@ -6,7 +6,6 @@ import {
   deleteDraftPinLocation,
 } from '../../../../store/actions/pins';
 import classes from './CreatePin.module.css';
-// import axios from 'axios';
 
 const CreatePin = ({
   event,
@@ -15,8 +14,6 @@ const CreatePin = ({
   deleteDraftPinLocation,
   currentEventPins,
 }) => {
-  // const [submitting, setSubmitting] = useState(false);
-
   const handleDeleteDraft = () => {
     deleteDraftPinLocation();
   };
@@ -24,12 +21,22 @@ const CreatePin = ({
   const handleSubmit = async e => {
     e.preventDefault();
 
-    const pin = {
-      event: event._id,
-      title: event.name,
+    let pin = {};
 
-      ...draft,
-    };
+    if (event.image) {
+      pin = {
+        event: event._id,
+        title: event.name,
+        image: event.image,
+        ...draft,
+      };
+    } else {
+      pin = {
+        event: event._id,
+        title: event.name,
+        ...draft,
+      };
+    }
 
     createPin(pin, currentEventPins);
   };

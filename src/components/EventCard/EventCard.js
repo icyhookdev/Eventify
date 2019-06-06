@@ -14,7 +14,7 @@ const EventCard = () => (
       </div>
     </div>
     <div className={classes.EventCard__img}>
-      <Link to="/">
+      <Link to="/event/dsafdsa">
         <img
           className={classes.EventCard__img_current}
           src={eventImg}

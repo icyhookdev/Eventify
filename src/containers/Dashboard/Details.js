@@ -57,7 +57,10 @@ const Details = ({
 
     try {
       await updateEvent(formValues);
-      await updateEventImg(currentEvent.id, file);
+
+      if (file) {
+        await updateEventImg(currentEvent.id, file);
+      }
       setLoading(false);
     } catch (error) {
       console.log(error);

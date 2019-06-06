@@ -60,6 +60,7 @@ export const updateEvent = data => async dispatch => {
   try {
     const res = await events(token).put(`/edit`, data);
     toastr.success('Exitoso!', 'Evento Actualizado');
+
     console.log('succeedd', res);
   } catch (err) {
     toastr.error('Error', 'Upp! Algo salio mal.');
@@ -67,16 +68,17 @@ export const updateEvent = data => async dispatch => {
   }
 };
 
-export const updateEventImg = (id, img) => async dispatch => {
+export const updateEventImg = (id, img) => async (dispatch, getState) => {
   const token = localStorage.getItem('token');
 
   const form = new FormData();
   form.append('image', img, img.name);
 
   try {
-    const res = await events(token, true).put(`image/${id}`, form);
-
-    console.log('succeedd', res);
+    const { data } = await events(token, true).put(`image/${id}`, form);
+    const event = getState().events.currentEvent;
+    console.log(event);
+    dispatch({ type: SET_EVENT, payload: { ...event, image: data.url } });
   } catch (err) {
     console.log(err.response);
   }

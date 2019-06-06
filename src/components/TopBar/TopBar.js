@@ -8,9 +8,9 @@ import DropDown from '../DropDown/DropDown';
 
 const TopBar = ({ signout }) => (
   <div className={classes.TopBar}>
-    <div className={classes.left__side}>
+    {/* <div className={classes.left__side}>
       <InputGroup label="Buscar" />
-    </div>
+    </div> */}
     <div className={classes.right__side}>
       <Link to="/new" className={classes.top__btn}>
         Crear Evento

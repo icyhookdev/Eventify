@@ -10,10 +10,23 @@ const MyEvents = ({ getEvents, events, isLoading }) => {
     getEvents();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const draftEvents = events.filter(event => event.publish_status === 'draft');
+  const liveEvents = events.filter(
+    event => event.publish_status === 'published'
+  );
+  const pastEvents = events.filter(
+    event => event.publish_status === 'finished'
+  );
+
   return isLoading ? (
     <Loading msg="Cargando Eventos" />
   ) : (
-    <MyEventsCreated events={events} />
+    <MyEventsCreated
+      liveEvents={liveEvents}
+      pastEvents={pastEvents}
+      draftEvents={draftEvents}
+    />
   );
 };
 

@@ -13,6 +13,7 @@ import MyEvents from './containers/MyEvents/MyEvents';
 import Dashboard from './containers/Dashboard/Dashboard';
 import Profile from './containers/Profile/Profile';
 import EditProfile from './containers/Profile/EditProfile';
+import Event from './containers/Events/Event/Event';
 
 class App extends React.Component {
   componentDidMount() {
@@ -46,7 +47,7 @@ class App extends React.Component {
             <Route path="/edit-profile" component={EditProfile} />
             <Route path="/myevents" component={MyEvents} />
             <Route path="/people" component={() => <h1>hi3</h1>} />
-            <Route path="/event/:id" component={() => <h1>hi4</h1>} />
+            <Route path="/event/:id" component={Event} />
           </ContentLayout>
         </Layout>
       </Switch>

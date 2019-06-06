@@ -168,12 +168,12 @@ const NewEvent = ({
                   value={values.state}
                   errMsg={errors.state}
                 />
-                <Select
+                <InputGroup
                   name="city"
-                  selected="City"
-                  options={selectsData.modalities}
-                  change={change}
+                  type="text"
+                  label="Ciudad"
                   value={values.city}
+                  change={change}
                   errMsg={errors.city}
                 />
               </div>

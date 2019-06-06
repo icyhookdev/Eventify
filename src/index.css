@@ -80,3 +80,8 @@ select {
 .datePicker {
   font-size: 2em !important;
 }
+
+.mapboxgl-ctrl-top-right {
+  z-index: 9999;
+  position: absolute;
+}

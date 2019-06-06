@@ -1,0 +1,94 @@
+.EventView {
+  padding: 2em;
+  /* background: blue; */
+}
+
+.container {
+  background: hsl(0, 0%, 98%);
+  border-radius: 5px;
+  width: 950px;
+  margin: auto;
+}
+
+.containerHeader {
+  display: grid;
+  grid-template-columns: 650px 300px;
+}
+
+.containerHeader > img {
+  object-fit: cover;
+  width: 100%;
+  height: 300px;
+}
+
+.containerOwner {
+  width: 300px;
+  position: relative;
+  padding: 2em;
+  background: #e9e9e9;
+}
+
+.containerOwnerDate {
+  font-size: 2.5em;
+}
+
+.containerOwnerTitle {
+  font-size: 2em;
+  font-weight: bold;
+  padding-top: 1rem;
+  font-family: 'MontserratBold';
+}
+
+.containerOwnerName {
+  font-size: 1.7em;
+  /* font-weight: bold; */
+  padding: 1rem 0;
+  /* color: #b4b4b4; */
+}
+
+.subscribe {
+  width: 85%;
+  background: var(--main-color);
+  color: #fff;
+  text-align: center;
+  border: 0;
+  outline: 0;
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 1.7em;
+  border-radius: 5px;
+  position: absolute;
+  cursor: pointer;
+  bottom: 10px;
+}
+
+.containerBody {
+  display: grid;
+  grid-template-columns: 650px 300px;
+}
+
+.description {
+  padding: 2.5rem;
+  font-size: 1.5em;
+  color: #7e7e7e;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  color: #000;
+  margin-bottom: 1em;
+}
+
+.dateDetails {
+  padding: 2.5rem;
+  font-size: 1.5em;
+  color: #7e7e7e;
+}
+
+.dateDetails > .text {
+  padding: 5px 0;
+}
+
+.contentSection {
+  margin: 1rem;
+}

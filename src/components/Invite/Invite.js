@@ -13,6 +13,7 @@ const Invite = ({ text, remove, requested, status }) => (
           <div className={classes.InviteRemove} onClick={remove} />
         </div>
       )}
+      <div className={classes.InviteRemove} onClick={remove} />
     </Fragment>
   </div>
 );

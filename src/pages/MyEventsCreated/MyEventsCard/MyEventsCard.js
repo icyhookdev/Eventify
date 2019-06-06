@@ -9,7 +9,7 @@ const EventsCreated = ({ _id, name, image }) => (
   <div className={classes.EventsCreated}>
     <div className={classes.EventsCreated__card}>
       <div className={classes.card__img}>
-        <img src={image || img} alt="404" />
+        <img src={(image && image) || img} alt="404" />
       </div>
       <div className={classes.card__details}>
         <h1>{name}</h1>

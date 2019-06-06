@@ -2,26 +2,29 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import classes from './UserProfile.module.css';
-import img from '../../assets/img/user.jpg';
+import img from '../../assets/img/profileImg.png';
 
 const UserProfile = ({ user }) => (
   <div className={classes.UserProfile}>
     <div className={classes.UserProfile_info}>
       <div className={classes.UserProfile_img}>
-        <img src={user && user.avatar} alt="404" />
+        <img src={(user && user.avatar) || img} alt="404" />
         <Link to="/edit-profile" className={classes.edit_profile}>
           Editar Perfil
         </Link>
       </div>
       <div className={classes.UserProfile_description}>
-        <div className={classes.UserProfile__name}>Cristihan A.</div>
-        <div className={classes.UserProfile__user}>@Cristihan</div>
-        <div className={classes.UserProfile__description}>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis
-          quibusdam incidunt reprehenderit quo quod aspernatur praesentium
-          ipsam, repellat asperiores quaerat...
+        <div className={classes.UserProfile__name}>
+          {user && user.name}
+          {user && user.lastName}
         </div>
-        <div className={classes.UserProfile__loation}>Caracas, Venezuela</div>
+        <div className={classes.UserProfile__user}>
+          @{user && user.username}
+        </div>
+        <div className={classes.UserProfile__description}>
+          {user && user.aboutMe}
+        </div>
+        <div className={classes.UserProfile__loation}>{user && user.city}</div>
         <div className={classes.UserProfile__company}>Netflix</div>
       </div>
     </div>

@@ -9,7 +9,8 @@ const NoContent = () => (
       <ExplorerIcon size="80px" />
     </div>
     <div className={classes.title}>
-      Has Click en el mapa para agregar la ubicacion del evento.
+      Has Click en el mapa para agregar la ubicacion del evento o en un pin para
+      ver detalles del mismo.
     </div>
   </div>
 );

@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Layout from '../../components/Layout/Layout';
@@ -8,11 +8,11 @@ import DashboardSideNav from '../../pages/Dashboard/EventDashboard/DashboardSide
 import EventDashboard from '../../pages/Dashboard/EventDashboard/EventDashboard';
 import BasicInfo from './BasicInfo';
 import DashboardLayout from '../../components/Layout/DashboardLayout/DashboardLayout';
-import { getEvent } from '../../store/actions/events';
+import { getEvent, updateEvent } from '../../store/actions/events';
 import Details from './Details';
 import Guests from './Guests';
 
-const Dashboard = ({ getEvent, match, event }) => {
+const Dashboard = ({ getEvent, match, event, updateEvent }) => {
   const { id } = match.params;
 
   useEffect(() => {
@@ -26,7 +26,13 @@ const Dashboard = ({ getEvent, match, event }) => {
       <Layout>
         <DashboardSideNav event={event} />
         <DashboardLayout>
-          <Route path="/dashboard/:id" exact component={EventDashboard} />
+          <Route
+            path="/dashboard/:id"
+            exact
+            component={() => (
+              <EventDashboard eventId={id} publishEvent={updateEvent} />
+            )}
+          />
           <Route path="/dashboard/info/:id" component={BasicInfo} />
           <Route path="/dashboard/details/:id" component={Details} />
           <Route path="/dashboard/guests/:id" component={Guests} />
@@ -40,5 +46,5 @@ const mapStateToProps = ({ events }) => ({ event: events.currentEvent });
 
 export default connect(
   mapStateToProps,
-  { getEvent }
+  { getEvent, updateEvent }
 )(Dashboard);
