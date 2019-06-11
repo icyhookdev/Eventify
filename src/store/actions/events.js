@@ -8,6 +8,12 @@ import {
   ST_GET_EVENT_GUESTS,
   FL_GET_EVENT_GUESTS,
   SUC_GET_EVENT_GUESTS,
+  EVENT_PUBLISHED,
+  FAIL_REQUEST,
+  GET_EVENTS_PUBLISHED,
+  ST_GET_EVENTS_PUBLISHED,
+  ST_SUB_USER_IN_EVENT,
+  USER_SUBSCRIBED,
 } from './types';
 import history from '../../history';
 
@@ -105,6 +111,54 @@ export const getEventGuests = eventId => async dispatch => {
     console.log(data);
   } catch (err) {
     dispatch({ type: FL_GET_EVENT_GUESTS });
+    console.log(err.response);
+  }
+};
+
+export const changeStatusEvent = (eventId, status) => async dispatch => {
+  const token = localStorage.getItem('token');
+
+  try {
+    const { data } = await events(token).put(
+      `/change_status/${eventId}`,
+      status
+    );
+    dispatch({ type: EVENT_PUBLISHED });
+    console.log(data);
+  } catch (err) {
+    // dispatch({ type: FL_GET_EVENT_GUESTS });
+    console.log(err.response);
+  }
+};
+
+export const getEventsPublished = page => async dispatch => {
+  const token = localStorage.getItem('token');
+  dispatch({ type: ST_GET_EVENTS_PUBLISHED });
+  try {
+    let res = null;
+    if (page) {
+      res = await events(token).get(`/published?page=${page}`);
+    } else {
+      res = await events(token).get(`/published`);
+    }
+    dispatch({ type: GET_EVENTS_PUBLISHED, payload: res.data.data });
+    console.log(res);
+  } catch (err) {
+    dispatch({ type: FAIL_REQUEST });
+    console.log(err.response);
+  }
+};
+
+export const signUpUserInEvent = (eventId, userId) => async dispatch => {
+  const token = localStorage.getItem('token');
+  dispatch({ type: ST_SUB_USER_IN_EVENT });
+  try {
+    const { data } = await events(token).put(`/signup/${eventId}`, { userId });
+    console.log(data);
+
+    // dispatch({ type: USER_SUBSCRIBED, payload: res.data.data });
+  } catch (err) {
+    dispatch({ type: FAIL_REQUEST });
     console.log(err.response);
   }
 };

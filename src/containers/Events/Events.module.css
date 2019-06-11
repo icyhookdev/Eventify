@@ -1,9 +1,9 @@
 .Events {
   padding: 0.7em 2.5em;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 2.6em;
-  justify-content: space-between;
+  display: flex;
+  /* grid-template-columns: repeat(auto-fill, 300px);
+  grid-gap: 2em; */
+  overflow-x: auto;
 }
 
 .Events__container {

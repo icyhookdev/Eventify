@@ -79,6 +79,10 @@
   margin-bottom: 1em;
 }
 
+.fullWidthMap {
+  width: 100%;
+}
+
 .dateDetails {
   padding: 2.5rem;
   font-size: 1.5em;

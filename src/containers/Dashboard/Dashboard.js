@@ -8,11 +8,11 @@ import DashboardSideNav from '../../pages/Dashboard/EventDashboard/DashboardSide
 import EventDashboard from '../../pages/Dashboard/EventDashboard/EventDashboard';
 import BasicInfo from './BasicInfo';
 import DashboardLayout from '../../components/Layout/DashboardLayout/DashboardLayout';
-import { getEvent, updateEvent } from '../../store/actions/events';
+import { getEvent, changeStatusEvent } from '../../store/actions/events';
 import Details from './Details';
 import Guests from './Guests';
 
-const Dashboard = ({ getEvent, match, event, updateEvent }) => {
+const Dashboard = ({ getEvent, match, event, changeStatusEvent }) => {
   const { id } = match.params;
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const Dashboard = ({ getEvent, match, event, updateEvent }) => {
             path="/dashboard/:id"
             exact
             component={() => (
-              <EventDashboard eventId={id} publishEvent={updateEvent} />
+              <EventDashboard eventId={id} publishEvent={changeStatusEvent} />
             )}
           />
           <Route path="/dashboard/info/:id" component={BasicInfo} />
@@ -46,5 +46,5 @@ const mapStateToProps = ({ events }) => ({ event: events.currentEvent });
 
 export default connect(
   mapStateToProps,
-  { getEvent, updateEvent }
+  { getEvent, changeStatusEvent }
 )(Dashboard);

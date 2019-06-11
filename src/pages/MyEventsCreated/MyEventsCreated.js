@@ -50,6 +50,16 @@ const MyEventsCreated = ({ liveEvents, pastEvents, draftEvents }) => {
         >
           Pasados {pasts.length}
         </button>
+        <button
+          type="button"
+          onClick={() => setTab('cancelled')}
+          className={[
+            classes.button_tab,
+            tab === 'cancelled' ? classes.active_tab : '',
+          ].join(' ')}
+        >
+          Cancelados {pasts.length}
+        </button>
       </div>
       <div
         className={classes.tab_content}
@@ -68,6 +78,12 @@ const MyEventsCreated = ({ liveEvents, pastEvents, draftEvents }) => {
         style={tab === 'past' ? { display: 'grid' } : { display: 'none' }}
       >
         {lives}
+      </div>
+      <div
+        className={classes.tab_content}
+        style={tab === 'cancelled' ? { display: 'grid' } : { display: 'none' }}
+      >
+        cancelled
       </div>
     </div>
   );
