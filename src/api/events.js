@@ -3,7 +3,7 @@ import axios from 'axios';
 const events = (token, isAFile) => {
   if (isAFile) {
     return axios.create({
-      baseURL: 'https://iujo-eventify-api.herokuapp.com/api/events',
+      baseURL: `http://localhost:4000/api/events`,
       headers: {
         Accept: 'application/json',
         'Content-Type': 'multipart/form-data',
@@ -12,7 +12,7 @@ const events = (token, isAFile) => {
     });
   }
   return axios.create({
-    baseURL: 'https://iujo-eventify-api.herokuapp.com/api/events',
+    baseURL: `http://localhost:4000/api/events`,
     headers: {
       Authorization: `Bearer ${token}`,
     },

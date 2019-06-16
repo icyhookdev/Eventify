@@ -5,7 +5,6 @@ import ReactMapGL, { NavigationControl, Marker, Popup } from 'react-map-gl';
 import Geocoder from 'react-map-gl-geocoder';
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
-import PinIcon from '../icons/PinIcon';
 import marker from '../../assets/img/marker.png';
 import placeholderImage from '../../assets/img/placeholder.png';
 
@@ -46,7 +45,7 @@ const OnlyReadMap = ({ event, fullWidth }) => {
   };
 
   const getEventPosition = () => {
-    if (event) {
+    if (event && event.pins[0]) {
       const { latitude, longitude } = event.pins[0];
       const coords = {
         latitude: parseFloat(latitude),
@@ -68,7 +67,7 @@ const OnlyReadMap = ({ event, fullWidth }) => {
     >
       <ReactMapGL
         ref={mapRef}
-        width={mapWidth}
+        width="100%"
         height="400px"
         mapStyle="mapbox://styles/mapbox/streets-v11"
         mapboxApiAccessToken="pk.eyJ1IjoidGhpZW5qcyIsImEiOiJjanRhbGswencwY2FqM3lvYmFha2t3Zm8zIn0.jnoLsme-neGURWbBd-C5iw"
@@ -96,9 +95,7 @@ const OnlyReadMap = ({ event, fullWidth }) => {
             longitude={mainEventPosition.longitude}
             offsetLeft={-19}
             offsetTop={-37}
-          >
-            <PinIcon size="40" color="red" />
-          </Marker>
+          />
         )}
 
         {/* Events pin */}

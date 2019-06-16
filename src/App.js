@@ -15,6 +15,8 @@ import Profile from './containers/Profile/Profile';
 import EditProfile from './containers/Profile/EditProfile';
 import Event from './containers/Events/Event/Event';
 import UsersProfile from './containers/Profile/UsersProfile';
+import Register from './containers/ModeratorPanel/Register';
+import Statistics from './containers/ModeratorPanel/Staticstic';
 
 class App extends React.Component {
   componentDidMount() {
@@ -48,6 +50,8 @@ class App extends React.Component {
             <Route path="/edit-profile" component={EditProfile} />
             <Route path="/myevents" component={MyEvents} />
             <Route path="/people" component={() => <h1>hi3</h1>} />
+            <Route path="/register-mics" component={Register} />
+            <Route path="/statistics" component={Statistics} />
             <Route path="/event/:id" component={Event} />
             <Route path="/user/:id" component={UsersProfile} />
           </ContentLayout>

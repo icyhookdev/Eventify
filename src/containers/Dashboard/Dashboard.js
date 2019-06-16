@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Layout from '../../components/Layout/Layout';
@@ -11,6 +11,7 @@ import DashboardLayout from '../../components/Layout/DashboardLayout/DashboardLa
 import { getEvent, changeStatusEvent } from '../../store/actions/events';
 import Details from './Details';
 import Guests from './Guests';
+import EventRestrictions from '../../pages/Dashboard/EventRestrictions/EventRestrictions';
 
 const Dashboard = ({ getEvent, match, event, changeStatusEvent }) => {
   const { id } = match.params;
@@ -30,12 +31,16 @@ const Dashboard = ({ getEvent, match, event, changeStatusEvent }) => {
             path="/dashboard/:id"
             exact
             component={() => (
-              <EventDashboard eventId={id} publishEvent={changeStatusEvent} />
+              <EventDashboard {...event} publishEvent={changeStatusEvent} />
             )}
           />
           <Route path="/dashboard/info/:id" component={BasicInfo} />
           <Route path="/dashboard/details/:id" component={Details} />
           <Route path="/dashboard/guests/:id" component={Guests} />
+          <Route
+            path="/dashboard/Restrictions/:id"
+            component={EventRestrictions}
+          />
         </DashboardLayout>
       </Layout>
     </Fragment>

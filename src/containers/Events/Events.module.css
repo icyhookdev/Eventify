@@ -11,8 +11,42 @@
   display: grid;
 }
 
+.title {
+  font-size: 2em;
+  font-weight: bold;
+  font-family: 'MontserratBold';
+  display: block;
+}
+
 .aside {
   grid-area: aside;
   width: 100%;
   position: relative;
+}
+
+.popup {
+  display: grid;
+  grid-gap: 10px;
+  justify-content: center;
+  text-align: center;
+}
+.popup_img {
+  background-size: cover;
+  height: 120px;
+  width: 120px;
+  margin: auto;
+}
+.popup_text {
+  font-size: 2em;
+}
+.popup_link {
+  font-size: 1.7em;
+  font-weight: bold;
+  text-decoration: none;
+  font-family: 'MontserratBold';
+  background: var(--main-color);
+  color: #fff;
+  padding: 1rem;
+  width: auto;
+  border-radius: 5px;
 }

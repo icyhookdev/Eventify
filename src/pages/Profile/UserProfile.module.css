@@ -4,7 +4,7 @@
 
 .UserProfile_info {
   display: grid;
-  grid-template-columns: 170px minmax(100px, 600px);
+  grid-template-columns: 170px 1fr 350px;
   grid-gap: 2em;
   align-items: center;
 }
@@ -15,10 +15,15 @@
   width: 90%;
 }
 
+.newFollowers {
+  align-self: flex-start;
+}
+
 .UserProfile_img {
   width: 100%;
   display: grid;
   grid-gap: 20px;
+  align-self: flex-start;
 }
 
 .UserProfile_img > img {
@@ -33,6 +38,7 @@
 
 .UserProfile_description {
   font-size: 1.6em;
+  align-self: flex-start;
 }
 
 .UserProfile__name {
@@ -47,6 +53,26 @@
   color: #868686;
 
   margin: 0.5em 0;
+}
+
+.follow {
+  background: rgb(38, 194, 255);
+  font-size: 1.7em;
+  font-weight: bold;
+  color: #fff;
+  padding: 0.5em;
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.newFollowers_containers {
+  height: 271px;
+  overflow-y: auto;
+  width: 100%;
+  display: grid;
+  grid-gap: 10px;
 }
 
 .UserProfile__description {
@@ -107,4 +133,9 @@
   text-align: center;
   font-weight: bold;
   border: 1px solid #ddd;
+}
+
+.newFollowers_title {
+  padding-bottom: 10px;
+  font-size: 1.7em;
 }

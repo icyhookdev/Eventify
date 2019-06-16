@@ -14,6 +14,8 @@ import {
   ST_GET_EVENTS_PUBLISHED,
   ST_SUB_USER_IN_EVENT,
   USER_SUBSCRIBED,
+  ST_COPY_EVENT,
+  EVENT_COPIED,
 } from './types';
 import history from '../../history';
 
@@ -124,6 +126,12 @@ export const changeStatusEvent = (eventId, status) => async dispatch => {
       status
     );
     dispatch({ type: EVENT_PUBLISHED });
+    console.log(status);
+    if (status.status === 'cancelled') {
+      history.push('/myevents');
+      return;
+    }
+    history.push('/');
     console.log(data);
   } catch (err) {
     // dispatch({ type: FL_GET_EVENT_GUESTS });
@@ -146,6 +154,19 @@ export const getEventsPublished = page => async dispatch => {
   } catch (err) {
     dispatch({ type: FAIL_REQUEST });
     console.log(err.response);
+  }
+};
+
+export const copyEvent = eventId => async dispatch => {
+  const token = localStorage.getItem('token');
+  dispatch({ type: ST_COPY_EVENT });
+  try {
+    const { data } = await events(token).post('/copy', { id: eventId });
+    console.log(data);
+    dispatch({ type: EVENT_COPIED });
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: FAIL_REQUEST });
   }
 };
 

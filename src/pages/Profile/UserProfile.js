@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 
 import classes from './UserProfile.module.css';
 import img from '../../assets/img/profileImg.png';
+import FollowerItem from '../../components/FollowerItem/FollowerItem';
 
-const UserProfile = ({ user, showEdit }) => (
+const UserProfile = ({ user, showEdit, followUser }) => (
   <div className={classes.UserProfile}>
     <div className={classes.UserProfile_info}>
       <div className={classes.UserProfile_img}>
@@ -14,6 +15,16 @@ const UserProfile = ({ user, showEdit }) => (
           <Link to="/edit-profile" className={classes.edit_profile}>
             Editar Perfil
           </Link>
+        )}
+
+        {!showEdit && (
+          <button
+            className={classes.follow}
+            type="button"
+            onClick={() => followUser(user._id)}
+          >
+            Follow
+          </button>
         )}
       </div>
       <div className={classes.UserProfile_description}>
@@ -28,6 +39,18 @@ const UserProfile = ({ user, showEdit }) => (
         </div>
         <div className={classes.UserProfile__loation}>{user && user.city}</div>
         <div className={classes.UserProfile__company}>Netflix</div>
+      </div>
+
+      <div className={classes.newFollowers}>
+        <div className={classes.newFollowers_title}>Nuevos seguidores</div>
+
+        <div className={classes.newFollowers_containers}>
+          <FollowerItem />
+          <FollowerItem />
+          <FollowerItem />
+          <FollowerItem />
+          <FollowerItem />
+        </div>
       </div>
     </div>
 

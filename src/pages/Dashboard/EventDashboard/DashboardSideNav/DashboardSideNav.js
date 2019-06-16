@@ -6,6 +6,7 @@ import DashboardIco from '../../../../components/icons/DashboardIco';
 import BasicInfoIco from '../../../../components/icons/BasicInfoIco';
 import DetailsIcon from '../../../../components/icons/DetailsIcon';
 import PeopleIco from '../../../../components/icons/PeopleIco';
+import RestrictionIco from '../../../../components/icons/RestrictionIco';
 
 const DashboardSideNav = ({ event }) => (
   <div className={classes.DashboardSideNav}>
@@ -71,6 +72,20 @@ const DashboardSideNav = ({ event }) => (
             >
               <PeopleIco />
               Participantes
+            </NavLink>
+          </li>
+          <li className={classes.Nav__item}>
+            <NavLink
+              to={`/dashboard/restrictions/${event && event.id}`}
+              activeStyle={{
+                color: '#ea555c',
+                fill: '#ea555c',
+                borderLeft: '.3em solid #ea555c',
+                background: '#fff',
+              }}
+            >
+              <RestrictionIco />
+              Restricciones
             </NavLink>
           </li>
         </ul>

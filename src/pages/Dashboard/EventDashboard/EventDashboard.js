@@ -1,14 +1,26 @@
 import React from 'react';
 import classes from './EventDashboard.module.css';
 
-const EventDashboard = ({ eventId, publishEvent }) => (
-  <button
-    type="button"
-    className={classes.button}
-    onClick={() => publishEvent(eventId, { status: 'published' })}
-  >
-    Publicar Evento
-  </button>
+const EventDashboard = ({ _id, publishEvent, publish_status }) => (
+  <div>
+    {publish_status && publish_status === 'cancelled' ? (
+      <button
+        type="button"
+        className={classes.button}
+        onClick={() => publishEvent(_id, { status: 'draft' })}
+      >
+        Agregar a borrador
+      </button>
+    ) : (
+      <button
+        type="button"
+        className={classes.button}
+        onClick={() => publishEvent(_id, { status: 'published' })}
+      >
+        Publicar evento
+      </button>
+    )}
+  </div>
 );
 
 export default EventDashboard;

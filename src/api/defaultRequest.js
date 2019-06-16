@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const defaultRequest = token =>
   axios.create({
-    baseURL: 'https://iujo-eventify-api.herokuapp.com/api',
+    baseURL: 'http://localhost:4000/api',
     headers: {
       Authorization: `Bearer ${token}`,
     },

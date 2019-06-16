@@ -1,0 +1,33 @@
+.Registers {
+  padding: 2rem;
+}
+
+.page_title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-family: 'MontserratBold';
+  /* margin-bottom: 5rem; */
+}
+
+.form {
+  margin: 2rem 0;
+  padding: 2em;
+  width: 450px;
+  display: grid;
+  grid-gap: 10px;
+  padding-bottom: 3em;
+}
+
+.form_btn {
+  background: var(--main-color);
+  display: flex;
+  font-family: 'MontserratBold';
+  align-items: center;
+  border: 0;
+  border-radius: 5px;
+  outline: 0;
+  padding: 1em;
+  color: #fff;
+  justify-content: center;
+  cursor: pointer;
+}

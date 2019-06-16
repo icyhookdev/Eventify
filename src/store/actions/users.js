@@ -42,3 +42,18 @@ export const getUser = id => async dispatch => {
     dispatch({ type: FAIL_REQUEST });
   }
 };
+
+export const followUser = id => async (dispatch, getState) => {
+  const myId = getState().auth.user._id;
+  const token = localStorage.getItem('token');
+
+  try {
+    const { data } = await usersWithAuth(token).put(`/follow/${id}`, {
+      userId: myId,
+    });
+
+    console.log(data);
+  } catch (error) {
+    console.log(error.response);
+  }
+};

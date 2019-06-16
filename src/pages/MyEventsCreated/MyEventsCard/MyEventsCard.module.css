@@ -48,9 +48,14 @@
   font-family: 'MontserratBold';
 }
 
+.actions_link {
+  display: flex;
+  position: absolute;
+  bottom: 12px;
+}
+
 .link {
   text-decoration: none;
-  position: absolute;
   bottom: 10px;
   font-size: 1.4em;
   font-weight: bold;
@@ -59,12 +64,41 @@
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
+  margin-right: 10px;
 }
 
 .link > img {
   height: 20px;
   width: 20px;
   margin-right: 0.4em;
+}
+
+.btn_action {
+  border: 0;
+  cursor: pointer;
+  background: transparent;
+  font-weight: bold;
+  font-size: 1.4em;
+  outline: 0;
+  font-family: 'MontserratRegular';
+  color: #10003b;
+  display: flex;
+  margin-right: 10px;
+}
+
+.copyicon {
+  background: url('../../../assets/icons/copy.svg');
+  background-size: cover;
+  margin-right: 0.4em;
+  height: 20px;
+  width: 20px;
+}
+.cancelicon {
+  background: url('../../../assets/icons/cancel-square.svg');
+  background-size: cover;
+  margin-right: 0.4em;
+  height: 20px;
+  width: 20px;
 }
 
 @media screen and (max-width: 1020px) {

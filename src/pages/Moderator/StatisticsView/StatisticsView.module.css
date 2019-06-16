@@ -1,0 +1,24 @@
+.statistic {
+  padding: 3em;
+}
+
+.totals {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.totals_title {
+  font-weight: bold;
+  font-size: 2em;
+  font-family: 'MontserratBold';
+}
+
+.totals_number {
+  font-size: 3rem;
+  /* margin-top: 1rem; */
+  padding: 0.2em 0.5em;
+  background: #f2f2f2;
+  margin: 1rem auto;
+  width: fit-content;
+  border-radius: 5px;
+}

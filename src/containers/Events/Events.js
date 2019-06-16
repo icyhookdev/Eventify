@@ -1,14 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import classes from './Events.module.css';
 import EventCard from '../../components/EventCard/EventCard';
-// import Aside from '../../components/Aside/Aside';
+
 import { setUser } from '../../store/actions/authentication';
 import { getEventsPublished } from '../../store/actions/events';
-// import Map from '../../components/Map/Map';
+import Modal from '../../components/Modal/Modal';
+import avatar from '../../assets/img/avatar.png';
 
 const Events = ({ history, setUser, getEventsPublished, events, userMe }) => {
+  const [open, setOpen] = useState(false);
   const eventsPublished =
     events &&
     events.map(event => (
@@ -23,10 +26,24 @@ const Events = ({ history, setUser, getEventsPublished, events, userMe }) => {
     getEventsPublished('1');
   }, [getEventsPublished]);
   return (
-    <div className={classes.Events}>
-      {eventsPublished}
+    <div>
+      <div className={classes.title}>Proximos Eventos</div>
 
-      {/* <Map /> */}
+      <div className={classes.Events}>{eventsPublished}</div>
+      <button onClick={() => setOpen(true)}>open</button>
+      <Modal onCloseModal={() => setOpen(false)} show={open}>
+        <div className={classes.popup}>
+          <img src={avatar} className={classes.popup_img} alt="404" />
+          <div className={classes.popup_text}>
+            Te damos la bienvenida <strong>{userMe && userMe.name} </strong>.
+            Queremos recomendarte que actualizes tu perfil para disfrutar de los
+            eventos mas cercanos a ti!.
+          </div>
+          <Link to="/edit-profile" className={classes.popup_link}>
+            Editar perfil
+          </Link>
+        </div>
+      </Modal>
     </div>
   );
 };

@@ -3,18 +3,42 @@ import React, { useState } from 'react';
 import classes from './MyEventsCreated.module.css';
 import EventsCreated from './MyEventsCard/MyEventsCard';
 
-const MyEventsCreated = ({ liveEvents, pastEvents, draftEvents }) => {
+const MyEventsCreated = ({
+  liveEvents,
+  pastEvents,
+  draftEvents,
+  onCopyEvent,
+  onCancellEvent,
+  cancelEvents,
+}) => {
   const [tab, setTab] = useState('live');
 
   const drafts =
     draftEvents &&
-    draftEvents.map(event => <EventsCreated key={event._id} {...event} />);
+    draftEvents.map(event => (
+      <EventsCreated key={event._id} {...event} copyEvent={onCopyEvent} />
+    ));
   const lives =
     liveEvents &&
-    liveEvents.map(event => <EventsCreated key={event._id} {...event} />);
+    liveEvents.map(event => (
+      <EventsCreated
+        key={event._id}
+        {...event}
+        copyEvent={onCopyEvent}
+        cancelEvent={onCancellEvent}
+      />
+    ));
   const pasts =
     pastEvents &&
-    pastEvents.map(event => <EventsCreated key={event._id} {...event} />);
+    pastEvents.map(event => (
+      <EventsCreated key={event._id} {...event} copyEvent={onCopyEvent} />
+    ));
+
+  const cancelled =
+    cancelEvents &&
+    cancelEvents.map(event => (
+      <EventsCreated key={event._id} {...event} copyEvent={onCopyEvent} />
+    ));
 
   return (
     <div className={classes.EventsCreated}>
@@ -58,7 +82,7 @@ const MyEventsCreated = ({ liveEvents, pastEvents, draftEvents }) => {
             tab === 'cancelled' ? classes.active_tab : '',
           ].join(' ')}
         >
-          Cancelados {pasts.length}
+          Cancelados {cancelled.length}
         </button>
       </div>
       <div
@@ -77,13 +101,13 @@ const MyEventsCreated = ({ liveEvents, pastEvents, draftEvents }) => {
         className={classes.tab_content}
         style={tab === 'past' ? { display: 'grid' } : { display: 'none' }}
       >
-        {lives}
+        {pasts}
       </div>
       <div
         className={classes.tab_content}
         style={tab === 'cancelled' ? { display: 'grid' } : { display: 'none' }}
       >
-        cancelled
+        {cancelled}
       </div>
     </div>
   );

@@ -2,10 +2,20 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import MyEventsCreated from '../../pages/MyEventsCreated/MyEventsCreated';
-import { getEvents } from '../../store/actions/events';
+import {
+  getEvents,
+  copyEvent,
+  changeStatusEvent,
+} from '../../store/actions/events';
 import Loading from '../../components/Loading/Loading';
 
-const MyEvents = ({ getEvents, events, isLoading }) => {
+const MyEvents = ({
+  getEvents,
+  events,
+  isLoading,
+  copyEvent,
+  changeStatusEvent,
+}) => {
   useEffect(() => {
     getEvents();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -19,13 +29,20 @@ const MyEvents = ({ getEvents, events, isLoading }) => {
     event => event.publish_status === 'finished'
   );
 
+  const cancelledEvents = events.filter(
+    event => event.publish_status === 'cancelled'
+  );
+
   return isLoading ? (
     <Loading msg="Cargando Eventos" />
   ) : (
     <MyEventsCreated
+      onCopyEvent={copyEvent}
       liveEvents={liveEvents}
       pastEvents={pastEvents}
+      onCancellEvent={changeStatusEvent}
       draftEvents={draftEvents}
+      cancelEvents={cancelledEvents}
     />
   );
 };
@@ -37,5 +54,5 @@ const mapStateToProps = ({ events }) => ({
 
 export default connect(
   mapStateToProps,
-  { getEvents }
+  { getEvents, copyEvent, changeStatusEvent }
 )(MyEvents);
