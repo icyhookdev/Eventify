@@ -52,14 +52,14 @@ const Details = ({
     setLoading(true);
     const formValues = {
       ...values,
-      id: currentEvent.id,
+      id: currentEvent._id,
     };
 
     try {
       await updateEvent(formValues);
 
       if (file) {
-        await updateEventImg(currentEvent.id, file);
+        await updateEventImg(currentEvent._id, file);
       }
       setLoading(false);
     } catch (error) {

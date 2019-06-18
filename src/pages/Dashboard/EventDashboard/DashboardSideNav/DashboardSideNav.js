@@ -19,7 +19,7 @@ const DashboardSideNav = ({ event }) => (
         <ul className={classes.Nav__items}>
           <li className={classes.Nav__item}>
             <NavLink
-              to={`/dashboard/${event && event.id}`}
+              to={`/dashboard/${event && event._id}`}
               exact
               activeStyle={{
                 color: '#ea555c',
@@ -34,7 +34,7 @@ const DashboardSideNav = ({ event }) => (
           </li>
           <li className={classes.Nav__item}>
             <NavLink
-              to={`/dashboard/info/${event && event.id}`}
+              to={`/dashboard/info/${event && event._id}`}
               activeStyle={{
                 color: '#ea555c',
                 fill: '#ea555c',
@@ -48,7 +48,7 @@ const DashboardSideNav = ({ event }) => (
           </li>
           <li className={classes.Nav__item}>
             <NavLink
-              to={`/dashboard/details/${event && event.id}`}
+              to={`/dashboard/details/${event && event._id}`}
               activeStyle={{
                 color: '#ea555c',
                 fill: '#ea555c',
@@ -62,7 +62,7 @@ const DashboardSideNav = ({ event }) => (
           </li>
           <li className={classes.Nav__item}>
             <NavLink
-              to={`/dashboard/guests/${event && event.id}`}
+              to={`/dashboard/guests/${event && event._id}`}
               activeStyle={{
                 color: '#ea555c',
                 fill: '#ea555c',
@@ -76,7 +76,7 @@ const DashboardSideNav = ({ event }) => (
           </li>
           <li className={classes.Nav__item}>
             <NavLink
-              to={`/dashboard/restrictions/${event && event.id}`}
+              to={`/dashboard/restrictions/${event && event._id}`}
               activeStyle={{
                 color: '#ea555c',
                 fill: '#ea555c',

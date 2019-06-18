@@ -11,7 +11,8 @@ import DashboardLayout from '../../components/Layout/DashboardLayout/DashboardLa
 import { getEvent, changeStatusEvent } from '../../store/actions/events';
 import Details from './Details';
 import Guests from './Guests';
-import EventRestrictions from '../../pages/Dashboard/EventRestrictions/EventRestrictions';
+
+import Restrictions from './Restrictions';
 
 const Dashboard = ({ getEvent, match, event, changeStatusEvent }) => {
   const { id } = match.params;
@@ -37,10 +38,7 @@ const Dashboard = ({ getEvent, match, event, changeStatusEvent }) => {
           <Route path="/dashboard/info/:id" component={BasicInfo} />
           <Route path="/dashboard/details/:id" component={Details} />
           <Route path="/dashboard/guests/:id" component={Guests} />
-          <Route
-            path="/dashboard/Restrictions/:id"
-            component={EventRestrictions}
-          />
+          <Route path="/dashboard/Restrictions/:id" component={Restrictions} />
         </DashboardLayout>
       </Layout>
     </Fragment>

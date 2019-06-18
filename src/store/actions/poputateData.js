@@ -55,7 +55,7 @@ export const createCategory = incData => async dispatch => {
 export const getTypes = () => async dispatch => {
   const token = localStorage.getItem('token');
   try {
-    const res = await populate(token).get('/type');
+    const res = await populate(token).get('/get?type=type');
 
     dispatch({ type: POPULATE_TYPES, payload: res.data.data });
   } catch (error) {
@@ -67,10 +67,7 @@ export const createType = incData => async dispatch => {
   console.log(incData);
   const token = localStorage.getItem('token');
   try {
-    const { data } = await populate(token).post(
-      '/type/create',
-      JSON.stringify(incData)
-    );
+    const { data } = await populate(token).post('/create', incData);
     console.log(data);
   } catch (error) {
     console.log(error.response);
@@ -101,7 +98,7 @@ export const createRestriction = incData => async dispatch => {
 export const getModalities = () => async dispatch => {
   const token = localStorage.getItem('token');
   try {
-    const res = await populate(token).get('/modality');
+    const res = await populate(token).get('/get?type=modality');
 
     dispatch({ type: POPULATE_MODALITY, payload: res.data.data });
   } catch (error) {

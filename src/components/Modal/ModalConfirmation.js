@@ -1,9 +1,20 @@
 import React from 'react';
 
 import classes from './Modal.module.css';
+import avatarSuc from '../../assets/img/avatarWelcome.png';
+import avatarCancel from '../../assets/img/avatarExpression.jpeg';
 
-const Modal = ({ onMakeRequest, show, onCloseModal }) => {
-  console.log('render');
+const ModalConfirmation = ({
+  onMakeRequest,
+  show,
+  onCloseModal,
+  isCancel,
+  text,
+}) => {
+  let img = avatarSuc;
+  if (isCancel) {
+    img = avatarCancel;
+  }
 
   return (
     show && (
@@ -12,21 +23,22 @@ const Modal = ({ onMakeRequest, show, onCloseModal }) => {
         <div className={classes.modal}>
           <span className={classes.close} onClick={onCloseModal}></span>
           <div className={classes.popup}>
-            <img src={avatar} className={classes.popup_img} alt="404" />
-            <div className={classes.popup_text}></div>
+            <img src={img} className={classes.popup_img} alt="404" />
+            <div className={classes.popup_text}>{text}</div>
             <div className={classes.btn_group}>
-              <button
-                type="button"
-                className={[classes.btn_cancel, classes.btn].join(' ')}
-              >
-                Cancelar
-              </button>
               <button
                 type="button"
                 className={[classes.btn_success, classes.btn].join(' ')}
                 onClick={onMakeRequest}
               >
                 Confirmar
+              </button>
+              <button
+                type="button"
+                className={[classes.btn_cancel, classes.btn].join(' ')}
+                onClick={onCloseModal}
+              >
+                Cancelar
               </button>
             </div>
           </div>
@@ -36,4 +48,4 @@ const Modal = ({ onMakeRequest, show, onCloseModal }) => {
   );
 };
 
-export default Modal;
+export default ModalConfirmation;

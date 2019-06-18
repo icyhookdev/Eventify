@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import isAfter from 'date-fns/is_after';
+import moment from 'moment';
 
 import NewEvent from '../../pages/NewEvent/NewEvent';
 import { getEvent, updateEvent } from '../../store/actions/events';
@@ -37,15 +38,20 @@ const BasicInfo = ({
   const [endDate, setEndDate] = useState(
     (currentEvent && new Date(currentEvent.finish_date)) || new Date()
   );
+  const [startTime, setStartTime] = useState(
+    currentEvent && moment(currentEvent.start_date)
+  );
+  const [endTime, setEndTime] = useState(
+    currentEvent && moment(currentEvent.finish_date)
+  );
   const [bbar, setBbar] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const { values, onChangeHandler } = useInput({
     name: (currentEvent && currentEvent.name) || '',
-    type: (currentEvent && currentEvent.type.id) || '',
-    category: (currentEvent && currentEvent.category.id) || '',
-    restriction: (currentEvent && currentEvent.restriction.id) || '',
-    modality: (currentEvent && currentEvent.modality.id) || '',
+    type: (currentEvent && currentEvent.type._id) || '',
+    // category: (currentEvent && currentEvent.category._id) || '',
+    modality: (currentEvent && currentEvent.modality._id) || '',
     country: (currentEvent && currentEvent.country) || '',
     state: (currentEvent && currentEvent.state) || '',
     city: (currentEvent && currentEvent.city) || '',
@@ -99,6 +105,25 @@ const BasicInfo = ({
   const handleChangeStart = sd => handleDateChange({ sd });
   const handleChangeEnd = ed => handleDateChange({ ed });
 
+  const onChangeStartTime = time => setStartTime(time);
+  const onChangeEndTime = time => setEndTime(time);
+
+  const setTimeToDate = () => {
+    const sd = startDate;
+
+    sd.setHours(moment(startTime).format('HH'));
+    sd.setMinutes(moment(startTime).format('MM'));
+
+    const ed = endDate;
+    ed.setHours(moment(endTime).format('HH'));
+    ed.setMinutes(moment(endTime).format('MM'));
+
+    return {
+      sd,
+      ed,
+    };
+  };
+
   const onSubmit = async e => {
     e.preventDefault();
 
@@ -122,16 +147,43 @@ const BasicInfo = ({
 
     if (checkFormValues(formValues)) {
       setErrors(setInputErrors(formValues));
-      return;
-    }
+    } else {
+      const { sd, ed } = setTimeToDate();
 
-    setLoading(true);
+      if (isAfter(sd, ed)) {
+        setErrors({
+          ...errors,
+          finish_date: 'La fecha final no puede ser mayor a la inicial',
+        });
+        return;
+      }
 
-    try {
-      await updateEvent(formValues);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
+      const newFormValues = {
+        name: values.name,
+        type: values.type,
+        category: values.category,
+        restriction: values.restriction,
+        modality: values.modality,
+        country: values.country,
+        state: values.state,
+        city: values.city,
+        address: [
+          { description: values.address1 },
+          { description: values.address2 },
+        ],
+        start_date: sd,
+        finish_date: ed,
+        id: currentEvent.id,
+      };
+
+      setLoading(true);
+
+      try {
+        await updateEvent(newFormValues);
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+      }
     }
   };
 
@@ -139,6 +191,10 @@ const BasicInfo = ({
     <div style={{ padding: '5em 1em' }}>
       <NewEvent
         startDate={startDate}
+        startTime={startTime}
+        setStartT={onChangeStartTime}
+        setEndT={onChangeEndTime}
+        endTime={endTime}
         endDate={endDate}
         setDateS={handleChangeStart}
         setDateE={handleChangeEnd}

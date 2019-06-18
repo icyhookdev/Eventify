@@ -10,6 +10,8 @@ import {
   ST_GET_EVENTS_PUBLISHED,
   GET_EVENTS_PUBLISHED,
   FAIL_REQUEST,
+  EVENT_FILTERED,
+  ST_EVENT_FILTER,
 } from '../actions/types';
 
 const initialState = {
@@ -18,6 +20,8 @@ const initialState = {
   currentEvent: null,
   guests: [],
   publishedEvents: null,
+  filteredEvents: null,
+  loadingFilter: false,
 };
 
 const eventsReducer = (state = initialState, { type, payload }) => {
@@ -42,8 +46,12 @@ const eventsReducer = (state = initialState, { type, payload }) => {
       return { ...state, isLoading: false, publishedEvents: payload };
     case ST_GET_EVENTS_PUBLISHED:
       return { ...state, isLoading: true };
+    case EVENT_FILTERED:
+      return { ...state, loadingFilter: false, filteredEvents: payload };
+    case ST_EVENT_FILTER:
+      return { ...state, loadingFilter: true };
     case FAIL_REQUEST:
-      return { ...state, isLoading: false };
+      return { ...state, isLoading: false, loadingFilter: false };
     default:
       return state;
   }

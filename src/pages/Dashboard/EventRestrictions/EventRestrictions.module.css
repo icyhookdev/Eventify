@@ -6,3 +6,15 @@
   width: calc(100% - 200px);
   margin-left: 100px;
 }
+
+.restrictions_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  margin-top: 3em;
+}
+
+.subTitle {
+  padding: 1.5rem 1rem;
+  font-size: 15px;
+}

@@ -14,6 +14,8 @@ import {
   ST_GET_EVENTS_PUBLISHED,
   ST_SUB_USER_IN_EVENT,
   USER_SUBSCRIBED,
+  EVENT_FILTERED,
+  ST_EVENT_FILTER,
   ST_COPY_EVENT,
   EVENT_COPIED,
 } from './types';
@@ -150,6 +152,35 @@ export const getEventsPublished = page => async dispatch => {
       res = await events(token).get(`/published`);
     }
     dispatch({ type: GET_EVENTS_PUBLISHED, payload: res.data.data });
+    console.log(res);
+  } catch (err) {
+    dispatch({ type: FAIL_REQUEST });
+    console.log(err.response);
+  }
+};
+
+export const getFilterEvents = (
+  page,
+  type,
+  modality,
+  country,
+  state,
+  name
+) => async dispatch => {
+  const token = localStorage.getItem('token');
+  dispatch({ type: ST_EVENT_FILTER });
+  try {
+    let res = null;
+    if (page) {
+      res = await events(token).get(
+        `/published?page=${page}&type=${type || null}&modality=${modality ||
+          null}&country=${country || null}&state=${state || null}&name=${name ||
+          null}`
+      );
+    } else {
+      res = await events(token).get(`/published`);
+    }
+    dispatch({ type: EVENT_FILTERED, payload: res.data.data });
     console.log(res);
   } catch (err) {
     dispatch({ type: FAIL_REQUEST });

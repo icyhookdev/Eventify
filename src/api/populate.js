@@ -5,7 +5,6 @@ export const populate = token =>
     baseURL: 'http://localhost:4000/api/references/',
     headers: {
       Accept: 'application/json',
-      'Content-Type': 'multipart/form-data',
       Authorization: `Bearer ${token}`,
     },
   });

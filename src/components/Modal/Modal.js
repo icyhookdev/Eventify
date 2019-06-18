@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import classes from './Modal.module.css';
 
@@ -10,10 +10,8 @@ const Modal = ({ children, show, onCloseModal }) => {
       <div className={classes.modal_container}>
         <div className={classes.modal_backdrop} onClick={onCloseModal} />
         <div className={classes.modal}>
-          <Fragment>
-            <span className={classes.close} onClick={onCloseModal}></span>
-            {children}
-          </Fragment>
+          <span className={classes.close} onClick={onCloseModal}></span>
+          {children}
         </div>
       </div>
     )

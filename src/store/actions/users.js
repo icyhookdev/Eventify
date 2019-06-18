@@ -51,7 +51,7 @@ export const followUser = id => async (dispatch, getState) => {
     const { data } = await usersWithAuth(token).put(`/follow/${id}`, {
       userId: myId,
     });
-
+    dispatch({ type: SET_USER, payload: data.data.user });
     console.log(data);
   } catch (error) {
     console.log(error.response);

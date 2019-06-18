@@ -11,3 +11,13 @@
   font-size: 1.6em;
   transition: all 0.3s ease;
 }
+
+.eventDashboard {
+  padding: 5em !important;
+}
+
+.align_item {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}

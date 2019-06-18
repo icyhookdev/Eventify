@@ -1,0 +1,165 @@
+// CDU 1
+Nombre: Registrar Usuario
+Autores: Cristihan Albarran
+Fecha: 06-18-2019
+description: Permite registrar usuarios en la red social.
+actores: Usuario, Sistema
+Precondiciones: El usuario debe crear una cuenta para iniciar sesion
+Flujo Normal: 
+  [1]: el actor introduce nombre, usuario, email, contrasena y confirmar contrasena.
+  [2]: el actor presiona el boton de registrarse.
+  [3]: el sistema valida los campos y los guarda.
+  [4]: el sistema redirecciona el actor al login.
+Flujo Alternativo: 
+  [1]: El sistema comprueba la validez de los datos, si los datos no son correctos o el usuario y email ya existen, se avisa al actor de ello para que los corrija.
+Postcondiciones: el usuario ha sido registrado en la base de datos
+
+// CDU 2
+Nombre: Iniciar Sesion
+Autores: Cristihan Albarran
+Fecha: 06-18-2019
+description: Permite Iniciar sesion en la red social
+actores: Usuario, Sistema
+Precondiciones: El usuario debe tener una cuanta registrada.
+Flujo Normal: 
+  [1]: el actor introduce usuario o email y contrasena.
+  [2]: el actor presiona el boton de Iniciar sesion.
+  [3]: el sistema valida los campos y redirecciona al actor a la pagina de inicio.
+Flujo Alternativo: 
+  [1]: El sistema comprueba la validez de los datos, si los datos no son correctos o el usuario y email no existen, se avisa al actor de ello para que los corrija.
+Postcondiciones: el usuario inicio session correctamente.
+
+// CDU 3
+Nombre: Crear evento
+Autores: Cristihan Albarran
+Fecha: 06-18-2019
+description: Permite Crear un evento en la red social.
+actores: Usuario, Sistema
+Precondiciones: El usuario debe estar autenticado en el sistema.
+Flujo Normal: 
+  [1]: el actor introduce el nombre, tipo, categoria, fecha & hora y lugar del evento.
+  [2]: el actor presiona el boton de guardar.
+  [3]: el sistema valida los campos y redirecciona al actor a la pagina de mis eventos.
+Flujo Alternativo: 
+  [1]: El sistema comprueba la validez de los datos, si los datos no son correctos, se avisa al actor de ello para que los corrija.
+Postcondiciones: Evento creado.
+
+// CDU 4
+Nombre: Editar Evento
+Autores: Cristihan Albarran
+Fecha: 06-18-2019
+description: Permite Editar un evento en la red social.
+actores: Usuario, Sistema
+Precondiciones: El usuario debe estar autenticado en el sistema y debe tener uno o mas eventos en la tab de borrador.
+Flujo Normal: 
+  [1]: el actor va al menu y seleciona la pagina de, mis eventos.
+  [2]: el actor selecciona la tab de borrador y elije el evento.
+  [3]: el actor preciona el icono de editar.
+  [4]: el sistema emite una peticion para precargar la data inicial del evento.
+  [5]: el actor elige un otra pagina en el submenu.
+  [6]: el actor llena los campos correspondientes,
+  [7]: el actor presiona el boton de guardar.
+  [8]: el sistema valida los campos y redirecciona al actor a la pagina de mis eventos.
+Flujo Alternativo: 
+  [1]: El sistema comprueba la validez de los datos, si los datos no son correctos, se avisa al actor de ello para que los corrija.
+Postcondiciones: Evento editado. 
+
+// CDU 5
+Nombre: Publicar Evento
+Autores: Cristihan Albarran
+Fecha: 06-18-2019
+description: Permite publicaar un evento en la red social.
+actores: Usuario, Sistema
+Precondiciones: El usuario debe estar autenticado en el sistema, debe tener uno o mas eventos en la tab de borrador, el evento debe tener una imagen, descripcion, un lugar selecionado en el mapa
+Flujo Normal: 
+  [1]: el actor va al menu y seleciona la pagina de, mis eventos.
+  [2]: el actor selecciona la tab de borrador y elije el evento.
+  [3]: el actor preciona el icono de editar.
+  [4]: el sistema emite una peticion para precargar la data inicial del evento.
+  [5]: el sistema valida si las precondiciones se cumplen.
+  [6]: el actor presiona el boton de publicar
+  [7]: el sistema redirecciona al actor a la pagina de inicio
+Flujo Alternativo: 
+  [1]: El sistema comprueba el status del evento para mostrar el boton de publicar, si el status del evento, no es publicable, no se muestra el boton de publicalarl
+Postcondiciones: Evento publicado. 
+
+// CDU 6
+Nombre: Copiar Evento
+Autores: Cristihan Albarran
+Fecha: 06-18-2019
+description: Permite copiar un evento en la red social.
+actores: Usuario, Sistema
+Precondiciones: El usuario debe estar autenticado en el sistema, debe tener uno o mas eventos en cualquier tab.
+Flujo Normal: 
+  [1]: el actor va al menu y seleciona la pagina de, mis eventos.
+  [2]: el actor preciona copiar en cualquier tab.
+  [3]: el sistema valida la peticion y crea una copia del evento en la tab de borradores.
+Flujo Alternativo: 
+  
+Postcondiciones: Evento copiado. 
+
+// CDU 7
+Nombre: Cancelar Evento
+Autores: Cristihan Albarran
+Fecha: 06-18-2019
+description: Permite cancelar un evento en la red social.
+actores: Usuario, Sistema
+Precondiciones: El usuario debe estar autenticado en el sistema, el evento debe estar publicado.
+Flujo Normal: 
+  [1]: el actor va al menu y seleciona la pagina de, mis eventos.
+  [2]: el actor preciona cancelar en la tab de activos.
+  [3]: el sistema valida la peticion y cancela el evento.
+Flujo Alternativo: 
+  
+Postcondiciones: Evento cancelado. 
+
+// CDU 8
+Nombre: Editar Perfil
+Autores: Cristihan Albarran
+Fecha: 06-18-2019
+description: Permite modificar la informacion de perfil de usuario
+actores: Usuario, Sistema
+Precondiciones: El usuario debe estar autenticado en el sistema.
+Flujo Normal: 
+  [1]: el actor va al menu y seleciona la pagina de, perfil.
+  [2]: el actor preciona el boton de editar perfil.
+  [3]: el actor llena todos los campos que se encuentren habilitados.
+  [4]: el sistema valida los campos y redirecciona al actor a la pagina del perfil.
+Flujo Alternativo: 
+  [1]: El sistema comprueba la validez de los datos, si los datos no son correctos, se avisa al actor de ello para que los corrija.
+Postcondiciones: Perfil actualizado. 
+
+// CDU 9
+Nombre: Inscribirse en el evento
+Autores: Cristihan Albarran
+Fecha: 06-18-2019
+description: Permite la participacion del usuario en un evento.
+actores: Usuario, Sistema
+Precondiciones: El usuario debe estar autenticado en el sistema.
+Flujo Normal: 
+  [1]: el actor selecciona un evento en la pagina inicial
+  [2]: el sistema redirecciona al usuario para el detatelle de ese evento.
+  [3]: el actor preciona el boton de incribirse.
+  [4]: el sistema valida la peticion y inscribe al usuario en el evento.
+Flujo Alternativo: 
+  [1]: El sistema comprueba el perfil de usuario, si el no cumple con los requisitos del evento, se avisa al actor que no puede inscribirse
+Postcondiciones: Usuario inscrito. 
+
+// CDU 10
+Nombre: Agregar datos de referencia
+Autores: Cristihan Albarran
+Fecha: 06-18-2019
+description: Permite agregar registros en los tipos, categorias, modalidad, restricciones, genero
+actores: Moderador, Sistema
+Precondiciones: El Moderador debe estar autenticado en el sistema.
+Flujo Normal: 
+  [1]: el actor selecciona en el menu, la pagina de Agregar
+  [2]: el actor llena un nombre del registro.
+  [3]: el actor selecciona a que tipo de entidad pertence.
+  [3]: el actor preciona el boton de Agregar.
+  [4]: el sistema valida los datos y guarda el registro.
+Flujo Alternativo: 
+  [1]:  El sistema comprueba la validez de los datos, si los datos no son correctos, se avisa al actor de ello para que los corrija.
+Postcondiciones: Registro guardado. 
+
+

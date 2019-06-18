@@ -66,7 +66,7 @@ const Register = ({
         return;
       }
       if (values.registerType === '3') {
-        createType([{ name: values.name }]);
+        createType([{ type: 'type', parent: null, name: values.name }]);
         return;
       }
       if (values.registerType === '4') {

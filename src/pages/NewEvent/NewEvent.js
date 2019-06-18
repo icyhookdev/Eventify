@@ -2,6 +2,8 @@ import React from 'react';
 
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import TimePicker from 'rc-time-picker';
+import 'rc-time-picker/assets/index.css';
 
 import classes from './NewEvent.module.css';
 import Select from '../../components/Select/Select';
@@ -14,6 +16,10 @@ import mapIcon from '../../assets/icons/map.svg';
 import dateIcon from '../../assets/icons/date.svg';
 
 const NewEvent = ({
+  startTime,
+  setStartT,
+  endTime,
+  setEndT,
   startDate,
   endDate,
   setDateS,
@@ -50,22 +56,22 @@ const NewEvent = ({
             value={values.type}
             errMsg={errors.type}
           />
-          <Select
+          {/* <Select
             name="category"
             selected="Categoria"
             options={selectsData.categories}
             change={change}
             value={values.category}
             errMsg={errors.category}
-          />
-          <Select
+          /> */}
+          {/* <Select
             name="restriction"
             selected="Restriccion"
             options={selectsData.restrictions}
             change={change}
             value={values.restriction}
             errMsg={errors.restriction}
-          />
+          /> */}
         </div>
       </div>
       <SectionWrapper>
@@ -87,6 +93,13 @@ const NewEvent = ({
                   onChange={setDateS}
                   minDate={new Date()}
                 />
+
+                <TimePicker
+                  showSecond={false}
+                  value={startTime}
+                  minuteStep={5}
+                  onChange={setStartT}
+                />
                 {errors && (
                   <p className={classes.err__msg}>{errors.start_date}</p>
                 )}
@@ -102,6 +115,15 @@ const NewEvent = ({
                   onChange={setDateE}
                   minDate={new Date()}
                   // placeholderText="Fecha Fianl"
+                />
+                {/* {errors && (
+                  <p className={classes.err__msg}>{errors.finish_date}</p>
+                )} */}
+                <TimePicker
+                  showSecond={false}
+                  value={endTime}
+                  minuteStep={5}
+                  onChange={setEndT}
                 />
                 {errors && (
                   <p className={classes.err__msg}>{errors.finish_date}</p>
@@ -150,7 +172,7 @@ const NewEvent = ({
               <div className={classes.event__group}>
                 <Select
                   name="country"
-                  selected="Country"
+                  selected="Pais"
                   options={selectsData.countries}
                   change={change}
                   value={values.country}
@@ -158,7 +180,7 @@ const NewEvent = ({
                 />
                 <Select
                   name="state"
-                  selected="State"
+                  selected="Estado"
                   options={
                     (selectsData.states && selectsData.states.states) || [
                       'state',

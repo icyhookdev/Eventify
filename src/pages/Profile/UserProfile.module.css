@@ -11,7 +11,7 @@
 
 .hr {
   border-bottom: 1px solid #ddd;
-  margin: 4em auto;
+  /* margin: 1em auto; */
   width: 90%;
 }
 
@@ -77,6 +77,35 @@
 
 .UserProfile__description {
   margin: 0.5em 0;
+}
+
+.button_tab {
+  outline: 0;
+  border: 0;
+  font-size: 1.7em;
+  margin-right: 1em;
+  padding: 1em;
+  background: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  color: #9c9c9c;
+  transition: color 0.3s ease;
+}
+
+.tab_content {
+  margin-top: 2em;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px));
+  grid-gap: 10px;
+}
+
+.active_tab {
+  border-bottom: 2px solid rgb(234, 85, 92);
+  color: #000;
+}
+
+.button_tab:hover {
+  color: #000;
 }
 
 .UserProfile__loation {

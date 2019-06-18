@@ -2,12 +2,11 @@ import React from 'react';
 
 import classes from './Checkbox.module.css';
 
-const Checkbox = ({ text, change, checked }) => (
+const Checkbox = ({ text, change, checked, name }) => (
   <div className={classes.checkbox_container}>
     <input
-      id="checkbox"
       type="checkbox"
-      name="conditions"
+      name={name}
       className={classes.checkbox}
       onChange={change}
       checked={checked}

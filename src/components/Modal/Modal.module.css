@@ -44,7 +44,7 @@
 
 .popup {
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 20px;
   justify-content: center;
   text-align: center;
 }
@@ -56,6 +56,32 @@
 }
 .popup_text {
   font-size: 2em;
+}
+
+.btn_group {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn {
+  padding: 1rem;
+  font-family: 'MontserratBold';
+  outline: 0;
+  border: 0;
+  font-size: 1.7em;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn_cancel {
+  border: 1px solid #ea4031;
+  color: #ea4031;
+  background: #fff;
+}
+
+.btn_success {
+  background: var(--main-color);
+  color: #fff;
 }
 
 @keyframes roadRunnerIn {
