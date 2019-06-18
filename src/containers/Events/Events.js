@@ -9,6 +9,7 @@ import { getEventsPublished } from '../../store/actions/events';
 import Modal from '../../components/Modal/Modal';
 import avatar from '../../assets/img/avatar.png';
 import ModalConfirmation from '../../components/Modal/ModalConfirmation';
+import SearchFilter from '../../components/SearchFilter/SearchFilter';
 
 const Events = ({ history, setUser, getEventsPublished, events, userMe }) => {
   const [open, setOpen] = useState(false);
@@ -27,6 +28,7 @@ const Events = ({ history, setUser, getEventsPublished, events, userMe }) => {
   }, [getEventsPublished]);
   return (
     <div>
+      <SearchFilter />
       <div className={classes.title}>Proximos Eventos</div>
 
       <div className={classes.Events}>{eventsPublished}</div>

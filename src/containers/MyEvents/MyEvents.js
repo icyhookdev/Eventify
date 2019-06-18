@@ -33,14 +33,24 @@ const MyEvents = ({
     event => event.publish_status === 'cancelled'
   );
 
+  const onCopyEvent = id => {
+    copyEvent(id);
+    getEvents();
+  };
+
+  const onCancellEvent = (id, status) => {
+    changeStatusEvent(id, status);
+    getEvents();
+  };
+
   return isLoading ? (
     <Loading msg="Cargando Eventos" />
   ) : (
     <MyEventsCreated
-      onCopyEvent={copyEvent}
+      onCopyEvent={onCopyEvent}
       liveEvents={liveEvents}
       pastEvents={pastEvents}
-      onCancellEvent={changeStatusEvent}
+      onCancellEvent={onCancellEvent}
       draftEvents={draftEvents}
       cancelEvents={cancelledEvents}
     />

@@ -1,0 +1,33 @@
+.SearchFilter {
+  display: grid;
+  grid-gap: 20px;
+}
+
+.SearchFilterTitle {
+  font-size: 22px;
+  font-family: 'MontserratBold';
+}
+
+.SearchFilterForm {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.btn_filter {
+  background: var(--main-color);
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 1.6em;
+  border-radius: 5px;
+  padding: 0 1em;
+  font-weight: bold;
+  display: flex;
+  font-family: 'MontserratBold';
+  align-items: center;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+  text-decoration: none;
+}

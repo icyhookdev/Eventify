@@ -142,7 +142,7 @@ const BasicInfo = ({
       ],
       start_date: startDate,
       finish_date: endDate,
-      id: currentEvent.id,
+      id: currentEvent._id,
     };
 
     if (checkFormValues(formValues)) {
@@ -173,7 +173,7 @@ const BasicInfo = ({
         ],
         start_date: sd,
         finish_date: ed,
-        id: currentEvent.id,
+        id: currentEvent._id,
       };
 
       setLoading(true);

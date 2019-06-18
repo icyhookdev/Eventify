@@ -32,7 +32,7 @@
   font-family: 'MontserratBold';
   align-items: center;
   cursor: pointer;
-  box-shadow: #ea555c 0px 0px 5px;
+
   transition: all 0.3s ease;
   text-decoration: none;
 }
@@ -43,5 +43,5 @@
 }
 
 .top__btn:hover {
-  box-shadow: #ea555c 0px 0px 15px;
+  box-shadow: #ea555c 0px 0px 5px;
 }

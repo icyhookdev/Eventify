@@ -161,27 +161,18 @@ export const getEventsPublished = page => async dispatch => {
 
 export const getFilterEvents = (
   page,
-  type,
-  modality,
-  country,
-  state,
-  name
+  { type, modality, country, state, name }
 ) => async dispatch => {
   const token = localStorage.getItem('token');
   dispatch({ type: ST_EVENT_FILTER });
   try {
-    let res = null;
-    if (page) {
-      res = await events(token).get(
-        `/published?page=${page}&type=${type || null}&modality=${modality ||
-          null}&country=${country || null}&state=${state || null}&name=${name ||
-          null}`
-      );
-    } else {
-      res = await events(token).get(`/published`);
-    }
-    dispatch({ type: EVENT_FILTERED, payload: res.data.data });
-    console.log(res);
+    const { data } = await events(token).get(
+      `/published?page=${page}&type=${type || 'null'}&modality=${modality ||
+        'null'}&country=${country || 'null'}&state=${state ||
+        'null'}&name=${name || 'null'}`
+    );
+    dispatch({ type: EVENT_FILTERED, payload: data.data });
+    console.log(data);
   } catch (err) {
     dispatch({ type: FAIL_REQUEST });
     console.log(err.response);
