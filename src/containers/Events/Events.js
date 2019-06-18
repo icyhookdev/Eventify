@@ -8,11 +8,11 @@ import { setUser } from '../../store/actions/authentication';
 import { getEventsPublished } from '../../store/actions/events';
 import Modal from '../../components/Modal/Modal';
 import avatar from '../../assets/img/avatar.png';
-import ModalConfirmation from '../../components/Modal/ModalConfirmation';
+// import ModalConfirmation from '../../components/Modal/ModalConfirmation';
 import SearchFilter from '../../components/SearchFilter/SearchFilter';
 
 const Events = ({ history, setUser, getEventsPublished, events, userMe }) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState((userMe && userMe.first_login) || false);
   const eventsPublished =
     events &&
     events.map(event => (
@@ -32,8 +32,8 @@ const Events = ({ history, setUser, getEventsPublished, events, userMe }) => {
       <div className={classes.title}>Proximos Eventos</div>
 
       <div className={classes.Events}>{eventsPublished}</div>
-      <button onClick={() => setOpen(true)}>open</button>
-      {/* <Modal onCloseModal={() => setOpen(false)} show={open}>
+
+      <Modal onCloseModal={() => setOpen(false)} show={open}>
         <div className={classes.popup}>
           <img src={avatar} className={classes.popup_img} alt="404" />
           <div className={classes.popup_text}>
@@ -45,14 +45,14 @@ const Events = ({ history, setUser, getEventsPublished, events, userMe }) => {
             Editar perfil
           </Link>
         </div>
-      </Modal> */}
-      <ModalConfirmation
+      </Modal>
+      {/* <ModalConfirmation
         onClick={() => setOpen(true)}
         show={open}
         isCancel
         onCloseModal={() => setOpen(false)}
         text="Estas Seguro hacer click en el boton?"
-      />
+      /> */}
     </div>
   );
 };

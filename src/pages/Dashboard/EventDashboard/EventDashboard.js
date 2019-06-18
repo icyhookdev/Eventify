@@ -58,13 +58,18 @@ const EventDashboard = ({
             Agregar a borrador
           </button>
         ) : (
-          <button
-            type="button"
-            className={classes.button}
-            onClick={() => publishEvent(_id, { status: 'published' })}
-          >
-            Publicar evento
-          </button>
+          eventStatus[0] &&
+          eventStatus[1] &&
+          eventStatus[2] &&
+          eventStatus[3] && (
+            <button
+              type="button"
+              className={classes.button}
+              onClick={() => publishEvent(_id, { status: 'published' })}
+            >
+              Publicar evento
+            </button>
+          )
         )}
       </div>
     </div>

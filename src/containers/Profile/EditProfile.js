@@ -37,7 +37,6 @@ const EditProfile = ({
     address2: (user && user.address[1] && user.address[1].description) || '',
   });
 
-  console.log(errors);
   useEffect(() => {
     getCountries();
     getGenre();
@@ -64,6 +63,7 @@ const EditProfile = ({
       state: values.state,
       genre: values.genre,
       city: values.city,
+
       birthDate,
       address1: values.address1,
       address2: values.address2,
@@ -77,6 +77,7 @@ const EditProfile = ({
         lastName: values.lastName,
         // email: values.email,
         aboutMe: values.aboutMe,
+        first_login: false,
         genre: values.genre,
         birthDate,
         country: values.country,

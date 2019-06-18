@@ -10,7 +10,6 @@ const options = [
   { _id: 1, name: 'Modalidad' },
   { _id: 2, name: 'Genero' },
   { _id: 3, name: 'Tipo' },
-  { _id: 4, name: 'Categoria' },
 ];
 
 const Registers = ({ onSubmit, onChange, values, errors }) => (

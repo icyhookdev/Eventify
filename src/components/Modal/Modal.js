@@ -3,7 +3,7 @@ import React from 'react';
 import classes from './Modal.module.css';
 
 const Modal = ({ children, show, onCloseModal }) => {
-  console.log('render');
+  
 
   return (
     show && (

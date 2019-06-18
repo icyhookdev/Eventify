@@ -87,9 +87,10 @@ const SearchFilter = ({
         />
         <InputGroup
           label="Nombre del evento"
+          type="text"
           name="name"
           value={values.name}
-          onChange={onChangeHandler}
+          change={onChangeHandler}
         />
         <button type="submit" className={classes.btn_filter}>
           Filtrar

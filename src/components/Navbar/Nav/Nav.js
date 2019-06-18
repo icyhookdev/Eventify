@@ -53,7 +53,7 @@ const Nav = () => (
           Mis Eventos
         </NavLink>
       </li>
-      <li className={classes.Nav__item}>
+      {/* <li className={classes.Nav__item}>
         <NavLink
           to="/chat-room"
           activeStyle={{
@@ -65,7 +65,7 @@ const Nav = () => (
         >
           <ChatIco /> Chat room
         </NavLink>
-      </li>
+      </li> */}
       <li className={classes.Nav__item}>
         <NavLink
           to="/statistics"
@@ -94,7 +94,7 @@ const Nav = () => (
           Agregar
         </NavLink>
       </li>
-      <li className={classes.Nav__item}>
+      {/* <li className={classes.Nav__item}>
         <NavLink
           to="/reports"
           exact
@@ -135,7 +135,7 @@ const Nav = () => (
         >
           Eventos
         </NavLink>
-      </li>
+      </li> */}
     </ul>
   </div>
 );

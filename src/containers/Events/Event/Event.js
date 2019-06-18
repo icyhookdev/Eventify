@@ -11,6 +11,7 @@ const Event = ({
   loading,
   getEvent,
   signUpUserInEvent,
+  meUser,
 }) => {
   useEffect(() => {
     getEvent(match.params.id);
@@ -20,13 +21,14 @@ const Event = ({
   return loading ? (
     <Spinner />
   ) : (
-    <EventView {...currentEvent} subUser={signUpUserInEvent} />
+    <EventView {...currentEvent} meUser={meUser} subUser={signUpUserInEvent} />
   );
 };
 
-const mapStateToProps = ({ events }) => ({
+const mapStateToProps = ({ events, auth }) => ({
   loading: events.isLoading,
   currentEvent: events.currentEvent,
+  meUser: auth.user,
 });
 
 export default connect(

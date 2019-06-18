@@ -58,19 +58,18 @@ const Register = ({
       return true;
     } else {
       if (values.registerType === '1') {
-        createModality([{ name: values.name }]);
+        createModality([{ type: 'modality', name: values.name, parent: null }]);
+        setValues({ ...values, name: '', registerType: null });
         return;
       }
       if (values.registerType === '2') {
-        createGenre([{ name: values.name }]);
+        createGenre([{ type: 'genre', name: values.name, parent: null }]);
+        setValues({ ...values, name: '', registerType: null });
         return;
       }
       if (values.registerType === '3') {
         createType([{ type: 'type', parent: null, name: values.name }]);
-        return;
-      }
-      if (values.registerType === '4') {
-        createCategory([{ name: values.name }]);
+        setValues({ ...values, name: '', registerType: null });
       }
 
       // if (res.login) {

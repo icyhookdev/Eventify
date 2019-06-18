@@ -1,3 +1,5 @@
+import { toastr } from 'react-redux-toastr';
+
 import {
   POPULATE_CATEGORIES,
   POPULATE_MODALITY,
@@ -13,7 +15,7 @@ import defaultRequest from '../../api/defaultRequest';
 export const getGenre = () => async dispatch => {
   const token = localStorage.getItem('token');
   try {
-    const { data } = await populate(token).get('/genre');
+    const { data } = await populate(token).get('/get?type=genre');
 
     dispatch({ type: POPULATE_GENRES, payload: data.data });
   } catch (error) {
@@ -24,7 +26,8 @@ export const getGenre = () => async dispatch => {
 export const createGenre = incData => async dispatch => {
   const token = localStorage.getItem('token');
   try {
-    const { data } = await populate(token).post('/genre/create', incData);
+    const { data } = await populate(token).post('/create', incData);
+    toastr.success('Exitoso!', 'Genero guardado!');
     console.log(data);
   } catch (error) {
     console.log(error.response);
@@ -68,6 +71,7 @@ export const createType = incData => async dispatch => {
   const token = localStorage.getItem('token');
   try {
     const { data } = await populate(token).post('/create', incData);
+    toastr.success('Exitoso!', 'Tipo guardado');
     console.log(data);
   } catch (error) {
     console.log(error.response);
@@ -109,7 +113,8 @@ export const getModalities = () => async dispatch => {
 export const createModality = incData => async dispatch => {
   const token = localStorage.getItem('token');
   try {
-    const { data } = await populate(token).post('/modality/create', incData);
+    const { data } = await populate(token).post('/create', incData);
+    toastr.success('Exitoso!', 'Modalidad almacenada');
     console.log(data);
   } catch (error) {
     console.log(error.response);

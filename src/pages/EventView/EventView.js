@@ -13,8 +13,8 @@ const EventView = ({
   description,
   address,
   subUser,
+  meUser,
   _id,
-  pins,
 }) => (
   <div className={classes.EventView}>
     <div className={classes.container}>
@@ -32,13 +32,15 @@ const EventView = ({
           <div className={classes.containerOwnerName}>
             By {host && host.name}
           </div>
-          <button
-            type="button"
-            onClick={() => subUser(_id, host._id)}
-            className={classes.subscribe}
-          >
-            Inscribirse
-          </button>
+          {host && host._id !== meUser._id && (
+            <button
+              type="button"
+              onClick={() => subUser(_id, meUser._id)}
+              className={classes.subscribe}
+            >
+              Inscribirse
+            </button>
+          )}
         </div>
       </div>
       <div className={classes.containerBody}>
