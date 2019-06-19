@@ -3,6 +3,7 @@ import moment from 'moment';
 import classes from './EventView.module.css';
 import eventImage from '../../assets/img/event-placeholder.png';
 import OnlyReadMap from '../../components/Map/OnlyReadMap';
+import checkGuests from '../../lib/checkUserEventInscription';
 
 const EventView = ({
   image,
@@ -15,6 +16,8 @@ const EventView = ({
   subUser,
   meUser,
   _id,
+  unSubUser,
+  guests,
 }) => (
   <div className={classes.EventView}>
     <div className={classes.container}>
@@ -32,7 +35,26 @@ const EventView = ({
           <div className={classes.containerOwnerName}>
             By {host && host.name}
           </div>
-          {host && host._id !== meUser._id && (
+          {host &&
+            host._id !== meUser._id &&
+            (checkGuests(guests, meUser._id) && (
+              // <button
+              //   type="button"
+              //   onClick={() => subUser(_id, meUser._id)}
+              //   className={classes.subscribe}
+              // >
+              //   Inscribirse
+              // </button>
+              <button
+                type="button"
+                onClick={() => unSubUser(_id)}
+                className={classes.subscribe}
+              >
+                Desinscribirse
+              </button>
+            ))}
+          {console.log(guests && checkGuests(guests, meUser._id))}
+          {guests && !checkGuests(guests, meUser._id) && (
             <button
               type="button"
               onClick={() => subUser(_id, meUser._id)}

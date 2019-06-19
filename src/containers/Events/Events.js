@@ -10,6 +10,7 @@ import Modal from '../../components/Modal/Modal';
 import avatar from '../../assets/img/avatar.png';
 // import ModalConfirmation from '../../components/Modal/ModalConfirmation';
 import SearchFilter from '../../components/SearchFilter/SearchFilter';
+import ModalConfirmation from '../../components/Modal/ModalConfirmation';
 
 const Events = ({ history, setUser, getEventsPublished, events, userMe }) => {
   const [open, setOpen] = useState((userMe && userMe.first_login) || false);
@@ -38,12 +39,18 @@ const Events = ({ history, setUser, getEventsPublished, events, userMe }) => {
           <img src={avatar} className={classes.popup_img} alt="404" />
           <div className={classes.popup_text}>
             Te damos la bienvenida <strong>{userMe && userMe.name} </strong>.
-            Queremos recomendarte que actualizes tu perfil para disfrutar de los
-            eventos mas cercanos a ti!.
+            Queremos recomendarte que actualices tu perfil para disfrutar de los
+            eventos más cercanos a tí.
           </div>
           <Link to="/edit-profile" className={classes.popup_link}>
             Editar perfil
           </Link>
+          {/* á -> &aacute;
+é -> &eacute;
+í -> &iacute;
+ó -> &oacute;
+ú -> &uacute;
+ñ -> &ntilde; */}
         </div>
       </Modal>
       {/* <ModalConfirmation

@@ -24,7 +24,7 @@ const EditUserProfile = ({
   isLoading,
 }) => (
   <div className={classes.container}>
-    <div className={classes.title}>Informacion de la Cuenta</div>
+    <div className={classes.title}>Información de la Cuenta</div>
     <hr />
     <div className={classes.photo}>
       <div className={classes.subTitle}>Foto de Perfil</div>
@@ -43,7 +43,7 @@ const EditUserProfile = ({
     <form className={classes.form} onSubmit={submit}>
       {isLoading && <Loading msg="Actualizando informacion..." />}
       <div className={classes.formContact}>
-        <div className={classes.subTitle}>Informacion de contacto</div>
+        <div className={classes.subTitle}>Información de contacto</div>
         <InputGroup
           type="text"
           label="Nombre"
@@ -86,10 +86,10 @@ const EditUserProfile = ({
         </div>
       </div>
       <div className={classes.formDirection}>
-        <div className={classes.subTitle}>Direccion</div>
+        <div className={classes.subTitle}>Dirección</div>
         <InputGroup
           type="text"
-          label="Direccion"
+          label="Dirección"
           name="address1"
           value={values.address1}
           change={change}
@@ -97,7 +97,7 @@ const EditUserProfile = ({
         />
         <InputGroup
           type="text"
-          label="Direccion 2"
+          label="Dirección 2"
           name="address2"
           value={values.address2}
           change={change}

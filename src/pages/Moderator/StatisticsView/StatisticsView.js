@@ -29,6 +29,7 @@ const StatisticsView = () => (
     <div className={classes.totals}></div>
     <div className={classes.eventsByCategories}>
       <ChartJs type="pie" data={data} />
+      <ChartJs type="bar" data={data} />
     </div>
   </div>
 );

@@ -6,7 +6,7 @@ import SettingIco from '../../../../components/icons/SettingIco';
 
 const DashboardNav = () => (
   <div className={classes.DashboardNav}>
-    <h1 className={classes.logo}>Revents</h1>
+    <h1 className={classes.logo}>Reventsi</h1>
     <ul className={classes.items}>
       <li>
         <Link to="/myevents">Cambiar evento</Link>

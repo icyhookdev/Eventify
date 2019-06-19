@@ -2,7 +2,11 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import EventView from '../../../pages/EventView/EventView';
-import { getEvent, signUpUserInEvent } from '../../../store/actions/events';
+import {
+  getEvent,
+  signUpUserInEvent,
+  signOutUserFromEvent,
+} from '../../../store/actions/events';
 import Spinner from '../../../components/Loading/Spinner';
 
 const Event = ({
@@ -12,6 +16,7 @@ const Event = ({
   getEvent,
   signUpUserInEvent,
   meUser,
+  signOutUserFromEvent,
 }) => {
   useEffect(() => {
     getEvent(match.params.id);
@@ -21,7 +26,12 @@ const Event = ({
   return loading ? (
     <Spinner />
   ) : (
-    <EventView {...currentEvent} meUser={meUser} subUser={signUpUserInEvent} />
+    <EventView
+      {...currentEvent}
+      meUser={meUser}
+      unSubUser={signOutUserFromEvent}
+      subUser={signUpUserInEvent}
+    />
   );
 };
 
@@ -33,5 +43,5 @@ const mapStateToProps = ({ events, auth }) => ({
 
 export default connect(
   mapStateToProps,
-  { getEvent, signUpUserInEvent }
+  { getEvent, signUpUserInEvent, signOutUserFromEvent }
 )(Event);

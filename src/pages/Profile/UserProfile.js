@@ -20,37 +20,49 @@ const UserProfile = ({
       <div className={classes.UserProfile_info}>
         <div className={classes.UserProfile_img}>
           <img src={(user && user.avatar) || img} alt="404" />
-
-          {showEdit && (
-            <Link to="/edit-profile" className={classes.edit_profile}>
-              Editar Perfil
-            </Link>
-          )}
-
-          {!showEdit && (
-            <button
-              className={classes.follow}
-              type="button"
-              onClick={() => followUser(user && user._id)}
-            >
-              {(following && 'Siguiendo') || 'seguir'}
-            </button>
-          )}
         </div>
-        <div className={classes.UserProfile_description}>
-          <div className={classes.UserProfile__name}>
-            {user && user.name} {user && user.lastName}
+        <div className={classes.UserProfile__name}>
+          {user && user.name} {user && user.lastName}
+        </div>
+        {showEdit && (
+          <Link to="/edit-profile" className={classes.edit_profile}>
+            Editar Perfil
+          </Link>
+        )}
+
+        {!showEdit && (
+          <button
+            className={classes.follow}
+            type="button"
+            onClick={() => followUser(user && user._id)}
+          >
+            {(following && 'Siguiendo') || 'seguir'}
+          </button>
+        )}
+
+        <div className={classes.UserProfile__user}>
+          @{user && user.username}
+        </div>
+        <div className={classes.UserProfile__description}>
+          {user && user.aboutMe}
+        </div>
+        <div className={classes.UserProfile__loation}>
+          {user && user.country}
+          {user && user.city}
+        </div>
+        <div className={classes.details}>
+          <div className={classes.details_events}>
+            <span className={classes.amount}>10</span>
+            <div>Eventos</div>
           </div>
-          <div className={classes.UserProfile__user}>
-            @{user && user.username}
+          <div className={classes.details_events}>
+            <span className={classes.amount}>10</span>
+            <div>Seguidores</div>
           </div>
-          <div className={classes.UserProfile__description}>
-            {user && user.aboutMe}
+          <div className={classes.details_events}>
+            <span className={classes.amount}>10</span>
+            <div>Siguiendo</div>
           </div>
-          <div className={classes.UserProfile__loation}>
-            {user && user.city}
-          </div>
-          <div className={classes.UserProfile__company}>Netflix</div>
         </div>
 
         {showEdit && (
