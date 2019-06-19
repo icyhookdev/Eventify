@@ -192,17 +192,16 @@ export const copyEvent = eventId => async dispatch => {
   }
 };
 
-export const signUpUserInEvent = (eventId, userId) => async (
-  dispatch,
-  getState
-) => {
+export const signUpUserInEvent = eventId => async (dispatch, getState) => {
   const token = localStorage.getItem('token');
+  const userId = getState().auth.user._id;
   dispatch({ type: ST_SUB_USER_IN_EVENT });
   try {
     const { data } = await events(token).put(`/signup/${eventId}`, { userId });
-    console.log(data);
-    const event = getState().events.currentEvent;
-    dispatch({ type: SET_EVENT, payload: { ...event, ...data } });
+
+    // const event = getState().events.currentEvent;
+    console.log(data.data);
+    dispatch({ type: SET_EVENT, payload: data.data });
     // dispatch({ type: USER_SUBSCRIBED, payload: res.data.data });
   } catch (err) {
     dispatch({ type: FAIL_REQUEST });
@@ -211,15 +210,15 @@ export const signUpUserInEvent = (eventId, userId) => async (
 };
 
 export const signOutUserFromEvent = eventId => async (dispatch, getState) => {
-  const userId = getState().auth._id;
+  const userId = getState().auth.user._id;
   const token = localStorage.getItem('token');
 
   try {
     const { data } = await events(token).put(`/leave/${eventId}`, { userId });
     console.log(data);
 
-    const event = getState().events.currentEvent;
-    dispatch({ type: SET_EVENT, payload: { ...event, ...data } });
+    // const event = getState().events.currentEvent;
+    dispatch({ type: SET_EVENT, payload: data.data });
   } catch (err) {
     dispatch({ type: FAIL_REQUEST });
     console.log(err.response);

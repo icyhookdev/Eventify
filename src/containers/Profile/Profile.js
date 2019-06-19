@@ -3,23 +3,40 @@ import { connect } from 'react-redux';
 
 import UserProfile from '../../pages/Profile/UserProfile';
 import getFollowers from '../../lib/getFollowers';
+import { getEvents } from '../../store/actions/events';
 
-const Profile = ({ user }) => {
+const Profile = ({ user, getEvents, events }) => {
   const [followers, setFollowers] = useState(null);
   useEffect(() => {
+    getEvents();
+  }, [getEvents]);
+
+  useEffect(() => {
     unfollowerUsers();
-  }, [unfollowerUsers, user]);
+
+    // eslint-disable-next-line
+  }, [user]);
 
   const unfollowerUsers = () => {
     setFollowers(getFollowers(user));
   };
 
-  return <UserProfile user={user} showEdit unFollowUsers={followers} />;
+  return (
+    <UserProfile
+      user={user}
+      showEdit
+      unFollowUsers={followers}
+      events={events}
+    />
+  );
 };
 
-const mapStateToProps = ({ auth }) => ({ user: auth.user });
+const mapStateToProps = ({ auth, events }) => ({
+  user: auth.user,
+  events: events.userEvents,
+});
 
 export default connect(
   mapStateToProps,
-  {}
+  { getEvents }
 )(Profile);

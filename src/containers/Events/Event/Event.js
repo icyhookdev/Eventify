@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 import EventView from '../../../pages/EventView/EventView';
@@ -8,6 +8,7 @@ import {
   signOutUserFromEvent,
 } from '../../../store/actions/events';
 import Spinner from '../../../components/Loading/Spinner';
+import checkGuests from '../../../lib/checkUserEventInscription';
 
 const Event = ({
   match,
@@ -18,10 +19,31 @@ const Event = ({
   meUser,
   signOutUserFromEvent,
 }) => {
+  const [signUp, setSignUp] = useState(false);
+
   useEffect(() => {
     getEvent(match.params.id);
     // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    isUserSignUpInEvent();
+    // eslint-disable-next-line
+  }, [currentEvent]);
+
+  const isUserSignUpInEvent = async () => {
+    if (currentEvent && currentEvent.guests) {
+      console.log(currentEvent.guests);
+      const isUser = await checkGuests(currentEvent.guests, meUser._id);
+      if (isUser) {
+        setSignUp(false);
+      } else {
+        setSignUp(true);
+      }
+    }
+  };
+
+  console.log(signUp);
 
   return loading ? (
     <Spinner />
@@ -31,6 +53,7 @@ const Event = ({
       meUser={meUser}
       unSubUser={signOutUserFromEvent}
       subUser={signUpUserInEvent}
+      isSignUp={signUp}
     />
   );
 };

@@ -72,7 +72,6 @@
 }
 
 .UserProfile__description {
-  margin: 0.5em 0;
   font-family: 'MontserratBold';
   font-style: normal;
   font-weight: bold;
@@ -96,9 +95,16 @@
 
 .details {
   display: flex;
+  justify-content: center;
 }
 .details_events {
-  margin-right: 10px;
+  margin-right: 20px;
+  font-family: 'MontserratBold';
+  font-size: 16px;
+}
+
+.details_events > span {
+  font-size: 40px;
 }
 
 .tab_content {
@@ -119,11 +125,7 @@
 
 .UserProfile__loation {
   font-weight: bold;
-  margin: 0.5em 0;
-}
-
-.UserProfile__company {
-  margin: 0.5em 0;
+  font-size: 1.6em;
 }
 
 .UserProfile_details {
@@ -132,6 +134,9 @@
   margin-top: 4em;
 }
 
+.newFolowers {
+  justify-self: flex-end;
+}
 .link {
   font-size: 1.8em;
   background: #fff;

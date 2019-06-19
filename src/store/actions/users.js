@@ -57,3 +57,18 @@ export const followUser = id => async (dispatch, getState) => {
     console.log(error.response);
   }
 };
+
+export const unfollowUser = id => async (dispatch, getState) => {
+  const myId = getState().auth.user._id;
+  const token = localStorage.getItem('token');
+
+  try {
+    const { data } = await usersWithAuth(token).put(`/unfollow/${id}`, {
+      userId: myId,
+    });
+    dispatch({ type: SET_USER, payload: data.data.user });
+    console.log(data);
+  } catch (error) {
+    console.log(error.response);
+  }
+};

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import classes from './UserProfile.module.css';
-import { followUser } from '../../store/actions/users';
+import { followUser, unfollowUser } from '../../store/actions/users';
 import img from '../../assets/img/profileImg.png';
 import FollowerItem from '../../components/FollowerItem/FollowerItem';
 
@@ -13,6 +13,8 @@ const UserProfile = ({
   followUser,
   following,
   unFollowUsers,
+  unfollowUser,
+  events,
 }) => {
   const [tab, setTab] = useState('events');
   return (
@@ -30,13 +32,22 @@ const UserProfile = ({
           </Link>
         )}
 
-        {!showEdit && (
+        {!showEdit && !following && (
           <button
             className={classes.follow}
             type="button"
             onClick={() => followUser(user && user._id)}
           >
-            {(following && 'Siguiendo') || 'seguir'}
+            Seguir
+          </button>
+        )}
+        {!showEdit && following && (
+          <button
+            className={classes.follow}
+            type="button"
+            onClick={() => unfollowUser(user && user._id)}
+          >
+            Siguiendo
           </button>
         )}
 
@@ -47,39 +58,28 @@ const UserProfile = ({
           {user && user.aboutMe}
         </div>
         <div className={classes.UserProfile__loation}>
-          {user && user.country}
-          {user && user.city}
+          {user && user.country.name} {user && user.city}
         </div>
         <div className={classes.details}>
           <div className={classes.details_events}>
-            <span className={classes.amount}>10</span>
+            <span className={classes.amount}>
+              {(events && events.length) || 0}
+            </span>
             <div>Eventos</div>
           </div>
           <div className={classes.details_events}>
-            <span className={classes.amount}>10</span>
+            <span className={classes.amount}>
+              {user && user.followers.length}
+            </span>
             <div>Seguidores</div>
           </div>
           <div className={classes.details_events}>
-            <span className={classes.amount}>10</span>
+            <span className={classes.amount}>
+              {user && user.following.length}
+            </span>
             <div>Siguiendo</div>
           </div>
         </div>
-
-        {showEdit && (
-          <div className={classes.newFollowers}>
-            <div className={classes.newFollowers_title}>Nuevos seguidores</div>
-            <div className={classes.newFollowers_containers}>
-              {unFollowUsers &&
-                unFollowUsers.map(unFollowUser => (
-                  <FollowerItem
-                    key={unFollowUser._id}
-                    {...unFollowUser}
-                    onFollowUser={() => followUser(unFollowUser._id)}
-                  />
-                ))}
-            </div>
-          </div>
-        )}
       </div>
 
       <div className={classes.UserProfile_details}>
@@ -113,6 +113,27 @@ const UserProfile = ({
         >
           Seguidores
         </button>
+        <button
+          type="button"
+          className={[
+            classes.button_tab,
+            tab === 'EventsSubscribed' ? classes.active_tab : '',
+          ].join(' ')}
+          onClick={() => setTab('EventsSubscribed')}
+        >
+          Eventos subscritos
+        </button>
+        <button
+          type="button"
+          className={[
+            classes.button_tab,
+            tab === 'newFollowers' ? classes.active_tab : '',
+            classes.newFolowers,
+          ].join(' ')}
+          onClick={() => setTab('newFollowers')}
+        >
+          Nuevos seguidores
+        </button>
       </div>
       <div className={classes.hr} />
       <div
@@ -133,11 +154,41 @@ const UserProfile = ({
       >
         followers
       </div>
+      <div
+        className={classes.tab_content}
+        style={
+          tab === 'EventsSubscribed' ? { display: 'grid' } : { display: 'none' }
+        }
+      >
+        dsads
+      </div>
+      <div
+        className={classes.tab_content}
+        style={
+          tab === 'newFollowers' ? { display: 'grid' } : { display: 'none' }
+        }
+      >
+        {showEdit && (
+          <div className={classes.newFollowers}>
+            <div className={classes.newFollowers_title}>Nuevos seguidores</div>
+            <div className={classes.newFollowers_containers}>
+              {unFollowUsers &&
+                unFollowUsers.map(unFollowUser => (
+                  <FollowerItem
+                    key={unFollowUser._id}
+                    {...unFollowUser}
+                    onFollowUser={() => followUser(unFollowUser._id)}
+                  />
+                ))}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
 
 export default connect(
   null,
-  { followUser }
+  { followUser, unfollowUser }
 )(UserProfile);
