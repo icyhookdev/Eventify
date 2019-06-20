@@ -6,12 +6,16 @@ import {
   USER_FETCHED,
   FAIL_REQUEST,
   FETCH_USER_INVITATIONS,
+  FETCH_FOLLOWERS,
+  FETCH_FOLLOWINGS,
 } from '../actions/types';
 
 const initialState = {
   isLoading: false,
   userProfile: null,
   userInvitations: null,
+  userFollowers: null,
+  userFollowing: null,
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -30,6 +34,10 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, isLoading: false, userInvitations: payload };
     case FAIL_REQUEST:
       return { ...state, isLoading: false };
+    case FETCH_FOLLOWERS:
+      return { ...state, isLoading: false, userFollowers: payload };
+    case FETCH_FOLLOWINGS:
+      return { ...state, isLoading: false, userFollowing: payload };
     default:
       return state;
   }

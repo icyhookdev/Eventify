@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import UserProfile from '../../pages/Profile/UserProfile';
-import { getUser } from '../../store/actions/users';
+import {
+  getUser,
+  getUserFollowers,
+  getUserFollowings,
+} from '../../store/actions/users';
 import { getEvents } from '../../store/actions/events';
 // import getFollowers from '../../lib/getFollowers';
 
@@ -13,6 +17,10 @@ const UsersProfile = ({
   userProfile,
   getEvents,
   events,
+  getUserFollowers,
+  userFollowers,
+  userFollowing,
+  getUserFollowings,
 }) => {
   const [edit, setEdit] = useState(null);
   const [following, setFollowing] = useState(false);
@@ -27,6 +35,12 @@ const UsersProfile = ({
 
   useEffect(() => {
     getUser(match.params.id);
+    // eslint-disable-next-line
+  }, [meUser]);
+
+  useEffect(() => {
+    getUserFollowers(userProfile && userProfile._id);
+    getUserFollowings(userProfile && userProfile._id);
     // eslint-disable-next-line
   }, [meUser]);
 
@@ -59,6 +73,8 @@ const UsersProfile = ({
       showEdit={edit}
       following={following}
       event={events}
+      userFollowers={userFollowers}
+      userFollowing={userFollowing}
     />
   );
 };
@@ -67,9 +83,11 @@ const mapStateToProps = ({ auth, user, events }) => ({
   meUser: auth.user,
   userProfile: user.userProfile,
   events: events.userEvents,
+  userFollowers: user.userFollowers,
+  userFollowing: user.userFollowing,
 });
 
 export default connect(
   mapStateToProps,
-  { getUser, getEvents }
+  { getUser, getEvents, getUserFollowers, getUserFollowings }
 )(UsersProfile);

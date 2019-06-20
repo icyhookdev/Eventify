@@ -15,6 +15,8 @@ const UserProfile = ({
   unFollowUsers,
   unfollowUser,
   events,
+  userFollowers,
+  userFollowing,
 }) => {
   const [tab, setTab] = useState('events');
   return (
@@ -146,13 +148,23 @@ const UserProfile = ({
         className={classes.tab_content}
         style={tab === 'following' ? { display: 'grid' } : { display: 'none' }}
       >
-        following
+        <div className={classes.autoFill}>
+          {userFollowing &&
+            userFollowing.map(uf => (
+              <FollowerItem key={uf._id} {...uf} nf={false} />
+            ))}
+        </div>
       </div>
       <div
         className={classes.tab_content}
         style={tab === 'followers' ? { display: 'grid' } : { display: 'none' }}
       >
-        followers
+        <div className={classes.autoFill}>
+          {userFollowers &&
+            userFollowers.map(uf => (
+              <FollowerItem key={uf._id} {...uf} nf={false} />
+            ))}
+        </div>
       </div>
       <div
         className={classes.tab_content}
@@ -177,6 +189,7 @@ const UserProfile = ({
                   <FollowerItem
                     key={unFollowUser._id}
                     {...unFollowUser}
+                    nf
                     onFollowUser={() => followUser(unFollowUser._id)}
                   />
                 ))}
