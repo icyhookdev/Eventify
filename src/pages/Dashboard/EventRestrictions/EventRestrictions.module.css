@@ -18,3 +18,48 @@
   padding: 1.5rem 1rem;
   font-size: 15px;
 }
+
+.inputsAge {
+  margin-top: 20px;
+  display: grid;
+  grid-gap: 20px;
+}
+
+.inputsAge input {
+  width: 100px !important;
+}
+.inputsAge select {
+  width: 200px !important;
+}
+
+.restrictions_checks {
+  display: flex;
+  width: 100%;
+}
+
+.genresPopulate {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 110px);
+  grid-gap: 20px;
+}
+
+.genrePop {
+  background: var(--main-color);
+
+  font-size: 14px;
+  padding: 7px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  outline: 0;
+  border-radius: 90px;
+}
+
+.genrePop > span {
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 90px;
+  font-family: 'MontserratBold';
+}

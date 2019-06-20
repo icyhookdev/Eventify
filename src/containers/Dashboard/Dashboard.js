@@ -13,6 +13,7 @@ import Details from './Details';
 import Guests from './Guests';
 
 import Restrictions from './Restrictions';
+import Privacy from './Privacy';
 
 const Dashboard = ({ getEvent, match, event, changeStatusEvent }) => {
   const { id } = match.params;
@@ -39,6 +40,7 @@ const Dashboard = ({ getEvent, match, event, changeStatusEvent }) => {
           <Route path="/dashboard/details/:id" component={Details} />
           <Route path="/dashboard/guests/:id" component={Guests} />
           <Route path="/dashboard/Restrictions/:id" component={Restrictions} />
+          <Route path="/dashboard/privacy/:id" component={Privacy} />
         </DashboardLayout>
       </Layout>
     </Fragment>

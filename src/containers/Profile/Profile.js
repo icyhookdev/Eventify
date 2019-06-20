@@ -31,9 +31,8 @@ const Profile = ({ user, getEvents, events }) => {
   );
 };
 
-const mapStateToProps = ({ auth, events }) => ({
+const mapStateToProps = ({ auth }) => ({
   user: auth.user,
-  events: events.userEvents,
 });
 
 export default connect(

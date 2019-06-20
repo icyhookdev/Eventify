@@ -128,7 +128,7 @@ const CreateEvent = ({
       if (isAfter(sd, ed)) {
         setErrors({
           ...errors,
-          finish_date: 'La fecha final no puede ser mayor a la inicial',
+          finish_date: 'La fecha final no puede ser menor a la inicial',
         });
         return;
       }

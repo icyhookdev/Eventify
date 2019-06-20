@@ -40,14 +40,14 @@ const NewEvent = ({
         img={textIcon}
       />
       <div className={classes.align__to_text}>
-        <InputGroup
-          name="name"
-          label="Nombre del Evento"
-          change={change}
-          value={values.name}
-          errMsg={errors.name}
-        />
         <div className={classes.event__group}>
+          <InputGroup
+            name="name"
+            label="Nombre del Evento"
+            change={change}
+            value={values.name}
+            errMsg={errors.name}
+          />
           <Select
             name="type"
             selected="Tipo"
@@ -85,21 +85,25 @@ const NewEvent = ({
             <div className={classes.Date__container}>
               <div className={classes.Event__start}>
                 <h3 className={classes.semi_title}>Inicio</h3>
-                <DatePicker
-                  selected={startDate}
-                  selectsStart
-                  startDate={startDate}
-                  endDate={endDate}
-                  onChange={setDateS}
-                  minDate={new Date()}
-                />
 
-                <TimePicker
-                  showSecond={false}
-                  value={startTime}
-                  minuteStep={5}
-                  onChange={setStartT}
-                />
+                <div style={{ display: 'flex' }}>
+                  <DatePicker
+                    selected={startDate}
+                    selectsStart
+                    startDate={startDate}
+                    endDate={endDate}
+                    onChange={setDateS}
+                    minDate={new Date()}
+                  />
+
+                  <TimePicker
+                    showSecond={false}
+                    value={startTime}
+                    minuteStep={5}
+                    onChange={setStartT}
+                  />
+                </div>
+
                 {errors && (
                   <p className={classes.err__msg}>{errors.start_date}</p>
                 )}
@@ -107,24 +111,25 @@ const NewEvent = ({
 
               <div className={classes.Event__ends}>
                 <h3 className={classes.semi_title}>Fin</h3>
-                <DatePicker
-                  selected={endDate}
-                  selectsEnd
-                  startDate={startDate}
-                  endDate={endDate}
-                  onChange={setDateE}
-                  minDate={new Date()}
-                  // placeholderText="Fecha Fianl"
-                />
-                {/* {errors && (
-                  <p className={classes.err__msg}>{errors.finish_date}</p>
-                )} */}
-                <TimePicker
-                  showSecond={false}
-                  value={endTime}
-                  minuteStep={5}
-                  onChange={setEndT}
-                />
+                <div style={{ display: 'flex' }}>
+                  <DatePicker
+                    selected={endDate}
+                    selectsEnd
+                    startDate={startDate}
+                    endDate={endDate}
+                    onChange={setDateE}
+                    minDate={new Date()}
+                    // placeholderText="Fecha Fianl"
+                  />
+
+                  <TimePicker
+                    showSecond={false}
+                    value={endTime}
+                    minuteStep={5}
+                    onChange={setEndT}
+                  />
+                </div>
+
                 {errors && (
                   <p className={classes.err__msg}>{errors.finish_date}</p>
                 )}

@@ -52,8 +52,21 @@ const SearchFilter = ({
 
   return (
     <div className={classes.SearchFilter}>
-      <div className={classes.SearchFilterTitle}>Filtrar Eventos</div>
       <form className={classes.SearchFilterForm} onSubmit={onSubmit}>
+        <div className={classes.name}>
+          <InputGroup
+            label="Nombre del evento"
+            type="text"
+            name="name"
+            value={values.name}
+            change={onChangeHandler}
+          />
+        </div>
+
+        <button type="submit" className={classes.btn_filter}>
+          <div className={classes.filterIcon}></div>
+          Filtrar
+        </button>
         <Select
           name="type"
           selected="Tipo"
@@ -85,16 +98,6 @@ const SearchFilter = ({
           change={onChangeHandler}
           value={values.state}
         />
-        <InputGroup
-          label="Nombre del evento"
-          type="text"
-          name="name"
-          value={values.name}
-          change={onChangeHandler}
-        />
-        <button type="submit" className={classes.btn_filter}>
-          Filtrar
-        </button>
       </form>
     </div>
   );

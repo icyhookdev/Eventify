@@ -1,0 +1,52 @@
+.EventInvitationItem {
+  display: grid;
+  background: #fff;
+  grid-template-columns: 75px 1fr;
+  height: 75px;
+  border-radius: 15px;
+}
+
+.EventInvitationItem_img {
+  height: 75px;
+  width: 75px;
+  object-fit: cover;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.EventInvitationItem_details {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.left {
+  font-size: 16px;
+}
+
+.left__title {
+  font-weight: bold;
+  font-family: 'MontserratBold';
+}
+
+.right {
+  display: flex;
+  justify-content: space-around;
+}
+
+.right > button {
+  outline: 0;
+  border: 0;
+  border-radius: 50%;
+  padding: 7px;
+  height: 35px;
+  width: 35px;
+}
+
+.confirm {
+  margin-right: 10px;
+  background: #21ba45;
+}
+.cancel {
+  margin-right: 10px;
+  background: #f27474;
+}

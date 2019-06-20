@@ -1,5 +1,5 @@
 .Events {
-  padding: 0.7em 2.5em;
+  padding: 0.7em 0;
   display: flex;
   /* grid-template-columns: repeat(auto-fill, 300px);
   grid-gap: 2em; */
@@ -49,4 +49,43 @@
   padding: 1rem;
   width: auto;
   border-radius: 5px;
+}
+
+.btn_filter {
+  color: #000;
+  border: none;
+  outline: none;
+  background: #fff;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid rgb(234, 85, 92);
+  padding: 0.5em 1em;
+  font-weight: bold;
+  display: flex;
+  font-family: 'MontserratBold';
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filterIcon {
+  background: url('../../assets/icons/sort2.svg');
+  background-size: cover;
+  background-position: center;
+  height: 27px;
+  width: 27px;
+  margin-right: 10px;
+}
+
+.events {
+  padding: 5em;
 }

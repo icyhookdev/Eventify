@@ -69,13 +69,13 @@ const UserProfile = ({
           </div>
           <div className={classes.details_events}>
             <span className={classes.amount}>
-              {user && user.followers.length}
+              {(user && user.followers.length) || 0}
             </span>
             <div>Seguidores</div>
           </div>
           <div className={classes.details_events}>
             <span className={classes.amount}>
-              {user && user.following.length}
+              {(user && user.following.length) || 0}
             </span>
             <div>Siguiendo</div>
           </div>

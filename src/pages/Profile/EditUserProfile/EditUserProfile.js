@@ -80,6 +80,7 @@ const EditUserProfile = ({
             selected={date}
             onChange={changeDate}
             maxDate={new Date()}
+            minDate={new Date('January 01, 1900 00:00:00')}
             placeholderText="Fecha de nacimiento"
           />
           {errors && <p className={classes.err__msg}>{errors.dateOfBirth}</p>}

@@ -10,8 +10,9 @@
 
 .SearchFilterForm {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
+  padding: 1rem 0;
 }
 
 .btn_filter {
@@ -27,7 +28,21 @@
   font-family: 'MontserratBold';
   align-items: center;
   cursor: pointer;
-
+  display: flex;
+  justify-content: center;
   transition: all 0.3s ease;
   text-decoration: none;
+}
+
+.name {
+  grid-column: span 3;
+}
+
+.filterIcon {
+  background: url('../../assets/icons/sort.svg');
+  background-size: cover;
+  background-position: center;
+  height: 27px;
+  width: 27px;
+  margin-right: 10px;
 }

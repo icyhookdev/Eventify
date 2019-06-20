@@ -1,6 +1,6 @@
 .TopBar {
   display: grid;
-  grid-template-columns: 1fr 300px;
+  grid-template-columns: 1fr 350px;
   grid-template-areas: 'left right';
   grid-gap: 10px;
 }
@@ -17,6 +17,7 @@
   padding: 0.7em 1em;
   display: flex;
   justify-content: space-around;
+  /* align-items: center; */
 }
 
 .top__btn {
@@ -32,16 +33,76 @@
   font-family: 'MontserratBold';
   align-items: center;
   cursor: pointer;
-
+  width: fit-content;
   transition: all 0.3s ease;
   text-decoration: none;
 }
 
+.invitations {
+  height: 32px;
+  object-fit: cover;
+  object-position: center;
+  width: 32px;
+  cursor: pointer;
+  margin: auto 1rem;
+}
+
 .top__btn > svg {
-  margin-left: 20px;
   margin-right: 0 !important;
 }
 
 .top__btn:hover {
   box-shadow: #ea555c 0px 0px 5px;
+}
+
+.invitations_container {
+  width: 350px;
+  position: absolute;
+  z-index: 999999;
+  height: 400px;
+  border-radius: 26px;
+  top: 80px;
+  box-shadow: 0px 4px 40px rgba(357, 78, 63, 0.5);
+  right: 20px;
+  background: var(--main-color);
+  padding: 2rem;
+  transition: all 0.3s ease;
+  animation: roadRunnerIn 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.invitations_container:before {
+  content: '';
+  position: absolute;
+
+  right: 90px;
+
+  bottom: 100%;
+  width: 0;
+  height: 0;
+
+  border-right: 20px solid transparent;
+  border-bottom: 18px solid hsl(357, 78%, 63%);
+  border-left: 20px solid transparent;
+  transition: all 0.3s ease;
+  animation: roadRunnerIn 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.userInvitations {
+  overflow-y: auto;
+  height: 335px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+}
+
+@keyframes roadRunnerIn {
+  0% {
+    transform: translateY(-1500px);
+  }
+  70% {
+    transform: translateY(30px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }

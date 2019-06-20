@@ -8,12 +8,12 @@ import { setUser } from '../../store/actions/authentication';
 import { getEventsPublished } from '../../store/actions/events';
 import Modal from '../../components/Modal/Modal';
 import avatar from '../../assets/img/avatar.png';
-// import ModalConfirmation from '../../components/Modal/ModalConfirmation';
 import SearchFilter from '../../components/SearchFilter/SearchFilter';
-import ModalConfirmation from '../../components/Modal/ModalConfirmation';
+// import ModalConfirmation from '../../components/Modal/ModalConfirmation';
 
 const Events = ({ history, setUser, getEventsPublished, events, userMe }) => {
   const [open, setOpen] = useState((userMe && userMe.first_login) || false);
+  const [openFilter, setOpenFilter] = useState(false);
   const eventsPublished =
     events &&
     events.map(event => (
@@ -28,9 +28,20 @@ const Events = ({ history, setUser, getEventsPublished, events, userMe }) => {
     getEventsPublished('1');
   }, [getEventsPublished]);
   return (
-    <div>
-      <SearchFilter />
-      <div className={classes.title}>Proximos Eventos</div>
+    <div className={classes.events}>
+      <div className={classes.title}>
+        Proximos Eventos{' '}
+        <button
+          type="button"
+          className={classes.btn_filter}
+          onClick={() => setOpenFilter(!openFilter)}
+        >
+          <div className={classes.filterIcon}></div>
+          Filtrar
+        </button>
+      </div>
+
+      {openFilter && <SearchFilter />}
 
       <div className={classes.Events}>{eventsPublished}</div>
 
@@ -45,12 +56,6 @@ const Events = ({ history, setUser, getEventsPublished, events, userMe }) => {
           <Link to="/edit-profile" className={classes.popup_link}>
             Editar perfil
           </Link>
-          {/* á -> &aacute;
-é -> &eacute;
-í -> &iacute;
-ó -> &oacute;
-ú -> &uacute;
-ñ -> &ntilde; */}
         </div>
       </Modal>
       {/* <ModalConfirmation

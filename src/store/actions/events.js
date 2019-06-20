@@ -67,14 +67,16 @@ export const getEvent = id => async dispatch => {
 
 export const updateEvent = data => async dispatch => {
   const token = localStorage.getItem('token');
+  dispatch({ type: START_EVENT });
   try {
     const res = await events(token).put(`/edit`, data);
+    dispatch({ type: SET_EVENT, payload: res.data.data });
     toastr.success('Exitoso!', 'Evento Actualizado');
-
     console.log('succeedd', res);
   } catch (err) {
     toastr.error('Error', 'Upp! Algo salio mal.');
     console.log(err.response.data);
+    dispatch({ type: FAIL_EVENT });
   }
 };
 
