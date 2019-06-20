@@ -33,14 +33,14 @@ const MyEvents = ({
     event => event.publish_status === 'cancelled'
   );
 
-  const onCopyEvent = id => {
-    copyEvent(id);
-    getEvents();
+  const onCopyEvent = async id => {
+    await copyEvent(id);
+    await getEvents();
   };
 
-  const onCancellEvent = (id, status) => {
-    changeStatusEvent(id, status);
-    getEvents();
+  const onCancellEvent = async (id, status) => {
+    await changeStatusEvent(id, status);
+    await getEvents();
   };
 
   return isLoading ? (

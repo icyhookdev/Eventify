@@ -9,6 +9,8 @@ import {
   FETCH_USER_INVITATIONS,
   USER_FETCHED,
   FAIL_REQUEST,
+  FETCH_FOLLOWERS,
+  FETCH_FOLLOWINGS,
 } from './types';
 import history from '../../history';
 import { usersWithAuth } from '../../api/users';
@@ -100,6 +102,28 @@ export const getUserInvitations = () => async (dispatch, getState) => {
   try {
     const { data } = await usersWithAuth(token).get(`/invitation/${id}`);
     dispatch({ type: FETCH_USER_INVITATIONS, payload: data.data });
+    console.log(data);
+  } catch (error) {
+    console.log(error.response);
+  }
+};
+
+export const getUserFollowers = userId => async dispatch => {
+  const token = localStorage.getItem('token');
+  try {
+    const { data } = await usersWithAuth(token).get(`/followers/${userId}`);
+    dispatch({ type: FETCH_FOLLOWERS, payload: data.data });
+    console.log(data);
+  } catch (error) {
+    console.log(error.response);
+  }
+};
+
+export const getUserFollowings = userId => async dispatch => {
+  const token = localStorage.getItem('token');
+  try {
+    const { data } = await usersWithAuth(token).get(`/following/${userId}`);
+    dispatch({ type: FETCH_FOLLOWINGS, payload: data.data });
     console.log(data);
   } catch (error) {
     console.log(error.response);
