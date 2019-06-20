@@ -58,7 +58,7 @@ const UserProfile = ({
           {user && user.aboutMe}
         </div>
         <div className={classes.UserProfile__loation}>
-          {user && user.country.name} {user && user.city}
+          {user && user.country && user.country.name} {user && user.city}
         </div>
         <div className={classes.details}>
           <div className={classes.details_events}>

@@ -28,7 +28,7 @@ const EditProfile = ({
     name: (user && user.name) || '',
     lastName: (user && user.lastName) || '',
     email: (user && user.email) || '',
-    country: (user && user.country) || '',
+    country: (user && user.country._id) || '',
     aboutMe: (user && user.aboutMe) || '',
     state: (user && user.state) || '',
     city: (user && user.city) || '',
