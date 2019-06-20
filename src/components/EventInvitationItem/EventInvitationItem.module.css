@@ -21,6 +21,7 @@
 
 .left {
   font-size: 16px;
+  text-decoration: none;
 }
 
 .left__title {
@@ -49,4 +50,20 @@
 .cancel {
   margin-right: 10px;
   background: #f27474;
+}
+
+.icoCheck {
+  background: url(../../assets/icons/checkmark.svg);
+  background-size: cover;
+  height: 20px;
+  cursor: pointer;
+  width: 20px;
+}
+
+.icoCancel {
+  background: url(../../assets/icons/cancel2.svg);
+  background-size: cover;
+  height: 20px;
+  cursor: pointer;
+  width: 20px;
 }

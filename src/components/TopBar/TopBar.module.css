@@ -89,10 +89,18 @@
 
 .userInvitations {
   overflow-y: auto;
-  height: 335px;
+  /* height: 335px; */
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 10px;
+}
+
+.message {
+  font-weight: bold;
+  font-family: 'MontserratBold';
+  font-size: 24px;
+  color: #fff;
+  text-align: center;
 }
 
 @keyframes roadRunnerIn {

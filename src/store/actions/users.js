@@ -6,6 +6,7 @@ import {
   SUC_UPDATE_USER,
   SET_USER,
   ST_GET_USER,
+  FETCH_USER_INVITATIONS,
   USER_FETCHED,
   FAIL_REQUEST,
 } from './types';
@@ -19,9 +20,10 @@ export const updateUser = user => async dispatch => {
   try {
     const { data } = await usersWithAuth(token).put('/edit', user);
 
+    console.log(data);
     dispatch({ type: SUC_UPDATE_USER });
     dispatch({ type: SET_USER, payload: data.data });
-    toastr.success('Exitoso!', 'Informacion acutalida!');
+    toastr.success('Exitoso!', 'Informacion actualizada!');
     history.push('/profile');
   } catch (error) {
     console.log(error.response);
@@ -67,6 +69,37 @@ export const unfollowUser = id => async (dispatch, getState) => {
       userId: myId,
     });
     dispatch({ type: SET_USER, payload: data.data.user });
+    console.log(data);
+  } catch (error) {
+    console.log(error.response);
+  }
+};
+
+export const confirmOrRejectInvitation = (option, id) => async (
+  dispatch,
+  getState
+) => {
+  const token = localStorage.getItem('token');
+  try {
+    const { data } = await usersWithAuth(token).put(
+      `/invitation/${id}/confirm`,
+      {
+        confirm: option,
+      }
+    );
+    // dispatch({ type: SET_USER, payload: data.data.user });
+    console.log(data);
+  } catch (error) {
+    console.log(error.response);
+  }
+};
+
+export const getUserInvitations = () => async (dispatch, getState) => {
+  const token = localStorage.getItem('token');
+  const id = getState().auth.user._id;
+  try {
+    const { data } = await usersWithAuth(token).get(`/invitation/${id}`);
+    dispatch({ type: FETCH_USER_INVITATIONS, payload: data.data });
     console.log(data);
   } catch (error) {
     console.log(error.response);

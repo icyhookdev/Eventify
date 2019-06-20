@@ -173,7 +173,8 @@ export const getFilterEvents = (
         'null'}&country=${country || 'null'}&state=${state ||
         'null'}&name=${name || 'null'}`
     );
-    dispatch({ type: EVENT_FILTERED, payload: data.data });
+    // dispatch({ type: EVENT_FILTERED, payload: data.data });
+    dispatch({ type: GET_EVENTS_PUBLISHED, payload: data.data });
     console.log(data);
   } catch (err) {
     dispatch({ type: FAIL_REQUEST });

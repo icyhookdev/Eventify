@@ -5,11 +5,13 @@ import {
   ST_GET_USER,
   USER_FETCHED,
   FAIL_REQUEST,
+  FETCH_USER_INVITATIONS,
 } from '../actions/types';
 
 const initialState = {
   isLoading: false,
   userProfile: null,
+  userInvitations: null,
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -24,6 +26,8 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, isLoading: true };
     case USER_FETCHED:
       return { ...state, isLoading: false, userProfile: payload };
+    case FETCH_USER_INVITATIONS:
+      return { ...state, isLoading: false, userInvitations: payload };
     case FAIL_REQUEST:
       return { ...state, isLoading: false };
     default:

@@ -5,13 +5,21 @@ import { Link } from 'react-router-dom';
 import classes from './Events.module.css';
 import EventCard from '../../components/EventCard/EventCard';
 import { setUser } from '../../store/actions/authentication';
+import { getUserInvitations } from '../../store/actions/users';
 import { getEventsPublished } from '../../store/actions/events';
 import Modal from '../../components/Modal/Modal';
 import avatar from '../../assets/img/avatar.png';
 import SearchFilter from '../../components/SearchFilter/SearchFilter';
 // import ModalConfirmation from '../../components/Modal/ModalConfirmation';
 
-const Events = ({ history, setUser, getEventsPublished, events, userMe }) => {
+const Events = ({
+  history,
+  setUser,
+  getEventsPublished,
+  events,
+  userMe,
+  getUserInvitations,
+}) => {
   const [open, setOpen] = useState((userMe && userMe.first_login) || false);
   const [openFilter, setOpenFilter] = useState(false);
   const eventsPublished =
@@ -22,7 +30,14 @@ const Events = ({ history, setUser, getEventsPublished, events, userMe }) => {
 
   useEffect(() => {
     setUser();
-  }, [setUser]);
+  }, [getUserInvitations, setUser]);
+
+  useEffect(() => {
+    if (userMe) {
+      getUserInvitations();
+    }
+    // eslint-disable-next-line
+  }, )
 
   useEffect(() => {
     getEventsPublished('1');
@@ -76,5 +91,5 @@ const mapStateToProps = ({ events, auth }) => ({
 
 export default connect(
   mapStateToProps,
-  { setUser, getEventsPublished }
+  { setUser, getEventsPublished, getUserInvitations }
 )(Events);

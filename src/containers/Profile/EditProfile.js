@@ -28,7 +28,7 @@ const EditProfile = ({
     name: (user && user.name) || '',
     lastName: (user && user.lastName) || '',
     email: (user && user.email) || '',
-    country: (user && user.country._id) || '',
+    country: (user && user.country && user.country._id) || '',
     aboutMe: (user && user.aboutMe) || '',
     state: (user && user.state) || '',
     city: (user && user.city) || '',
@@ -87,7 +87,7 @@ const EditProfile = ({
           { description: values.address1 },
           { description: values.address2 },
         ],
-        id: localStorage.getItem('user'),
+        id: user && user._id,
       };
       updateUser(formValues);
     }

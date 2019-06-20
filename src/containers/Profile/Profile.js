@@ -9,7 +9,8 @@ const Profile = ({ user, getEvents, events }) => {
   const [followers, setFollowers] = useState(null);
   useEffect(() => {
     getEvents();
-  }, [getEvents]);
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     unfollowerUsers();
