@@ -23,7 +23,7 @@ const Guests = ({ match, createEventGuests, getEventGuests, invitations }) => {
     invitations.map(invitation => (
       <Invite
         key={invitation.id}
-        text={invitation.id}
+        text={invitation && invitation.user && `${invitation.user.name} ${invitation.user.lastName} `}
         requested
         status={invitation.status}
       />

@@ -9,7 +9,7 @@ const Navbar = ({ user }) => (
     <div className={classes.nav__container}>
       <div className={classes.nav__logo}>Reventsi</div>
       <User user={user} />
-      <Nav />
+      <Nav user={user} />
     </div>
   </div>
 );

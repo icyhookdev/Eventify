@@ -37,6 +37,7 @@ const EditUserProfile = ({
         label="email"
         name="email"
         value={values.email}
+        readOnly
         change={change}
       />
     </div>
