@@ -66,38 +66,35 @@ const Nav = ({ user }) => (
           <ChatIco /> Chat room
         </NavLink>
       </li> */}
-      {user && user.admin && (
-        <div>
-          <li className={classes.Nav__item}>
-            <NavLink
-              to="/statistics"
-              exact
-              activeStyle={{
-                color: '#ea555c',
-                fill: '#ea555c',
-                borderLeft: '.3em solid #ea555c',
-                background: '#fff',
-              }}
-            >
-              Estadisticas
-            </NavLink>
-          </li>
-          <li className={classes.Nav__item}>
-            <NavLink
-              to="/register-mics"
-              exact
-              activeStyle={{
-                color: '#ea555c',
-                fill: '#ea555c',
-                borderLeft: '.3em solid #ea555c',
-                background: '#fff',
-              }}
-            >
-              Agregar
-            </NavLink>
-          </li>
-        </div>
-      )}
+
+      <li className={classes.Nav__item}>
+        <NavLink
+          to="/statistics"
+          exact
+          activeStyle={{
+            color: '#ea555c',
+            fill: '#ea555c',
+            borderLeft: '.3em solid #ea555c',
+            background: '#fff',
+          }}
+        >
+          Estadisticas
+        </NavLink>
+      </li>
+      <li className={classes.Nav__item}>
+        <NavLink
+          to="/register-mics"
+          exact
+          activeStyle={{
+            color: '#ea555c',
+            fill: '#ea555c',
+            borderLeft: '.3em solid #ea555c',
+            background: '#fff',
+          }}
+        >
+          Agregar
+        </NavLink>
+      </li>
 
       {/* <li className={classes.Nav__item}>
         <NavLink
