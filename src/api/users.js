@@ -1,13 +1,17 @@
 import axios from 'axios';
 
+// export const users = axios.create({
+//   baseURL: 'http://localhost:4000/',
+// });
 export const users = axios.create({
-  baseURL: 'http://localhost:4000/',
+  baseURL: 'https://iujo-eventify-api.herokuapp.com/',
 });
 
 export const usersWithAuth = (token, isAFileRequest) => {
   if (isAFileRequest) {
     return axios.create({
-      baseURL: 'http://localhost:4000/api/users',
+      // baseURL: 'http://localhost:4000/api/users',
+      baseURL: 'https://iujo-eventify-api.herokuapp.com/api/users',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'multipart/form-data',
@@ -16,7 +20,8 @@ export const usersWithAuth = (token, isAFileRequest) => {
     });
   }
   return axios.create({
-    baseURL: 'http://localhost:4000/api/users',
+    // baseURL: 'http://localhost:4000/api/users',
+    baseURL: 'https://iujo-eventify-api.herokuapp.com/api/users',
     headers: {
       Authorization: `Bearer ${token}`,
     },
